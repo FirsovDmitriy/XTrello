@@ -17,6 +17,9 @@
     display: flex;
     flex-direction: column;
   }
+  &__content {
+    flex: auto;
+  }
 }
 
 input[type="number"]::-webkit-outer-spin-button,

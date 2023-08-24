@@ -1,18 +1,18 @@
 import { useState } from "react"
 import { ThemeProvider } from "styled-components"
-import Text from "./user.InterfaceLayer/UI/components/Text"
-import CssReset from "./user.InterfaceLayer/UI/components/CssReset"
-import Container from "./user.InterfaceLayer/UI/components/Container"
-import Button from "./user.InterfaceLayer/UI/components/Button"
-import ArrowDownIcon from "./user.InterfaceLayer/UI/Icons/ArrowDownIcon"
-import Input from "./user.InterfaceLayer/UI/components/Input"
-import SearchIcon from "./user.InterfaceLayer/UI/Icons/SearchIcon"
-import { InputType } from "./user.InterfaceLayer/UI/components/Input/enum"
-import Select from "./user.InterfaceLayer/UI/components/Select"
-import { options } from "./user.InterfaceLayer/UI/components/Select/mock"
-import Switch from "./user.InterfaceLayer/UI/components/Switch"
-import Checkbox from "./user.InterfaceLayer/UI/components/Checkbox"
-// import BasicLink from "./user.InterfaceLayer/UI/components/BasicLink"
+import Text from "./UI/components/Text"
+import CssReset from "./UI/components/CssReset"
+import Container from "./UI/components/Container"
+import Button from "./UI/components/Button"
+import ArrowDownIcon from "./UI/Icons/ArrowDownIcon"
+import Input from "./UI/components/Input"
+import SearchIcon from "./UI/Icons/SearchIcon"
+import { InputType } from "./UI/components/Input/enum"
+import Select from "./UI/components/Select"
+import { options } from "./UI/components/Select/mock"
+import Switch from "./UI/components/Switch"
+import Checkbox from "./UI/components/Checkbox"
+import BasicLink from "./UI/components/BasicLink"
 
 const App = () => {
   const [isDark] = useState(false)
@@ -64,7 +64,7 @@ const App = () => {
 
         <Checkbox />
 
-        {/* <BasicLink to='/'>Доски Agile</BasicLink> */}
+        <BasicLink to='/'>Доски Agile</BasicLink>
 
       </Container>
 
