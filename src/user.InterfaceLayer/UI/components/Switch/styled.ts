@@ -30,7 +30,7 @@ export const Switch = styled.label`
 
 
   margin-top: 10px;
-  display: block;
+  display: inline-flex;
 `
 
 export const SwitchInput = styled.input`

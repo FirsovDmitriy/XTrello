@@ -33,8 +33,6 @@ export const Button = styled.button`
     }
   }
 
-  margin-left: 8px;
-
   &:disabled {
     pointer-events: none;
     background: ${ Colors.BG_DISABLED };
@@ -74,8 +72,6 @@ export const SquareButton = styled.button`
     pointer-events: none;
     color: ${ Colors.FONT_DISABLED };
   }
-
-  margin-top: 8px;
 `
 
 export const Prepend = styled.span`

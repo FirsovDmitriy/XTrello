@@ -4,4 +4,5 @@ export interface IProps {
   disabled?: boolean;
   prepend?: JSX.Element;
   append?: JSX.Element;
+  onClick?: () => void
 }

@@ -13,11 +13,14 @@ import { options } from "./UI/components/Select/mock"
 import Switch from "./UI/components/Switch"
 import Checkbox from "./UI/components/Checkbox"
 import BasicLink from "./UI/components/BasicLink"
+import Popover from "./UI/components/Popover"
+import PopoverItem from "./UI/components/Popover/PopoverItem"
 
 const App = () => {
   const [isDark] = useState(false)
   const [selected, setSelected] = useState<string>('')
   console.log('Selected', selected)
+  const [open, setOpen] = useState(false)
   
   // TODO: convert colors to constant
   const theme = {
@@ -65,6 +68,20 @@ const App = () => {
         <Checkbox />
 
         <BasicLink to='/'>Доски Agile</BasicLink>
+
+        <Popover
+          buttonTrigger={
+            <Button variant="square" onClick={() => setOpen(!open)}>D</Button>
+          }
+          isShow={open}
+          onClose={setOpen}
+        >
+          <PopoverItem>Text</PopoverItem>
+          <PopoverItem>Text 1</PopoverItem>
+          <PopoverItem>Text xxxx</PopoverItem>
+          <PopoverItem>Text 55</PopoverItem>
+          <PopoverItem>Text xx</PopoverItem>
+        </Popover>
 
       </Container>
 
