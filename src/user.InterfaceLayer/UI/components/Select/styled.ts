@@ -40,6 +40,7 @@ export const List = styled.ul<{ $isVisible: boolean }>`
   position: absolute;
   top: 100%;
   left: 0;
+  z-index: 1;
   width: 100%;
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
   border-radius: 4px;
@@ -48,6 +49,7 @@ export const List = styled.ul<{ $isVisible: boolean }>`
   opacity: ${ props => props.$isVisible ? 1 : 0 };
   transition: opacity 0.3s ease-out;
   pointer-events: ${ props => props.$isVisible ? 'all' : 'none' };
+  background: ${ props => props.theme.backColor };
 `
 
 export const Item = styled.li`
