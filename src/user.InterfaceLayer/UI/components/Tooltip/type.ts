@@ -1,5 +1,6 @@
-import { IGlobalProps } from "../../../constants/IGlobalProps";
+// import { IGlobalProps } from "../../../constants/IGlobalProps";
 
-export interface IProps extends IGlobalProps {
+export interface IProps {
   label: string
+  children: JSX.Element
 }

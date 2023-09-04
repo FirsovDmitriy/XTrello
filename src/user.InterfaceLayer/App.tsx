@@ -16,13 +16,15 @@ import BasicLink from "./UI/components/BasicLink"
 import Popover from "./UI/components/Popover"
 import PopoverItem from "./UI/components/Popover/PopoverItem"
 import Tooltip from "./UI/components/Tooltip"
-import Portal from "./Components/GeneralComponents/ModalWindow/services/Portal"
+import Modal from "./UI/components/Modal"
+import ModalActions from "./UI/components/Modal/ModalActions"
 
 const App = () => {
   const [isDark] = useState(false)
   const [selected, setSelected] = useState<string>('')
   console.log('Selected', selected)
   const [open, setOpen] = useState(false)
+  const [isShow, setShow] = useState<boolean>(false)
   
   // TODO: convert colors to constant
   const theme = {
@@ -85,8 +87,6 @@ const App = () => {
           <PopoverItem>Text xx</PopoverItem>
         </Popover>
 
-        <Portal />
-
         
 
         <div
@@ -102,6 +102,17 @@ const App = () => {
           <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eveniet distinctio nostrum repudiandae accusantium facere sequi voluptas excepturi. Placeat quos nemo possimus dolore similique, provident pariatur dignissimos porro quia eos. Omnis?</p>
         </Tooltip>
         </div>
+
+        <Button onClick={() => setShow(true)}>
+          Open modal
+        </Button>
+        <Modal onClose={() => setShow(false)} title="Редактирование проекта" isShow={isShow}>
+          <p>Hello ReactJS</p>
+          <ModalActions>
+            <Button variant="outlined" onClick={() => setShow(false)}>Cancel</Button>
+            <Button onClick={() => console.log('Click')}>add</Button>
+          </ModalActions>
+        </Modal>
 
       </Container>
 

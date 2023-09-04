@@ -1,16 +1,15 @@
-import { FC } from 'react'
+import { FC, ReactNode } from 'react'
 import { createPortal } from 'react-dom'
 
+const element = document.querySelector('#portal') as HTMLElement
+
 type PortalProps = {
-  children: JSX.Element
+  children: ReactNode
 }
 
 const Portal: FC<PortalProps> = ({ children }) => {
-  const root = document.createElement('div')
-  root.id = 'modal-root'
-  document.body.append(root)
 
-  return createPortal(children, root)
+  return createPortal(children, element)
 }
 
 export default Portal

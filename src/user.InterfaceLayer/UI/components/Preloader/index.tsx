@@ -1,6 +1,6 @@
-import React from 'react'
+import { FC } from 'react'
 
-const Preloader = () => {
+const Preloader: FC = () => {
   return (
     <div>Preloader</div>
   )
