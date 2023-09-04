@@ -18,6 +18,7 @@ import PopoverItem from "./UI/components/Popover/PopoverItem"
 import Tooltip from "./UI/components/Tooltip"
 import Modal from "./UI/components/Modal"
 import ModalActions from "./UI/components/Modal/ModalActions"
+import RadioButton from "./UI/components/RadioButton"
 
 const App = () => {
   const [isDark] = useState(false)
@@ -113,6 +114,10 @@ const App = () => {
             <Button onClick={() => console.log('Click')}>add</Button>
           </ModalActions>
         </Modal>
+
+        <RadioButton />
+        <RadioButton />
+        <RadioButton />
 
       </Container>
 

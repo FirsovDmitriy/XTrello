@@ -10,7 +10,7 @@ export const Checkbox = styled.label`
 export const CheckboxCore = styled.span`
   width: 24px;
   height: 24px;
-  border: 1px solid silver;
+  border: 2px solid ${ Colors.BORDER };
   border-radius: 4px;
   display: flex;
   transition: all 0.3 ease-in-out;
