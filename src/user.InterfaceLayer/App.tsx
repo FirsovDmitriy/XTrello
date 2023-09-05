@@ -21,6 +21,7 @@ import ModalActions from "./UI/components/Modal/ModalActions"
 import RadioButton from "./UI/components/RadioButton"
 import Typography from "./UI/components/Typography"
 import { Variant } from "./UI/components/Typography/enum"
+import Preloader from "./UI/components/Preloader"
 
 const App = () => {
   const [isDark] = useState(false)
@@ -126,6 +127,8 @@ const App = () => {
         <Typography $color="green">
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias ipsa rem at incidunt veniam mollitia nostrum debitis rerum, unde temporibus, consequatur modi aperiam. Dicta vero recusandae excepturi odit qui accusamus?
         </Typography>
+
+        <Preloader />
 
       </Container>
 

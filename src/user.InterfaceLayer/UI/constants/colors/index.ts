@@ -9,7 +9,8 @@ enum Colors {
   BORDER = '#616161',
   ERROR = '#EE4222',
 
-  WHITE = '#FFF'
+  WHITE = '#FFF',
+  BLACKOUT = 'rgba(0, 0, 0, 0.6)'
 
 }
 
