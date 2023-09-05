@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { ThemeProvider } from "styled-components"
-import Text from "./UI/components/Text"
+import Text from "./UI/components/Typography"
 import CssReset from "./UI/components/CssReset"
 import Container from "./UI/components/Container"
 import Button from "./UI/components/Button"
@@ -19,6 +19,8 @@ import Tooltip from "./UI/components/Tooltip"
 import Modal from "./UI/components/Modal"
 import ModalActions from "./UI/components/Modal/ModalActions"
 import RadioButton from "./UI/components/RadioButton"
+import Typography from "./UI/components/Typography"
+import { Variant } from "./UI/components/Typography/enum"
 
 const App = () => {
   const [isDark] = useState(false)
@@ -118,6 +120,12 @@ const App = () => {
         <RadioButton />
         <RadioButton />
         <RadioButton />
+
+        <Typography variant={ Variant.h1 }>Редактирование профиля</Typography>
+        <Typography variant={ Variant.h2 }>Редактирование фото</Typography>
+        <Typography $color="green">
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias ipsa rem at incidunt veniam mollitia nostrum debitis rerum, unde temporibus, consequatur modi aperiam. Dicta vero recusandae excepturi odit qui accusamus?
+        </Typography>
 
       </Container>
 
