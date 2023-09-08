@@ -1,18 +1,17 @@
-import { FC, useContext } from 'react'
-
-import * as ST from './styled'
+import { FC, ReactNode, useContext } from 'react'
 import { Context } from '../Context'
 
+import * as ST from './styled'
+
 export interface IProps {
-  children?: JSX.Element | string
+  children?: ReactNode | string
 }
 
 const PopoverItem: FC<IProps> = ({ children }) => {
   const onClose = useContext(Context)
-  const handleClose = () => onClose() //TODO:
 
   return (
-    <ST.PopoverItem onClick={handleClose}>
+    <ST.PopoverItem onClick={onClose}>
       { children }
     </ST.PopoverItem>
   )

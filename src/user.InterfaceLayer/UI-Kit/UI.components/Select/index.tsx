@@ -7,14 +7,14 @@ import ArrowDownIcon from '../../Icons/ArrowDownIcon'
 import * as ST from './styled'
 
 const Select: FC<IProps> = ({ onChange, value, multiple, placeholder, options }) => {
-  const [isVisible, setVisible] = useState(false)
+  const [isShow, setIsShow] = useState(false)
   const ref = useRef<HTMLDivElement>(null)
 
   function handleClose() {
-    setVisible(false)
+    setIsShow(false)
   }
 
-  function valueSelection(option: string) {
+  function handleChange(option: string) {
     if(multiple) { 
       const isOptionIncluded = value?.includes(option)
       if(isOptionIncluded) onChange?.(
@@ -25,41 +25,51 @@ const Select: FC<IProps> = ({ onChange, value, multiple, placeholder, options })
         onChange?.([...(value as string[]), option])
       }
     } else onChange?.(option)
-    setVisible(false)
+    setIsShow(false)
   }
 
-  function isOptionSelected(option: string) {
-    return multiple ? value?.includes(option) : option === value
+  function isOptionSelected(option: string): boolean {
+    if(multiple) {
+      return ( value?.includes(option) ) ?? false
+    } else {
+      return option === value
+    }
+  }
+
+  function formatValueToString(): string {
+    return Array.isArray(value) ? (
+      value.join(', ')
+    ) : value
   }
 
   useOutside(ref, handleClose)
 
   return (
     <ST.Select ref={ref}>
-      <ST.Base onClick={() => setVisible(!isVisible)}>
+      <ST.Base onClick={() => setIsShow(!isShow)} $isShow={isShow}>
         <ST.Content>
-          {/* TODO: */}
-          { (Array.isArray(value) ? value.join(", ") : value) || placeholder }
+          { formatValueToString() || placeholder }
         </ST.Content>
-        <ST.Arrow $isVisible={isVisible}>
+        <ST.Arrow $isShow={isShow}>
           <ArrowDownIcon />
         </ST.Arrow>
         <ST.NativeInput
-          value={Array.isArray(value) ? value.join(", ") : value}
+          value={ formatValueToString() }
         />
       </ST.Base>
 
-      <ST.List $isVisible={isVisible}>
+      <ST.List $isShow={isShow}>
         
         {options?.map(option => (
           <ST.Item
-          role='option'
-          onClick={() => valueSelection(option.value)}
-          key={option.value}
-        >
-          <span> { option.label } </span>
-          { isOptionSelected(option.value) && <DoneIcon /> }
-        </ST.Item>
+            role='option'
+            onClick={() => handleChange(option.value)}
+            $disabled={ option?.disabled }
+            key={option.value}
+          >
+            { option.label }
+            { isOptionSelected(option.value) && <DoneIcon /> }
+          </ST.Item>
         ))}
 
       </ST.List>

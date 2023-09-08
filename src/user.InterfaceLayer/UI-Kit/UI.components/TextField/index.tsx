@@ -3,10 +3,10 @@ import { IProps } from './type'
 
 import * as ST from './styled'
 
-const Input: FC<IProps> = ({ onChange, value, Icon,  ...props }) => {
+const TextField: FC<IProps> = ({ onChange, value, Icon, isError, ...props }) => {
 
   return (
-    <ST.Wrapper>
+    <ST.TextField>
       {Icon?.prepend ? (
         <ST.IconPrepend>
           { Icon.prepend }
@@ -16,16 +16,24 @@ const Input: FC<IProps> = ({ onChange, value, Icon,  ...props }) => {
       <ST.Input
         value={value}
         onChange={ onChange }
+        isError={isError}
         { ...props }
+        prepend={Boolean(Icon?.prepend)}
+        append={Boolean(Icon?.append)}
       />
+      {isError ? (
+        <ST.InvalidFeedback>Текст ошибки</ST.InvalidFeedback>
+      ) : null}
 
       {Icon?.append ? (
         <ST.IconAppend>
           { Icon.append }
         </ST.IconAppend>
       ) : null}
-    </ST.Wrapper>
+    </ST.TextField>
   )
 }
 
-export default Input
+export default TextField
+
+// underlined

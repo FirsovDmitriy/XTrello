@@ -41,7 +41,7 @@ export const Content = styled.section<{$isShow: boolean, size?: 'small'}>`
 export const Overlay = styled.div<{$isShow: boolean}>`
   display: grid;
   ${ BasicStyle }
-  background: rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.6);
   opacity: ${ props => (
     props.$isShow ? 1 : 0
   ) };

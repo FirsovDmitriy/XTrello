@@ -1,6 +1,5 @@
 
-
 export interface IProps {
-  children: JSX.Element | string
+  children: string
   to: string
 }

@@ -1,31 +1,31 @@
 import { useState } from "react"
 import { ThemeProvider } from "styled-components"
-import Text from "./UI/components/Typography"
-import CssReset from "./UI/components/CssReset"
-import Container from "./UI/components/Container"
-import Button from "./UI/components/Button"
-import ArrowDownIcon from "./UI/Icons/ArrowDownIcon"
-import Input from "./UI/components/Input"
-import SearchIcon from "./UI/Icons/SearchIcon"
-import { InputType } from "./UI/components/Input/enum"
-import Select from "./UI/components/Select"
-import { options } from "./UI/components/Select/mock"
-import Switch from "./UI/components/Switch"
-import Checkbox from "./UI/components/Checkbox"
-import BasicLink from "./UI/components/BasicLink"
-import Popover from "./UI/components/Popover"
-import PopoverItem from "./UI/components/Popover/PopoverItem"
-import Tooltip from "./UI/components/Tooltip"
-import Modal from "./UI/components/Modal"
-import ModalActions from "./UI/components/Modal/ModalActions"
-import RadioButton from "./UI/components/RadioButton"
-import Typography from "./UI/components/Typography"
-import { Variant } from "./UI/components/Typography/enum"
-import Preloader from "./UI/components/Preloader"
+import Text from "./UI-Kit/UI.components/Typography"
+import CssReset from "./UI-Kit/UI.components/CssReset"
+import Container from "./UI-Kit/UI.components/Container"
+import Button from "./UI-Kit/UI.components/Button"
+import ArrowDownIcon from "./UI-Kit/Icons/ArrowDownIcon"
+import Input from "./UI-Kit/UI.components/TextField"
+import SearchIcon from "./UI-Kit/Icons/SearchIcon"
+import { InputType } from "./UI-Kit/UI.components/TextField/enum"
+import Select from "./UI-Kit/UI.components/Select"
+import { options } from "./UI-Kit/UI.components/Select/mock"
+import Switch from "./UI-Kit/UI.components/Switch"
+import Checkbox from "./UI-Kit/UI.components/Checkbox"
+import BasicLink from "./UI-Kit/UI.components/BasicLink"
+import Popover from "./UI-Kit/UI.components/Popover"
+import PopoverItem from "./UI-Kit/UI.components/Popover/PopoverItem"
+import Tooltip from "./UI-Kit/UI.components/Tooltip"
+import Modal from "./UI-Kit/UI.components/Modal"
+import ModalActions from "./UI-Kit/UI.components/Modal/ModalActions"
+import RadioButton from "./UI-Kit/UI.components/RadioButton"
+import Typography from "./UI-Kit/UI.components/Typography"
+import { Variant } from "./UI-Kit/UI.components/Typography/enum"
+// import Preloader from "./UIkit/UI.components/Preloader"
 
 const App = () => {
-  const [isDark] = useState(false)
-  const [selected, setSelected] = useState<string>('')
+  const [isDark] = useState(true)
+  const [selected, setSelected] = useState<string[]>([])
   console.log('Selected', selected)
   const [open, setOpen] = useState(false)
   const [isShow, setShow] = useState<boolean>(false)
@@ -59,7 +59,7 @@ const App = () => {
         </Button>
 
         <Input placeholder="Name" Icon={{
-          prepend: <SearchIcon />,
+          prepend: <SearchIcon />
         }} />
 
         <Input placeholder="Phone" type={InputType.NUMBER} />
@@ -69,6 +69,7 @@ const App = () => {
           value={selected}
           placeholder="Выберите значение..."
           options={options}
+          multiple={true}
         />
 
         <Switch />
@@ -128,7 +129,7 @@ const App = () => {
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias ipsa rem at incidunt veniam mollitia nostrum debitis rerum, unde temporibus, consequatur modi aperiam. Dicta vero recusandae excepturi odit qui accusamus?
         </Typography>
 
-        <Preloader />
+        {/* <Preloader /> */}
 
       </Container>
 

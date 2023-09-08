@@ -10,7 +10,11 @@ enum Colors {
   ERROR = '#EE4222',
 
   WHITE = '#FFF',
-  BLACKOUT = 'rgba(0, 0, 0, 0.6)'
+  BLACKOUT = 'rgba(0, 0, 0, 0.6)',
+
+  SHADOW = 'rgba(2, 149, 254, 0.25)', // TODO:
+
+  LINK_HOVER = '#786EFE'
 
 }
 

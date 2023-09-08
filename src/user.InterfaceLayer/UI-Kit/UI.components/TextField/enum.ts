@@ -7,4 +7,5 @@ export enum InputType {
   SEARCH = 'search',
   DATE = 'date',
   TIME = 'time',
+  TIMEPICKER = 'timepicker'
 }
