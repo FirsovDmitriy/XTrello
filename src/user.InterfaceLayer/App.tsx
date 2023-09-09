@@ -5,14 +5,14 @@ import CssReset from "./UI-Kit/UI.components/CssReset"
 import Container from "./UI-Kit/UI.components/Container"
 import Button from "./UI-Kit/UI.components/Button"
 import ArrowDownIcon from "./UI-Kit/Icons/ArrowDownIcon"
-import Input from "./UI-Kit/UI.components/TextField"
-import SearchIcon from "./UI-Kit/Icons/SearchIcon"
-import { InputType } from "./UI-Kit/UI.components/TextField/enum"
+// import Input from "./UI-Kit/UI.components/TextField"
+// import SearchIcon from "./UI-Kit/Icons/SearchIcon"
+// import { InputType } from "./UI-Kit/UI.components/TextField/enum"
 import Select from "./UI-Kit/UI.components/Select"
 import { options } from "./UI-Kit/UI.components/Select/mock"
 import Switch from "./UI-Kit/UI.components/Switch"
 import Checkbox from "./UI-Kit/UI.components/Checkbox"
-import BasicLink from "./UI-Kit/UI.components/BasicLink"
+import BasicLink from "./UI-Kit/UI.components/AppLink"
 import Popover from "./UI-Kit/UI.components/Popover"
 import PopoverItem from "./UI-Kit/UI.components/Popover/PopoverItem"
 import Tooltip from "./UI-Kit/UI.components/Tooltip"
@@ -24,7 +24,7 @@ import { Variant } from "./UI-Kit/UI.components/Typography/enum"
 // import Preloader from "./UIkit/UI.components/Preloader"
 
 const App = () => {
-  const [isDark] = useState(true)
+  const [isDark] = useState(false)
   const [selected, setSelected] = useState<string[]>([])
   console.log('Selected', selected)
   const [open, setOpen] = useState(false)
@@ -58,11 +58,11 @@ const App = () => {
           Action
         </Button>
 
-        <Input placeholder="Name" Icon={{
+        {/* <Input placeholder="Name" Icon={{
           prepend: <SearchIcon />
         }} />
 
-        <Input placeholder="Phone" type={InputType.NUMBER} />
+        <Input placeholder="Phone" type={InputType.NUMBER} /> */}
 
         <Select
           onChange={setSelected}

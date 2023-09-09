@@ -9,3 +9,8 @@ export enum InputType {
   TIME = 'time',
   TIMEPICKER = 'timepicker'
 }
+
+export enum Variant {
+  OUTLINED = 'outlined',
+  UNDERLINED = 'underlined'
+}

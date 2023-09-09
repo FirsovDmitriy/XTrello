@@ -1,5 +1,6 @@
 import { styled } from "styled-components"
 import Colors from "../../constants/colors"
+import zIndex from "../../constants/zIndex"
 
 export const Select = styled.div`
   position: relative;
@@ -42,21 +43,28 @@ export const NativeInput = styled.input`
   width: 100%;
 `
 
-export const List = styled.ul<{ $isShow: boolean }>`
+export const Container = styled.div<{ $isShow: boolean }>`
   position: absolute;
   top: 100%;
   left: 0;
-  z-index: 1;
+  z-index: ${ zIndex.SELECT };
   width: 100%;
   margin-top: 8px;
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
   border-radius: 4px;
-  display: flex;
-  flex-direction: column;
   opacity: ${ props => props.$isShow ? 1 : 0 };
   transition: opacity 0.3s ease-out;
-  pointer-events: ${ props => props.$isShow ? 'all' : 'none' };
+  pointer-events: ${props => (
+    props.$isShow ? 'all' : 'none'
+  )};
   background: ${ props => props.theme.backColor };
+`
+
+export const List = styled.ul`
+  display: flex;
+  flex-direction: column;
+  max-height: 216px;
+  overflow-y: auto;
 `
 
 export const Item = styled.li<{ $disabled?: boolean }>`
@@ -64,16 +72,22 @@ export const Item = styled.li<{ $disabled?: boolean }>`
   grid-template-columns: 1fr min-content;
   align-items: center;
   padding: 8px 16px;
-  cursor: ${ ({ $disabled }) => $disabled ? 'default' : 'pointer' };
+  cursor: pointer;
   transition: background 0.3s ease-in-out;
   color: ${ props => (
     props.$disabled ? Colors.FONT_DISABLED : props.theme.textColor
   ) };
+  pointer-events: ${({ $disabled }) => $disabled ? 'none' : 'all'};
   @media (any-hover: hover) {
     &:hover {
-      background: ${ ({ $disabled }) => (
-        $disabled ? 'transparent' : Colors.SECONDARY_BG 
-      ) };
+      background: ${ Colors.SECONDARY_BG };
     }
   }
+`
+
+export const NotFound = styled.span`
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+  color: ${ props => props.theme.textColor };
 `

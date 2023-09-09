@@ -1,14 +1,16 @@
-import { ReactNode } from "react";
+import { ChangeEvent, ReactNode } from "react";
 import { InputType } from "./enum";
 
 export interface IProps {
   value?: string
   placeholder?: string
   type?: InputType
-  onChange?: () => void
+  onChange?: (event: ChangeEvent) => void
   isError?: boolean
   Icon?: Icon
   disabled?: boolean
+  errorMessage: string,
+  variant: 'outlined' | 'underlined'
 }
 
 export interface Icon {
