@@ -20,20 +20,18 @@ export const options = [
     value: 'Option5',
     label: 'Option5',
   },
-
-
   {
-    value: 'Option2',
-    label: 'Option2',
+    value: 'Option6',
+    label: 'Option6',
     disabled: true,
   },
   {
-    value: 'Item',
-    label: 'Item',
+    value: 'Item6',
+    label: 'Item6',
   },
   {
-    value: 'Option4',
-    label: 'Option4',
+    value: 'Option8',
+    label: 'Option8',
   },
   {
     value: 'Item4',

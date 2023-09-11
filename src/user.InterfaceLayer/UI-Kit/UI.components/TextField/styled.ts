@@ -19,8 +19,7 @@ export const TextField = styled.div`
   position: relative;
   display: flex;
 
-  /* margin-bottom: 50px;
-  margin-left: 20px; */
+  margin-bottom: 50px;
 `
 
 export const OutlinedInput = styled.input<{ isError?: boolean, $prepend?: boolean, $append?: boolean }>`
@@ -42,26 +41,6 @@ export const OutlinedInput = styled.input<{ isError?: boolean, $prepend?: boolea
     outline: none;
     box-shadow: 0px 0px 0px 4px rgba(2, 149, 254, 0.25);
     border-color: ${ Colors.PRIMARY };
-  }
-`
-
-export const UnderlinedInput = styled.input<{ isError?: boolean, $prepend?: boolean, $append?: boolean }>`
-  ${ BasicInputStyles };
-  padding: 10px 12px;
-  padding-right: ${ props => (
-    props.$append ? '40px' : '12px'
-  )};
-  padding-left: ${ props => (
-    props.$prepend ? '40px' : '12px'
-  )};
-  border: none;
-  border-bottom: 1px solid ${({ isError }) => (
-    isError ? Colors.ERROR : Colors.BORDER
-  )};
-  &:focus {
-    outline: none;
-    border-color: ${ Colors.PRIMARY };
-    box-shadow: 0px 8.9px 4px -4px rgba(2, 149, 254, 0.25);
   }
 `
  

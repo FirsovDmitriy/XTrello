@@ -45,5 +45,5 @@ export const Text = styled.p`
   width: max-content;
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
   border: ${ Style.radius };
-  background: ${ Colors.WHITE };
+  background: ${ props => props.theme.backColor };
 `

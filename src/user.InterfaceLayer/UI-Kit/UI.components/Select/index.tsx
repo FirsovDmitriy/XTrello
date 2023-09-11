@@ -1,12 +1,8 @@
 import { useState, useRef, FC, useEffect } from 'react';
 import useOutside from '../../hooks/useOutside';
 import { IProps, Option } from './type';
-import DoneIcon from '../../Icons/DoneIcon';
-import ArrowDownIcon from '../../Icons/ArrowDownIcon';
 
 import * as ST from './styled';
-import TextField from '../TextField';
-import SearchIcon from '../../Icons/SearchIcon';
 
 const Select: FC<IProps> = ({
   onChange,
@@ -61,24 +57,23 @@ const Select: FC<IProps> = ({
       <ST.Base onClick={() => setIsShow(!isShow)} $isShow={isShow}>
         <ST.Content>{formatValueToString() || placeholder}</ST.Content>
         <ST.Arrow $isShow={isShow}>
-          <ArrowDownIcon />
+          <i className='icon icon-arowDown'></i>
         </ST.Arrow>
         <ST.NativeInput value={formatValueToString()} />
       </ST.Base>
 
       <ST.Container $isShow={isShow}>
-        <div>
-          <TextField
+        <ST.SearchForm role='search'>
+          <ST.SearchField
             value={searchQuery}
             onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
               setSearchQuery(event.target.value);
             }}
-            Icon={{
-              append: <SearchIcon />,
-            }}
             placeholder='Поиск...'
+            type='search'
           />
-        </div>
+          <i className='icon icon-search'></i>
+        </ST.SearchForm>
 
         {filteredData.length ? (
           <ST.List>
@@ -90,12 +85,12 @@ const Select: FC<IProps> = ({
                 key={option.value}
               >
                 {option.label}
-                {isOptionSelected(option.value) && <DoneIcon />}
+                {isOptionSelected(option.value) && <i className='icon icon-done'></i>}
               </ST.Item>
             ))}
           </ST.List>
         ) : (
-          <ST.NotFound>Not found</ST.NotFound>
+          <ST.NotFound>Ничего не найдено</ST.NotFound>
         )}
       </ST.Container>
     </ST.Select>

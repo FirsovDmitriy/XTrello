@@ -1,7 +1,6 @@
 import { styled } from "styled-components"
 import Colors from "../../constants/colors"
 
-
 export const SwitchCore = styled.span`
   position: relative;
   width: 48px;

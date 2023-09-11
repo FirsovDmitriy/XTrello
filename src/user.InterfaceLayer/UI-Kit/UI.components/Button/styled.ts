@@ -5,10 +5,12 @@ import Style from "../../constants/style"
 const styles = css`
   display: flex;
   align-items: center;
+  font-size: 14px;
   padding: 0 16px;
   height: 42px;
   border-radius: ${ Style.radius };
   text-transform: uppercase;
+  transition: all 0.3s ease-out;
 `
 
 const media = css`
@@ -24,6 +26,7 @@ export const Button = styled.button`
   ${ styles };
   
   background: ${ Colors.PRIMARY };
+  border: none;
 
   color: #FFF;
 

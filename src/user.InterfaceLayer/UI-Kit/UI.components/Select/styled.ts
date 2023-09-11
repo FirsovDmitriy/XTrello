@@ -54,8 +54,8 @@ export const Container = styled.div<{ $isShow: boolean }>`
   border-radius: 4px;
   opacity: ${ props => props.$isShow ? 1 : 0 };
   transition: opacity 0.3s ease-out;
-  pointer-events: ${props => (
-    props.$isShow ? 'all' : 'none'
+  visibility: ${props => (
+    props.$isShow ? 'visible' : 'hidden'
   )};
   background: ${ props => props.theme.backColor };
 `
@@ -90,4 +90,22 @@ export const NotFound = styled.span`
   justify-content: center;
   padding: 20px 0;
   color: ${ props => props.theme.textColor };
+`
+
+export const SearchForm = styled.form`
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  border-bottom: 1px solid ${ Colors.BORDER };
+`
+
+export const SearchField = styled.input`
+  font-family: inherit;
+  font-size: inherit;
+  width: 100%;
+  background: transparent;
+  border: none;
+  &:focus {
+    outline: none;
+  }
 `

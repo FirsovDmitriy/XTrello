@@ -1,13 +1,12 @@
 import { useState } from "react"
 import { ThemeProvider } from "styled-components"
 import Text from "./UI-Kit/UI.components/Typography"
-import CssReset from "./UI-Kit/UI.components/CssReset"
+import CssReset from "./UI-Kit/UI.components/BasicCss"
 import Container from "./UI-Kit/UI.components/Container"
 import Button from "./UI-Kit/UI.components/Button"
 import ArrowDownIcon from "./UI-Kit/Icons/ArrowDownIcon"
-// import Input from "./UI-Kit/UI.components/TextField"
-// import SearchIcon from "./UI-Kit/Icons/SearchIcon"
-// import { InputType } from "./UI-Kit/UI.components/TextField/enum"
+import SearchIcon from "./UI-Kit/Icons/SearchIcon"
+import { InputType } from "./UI-Kit/UI.components/TextField/enum"
 import Select from "./UI-Kit/UI.components/Select"
 import { options } from "./UI-Kit/UI.components/Select/mock"
 import Switch from "./UI-Kit/UI.components/Switch"
@@ -21,6 +20,7 @@ import ModalActions from "./UI-Kit/UI.components/Modal/ModalActions"
 import RadioButton from "./UI-Kit/UI.components/RadioButton"
 import Typography from "./UI-Kit/UI.components/Typography"
 import { Variant } from "./UI-Kit/UI.components/Typography/enum"
+import TextField from "./UI-Kit/UI.components/TextField"
 // import Preloader from "./UIkit/UI.components/Preloader"
 
 const App = () => {
@@ -39,6 +39,17 @@ const App = () => {
   return (
     <ThemeProvider theme={ theme }>
       <CssReset />
+
+      <header>Header
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim cupiditate cum minus, soluta facere eos quia vel, cumque maiores sed provident nostrum architecto quae nam dolore fugiat dolores hic. Possimus.
+      </header>
+
+      <ul>
+        <li>Text 2</li>
+        <li>Text 2</li>
+        <li>Text 2</li>
+        <li>Text 2</li>
+      </ul>
       
       <Container>
         <Text>
@@ -58,11 +69,11 @@ const App = () => {
           Action
         </Button>
 
-        {/* <Input placeholder="Name" Icon={{
+        <TextField placeholder="Name" Icon={{
           prepend: <SearchIcon />
         }} />
 
-        <Input placeholder="Phone" type={InputType.NUMBER} /> */}
+        <TextField placeholder="Phone" type={InputType.NUMBER} />
 
         <Select
           onChange={setSelected}
