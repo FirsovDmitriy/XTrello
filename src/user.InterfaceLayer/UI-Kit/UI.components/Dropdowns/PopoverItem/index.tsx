@@ -11,7 +11,10 @@ const PopoverItem: FC<IProps> = ({ children }) => {
   const { onClose } = useContext(Context)
 
   return (
-    <ST.PopoverItem onClick={ () => onClose?.() }>
+    <ST.PopoverItem
+      onClick={ () => onClose?.() }
+      role='menuitem'
+    >
       { children }
     </ST.PopoverItem>
   )

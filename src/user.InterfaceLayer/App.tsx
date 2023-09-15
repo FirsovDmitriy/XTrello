@@ -12,8 +12,8 @@ import { options } from "./UI-Kit/UI.components/Select/mock"
 import Switch from "./UI-Kit/UI.components/Switch"
 import Checkbox from "./UI-Kit/UI.components/Checkbox"
 import BasicLink from "./UI-Kit/UI.components/AppLink"
-import Popover from "./UI-Kit/UI.components/Popover"
-import PopoverItem from "./UI-Kit/UI.components/Popover/PopoverItem"
+import Popover from "./UI-Kit/UI.components/Dropdowns"
+import PopoverItem from "./UI-Kit/UI.components/Dropdowns/PopoverItem"
 import Tooltip from "./UI-Kit/UI.components/Tooltip"
 import Modal from "./UI-Kit/UI.components/Modal"
 import ModalActions from "./UI-Kit/UI.components/Modal/ModalActions"
@@ -21,6 +21,7 @@ import RadioButton from "./UI-Kit/UI.components/RadioButton"
 import Typography from "./UI-Kit/UI.components/Typography"
 import { Variant } from "./UI-Kit/UI.components/Typography/enum"
 import TextField from "./UI-Kit/UI.components/TextField"
+import Tag from "./UI-Kit/UI.components/Tag"
 // import Preloader from "./UIkit/UI.components/Preloader"
 
 const App = () => {
@@ -53,6 +54,7 @@ const App = () => {
       
       <Container>
         <textarea></textarea>
+        <Tag bgColor="rgba(49, 151, 149, 0.6)">Завершена</Tag>
         <Text>
           Hello React + TypeScript
         </Text>

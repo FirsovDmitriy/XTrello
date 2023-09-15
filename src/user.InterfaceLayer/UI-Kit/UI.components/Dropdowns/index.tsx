@@ -5,7 +5,7 @@ import { Context } from './Context';
 
 import * as ST from './styled';
 
-const Popover: FC<IProps> = ({ children, buttonTrigger, onClose, isShow }) => {
+const Dropdowns: FC<IProps> = ({ children, buttonTrigger, onClose, isShow }) => {
   const ref = useRef<HTMLDivElement>(null)
   const ref_2 = useRef<HTMLDivElement>(null) // TODO:
   useOutside(ref, onClose)
@@ -49,7 +49,7 @@ const Popover: FC<IProps> = ({ children, buttonTrigger, onClose, isShow }) => {
   }, [])
 
   return (
-    <ST.Popover ref={ref}>
+    <ST.Dropdowns ref={ref}>
       <ST.Trigger>
         { buttonTrigger }
       </ST.Trigger>
@@ -62,8 +62,8 @@ const Popover: FC<IProps> = ({ children, buttonTrigger, onClose, isShow }) => {
           { children }
         </Context.Provider>
       </ST.Content>
-    </ST.Popover>
+    </ST.Dropdowns>
   );
 };
 
-export default Popover;
+export default Dropdowns;

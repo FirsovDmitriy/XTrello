@@ -1,6 +1,6 @@
 import { styled } from "styled-components"
 
-export const Popover = styled.div`
+export const Dropdowns = styled.div`
   position: relative;
   display: inline-flex;
 `
