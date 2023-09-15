@@ -2,9 +2,6 @@ import { styled, css } from "styled-components"
 import Colors from "../../constants/colors"
 
 const BasicInputStyles = css`
-  font-family: inherit;
-  font-size: inherit;
-  line-height: normal;
   width: 100%;
   transition: all 0.3s ease-in-out;
   background: transparent;
@@ -22,7 +19,7 @@ export const TextField = styled.div`
   margin-bottom: 50px;
 `
 
-export const OutlinedInput = styled.input<{ isError?: boolean, $prepend?: boolean, $append?: boolean }>`
+export const Input = styled.input<{ isError?: boolean, $prepend?: boolean, $append?: boolean }>`
 
   ${ BasicInputStyles };
   

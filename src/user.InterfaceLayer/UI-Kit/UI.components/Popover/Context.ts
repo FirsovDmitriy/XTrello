@@ -1,3 +1,9 @@
 import { createContext } from "react";
 
-export const Context = createContext(null)
+type ContextType = {
+  onClose: () => void
+}
+
+export const Context = createContext<ContextType>({
+  onClose: () => {}
+})

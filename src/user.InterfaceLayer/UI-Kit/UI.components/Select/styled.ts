@@ -7,10 +7,10 @@ export const Select = styled.div`
 `
 
 export const Base = styled.div<{ $isShow: boolean }>`
+  position: relative;
   display: grid;
   grid-template-columns: 1fr min-content;
   align-items: center;
-  position: relative;
   padding: 0 8px;
   border: 1px solid ${ props => (
     props.$isShow ? Colors.PRIMARY : Colors.BORDER
@@ -24,7 +24,7 @@ export const Base = styled.div<{ $isShow: boolean }>`
 
 export const Content = styled.span`
   padding: 10px 12px;
-  color: ${ props => props.theme.textColor };
+  /* color: ${ props => props.theme.textColor }; */
 `
 
 export const Arrow = styled.span<{ $isShow: boolean }>`

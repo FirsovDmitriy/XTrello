@@ -54,6 +54,12 @@ const Styles = createGlobalStyle`
     color: inherit;
   }
 
+  input {
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+  }
+
   *::before, *::after {
     box-sizing: inherit;
   }

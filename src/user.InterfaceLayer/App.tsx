@@ -52,6 +52,7 @@ const App = () => {
       </ul>
       
       <Container>
+        <textarea></textarea>
         <Text>
           Hello React + TypeScript
         </Text>

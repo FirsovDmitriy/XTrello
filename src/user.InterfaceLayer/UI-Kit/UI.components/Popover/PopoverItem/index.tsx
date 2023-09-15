@@ -8,10 +8,10 @@ export interface IProps {
 }
 
 const PopoverItem: FC<IProps> = ({ children }) => {
-  const onClose = useContext(Context)
+  const { onClose } = useContext(Context)
 
   return (
-    <ST.PopoverItem onClick={onClose}>
+    <ST.PopoverItem onClick={ () => onClose?.() }>
       { children }
     </ST.PopoverItem>
   )

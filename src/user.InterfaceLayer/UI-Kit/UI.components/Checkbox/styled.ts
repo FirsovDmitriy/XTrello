@@ -3,8 +3,8 @@ import Colors from "../../constants/colors"
 
 export const Checkbox = styled.label`
   position: relative;
-  cursor: pointer;
   display: inline-flex;
+  cursor: pointer;
 `
 
 export const CheckboxCore = styled.span`
@@ -17,11 +17,11 @@ export const CheckboxCore = styled.span`
 `
 
 export const Input = styled.input`
-  position: absolute;
+  /* position: absolute; */
   appearance: none;
-  width: 0;
+  /* width: 0;
   height: 0;
-  opacity: 0;
+  opacity: 0; */
   &:checked {
     ~ ${ CheckboxCore } {
       background: url('src/user.InterfaceLayer/assets/img/done.svg') center / cover ${ Colors.PRIMARY };

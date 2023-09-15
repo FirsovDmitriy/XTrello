@@ -10,7 +10,6 @@ export interface IProps {
   Icon?: Icon
   disabled?: boolean
   errorMessage: string,
-  variant: 'outlined' | 'underlined'
 }
 
 export interface Icon {

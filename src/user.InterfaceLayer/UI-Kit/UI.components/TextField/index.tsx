@@ -8,28 +8,33 @@ const TextField: FC<IProps> = ({
   value,
   Icon,
   isError,
+  errorMessage,
   ...props
 }) => {
   return (
     <ST.TextField>
       {Icon?.prepend ? <ST.IconPrepend>{Icon.prepend}</ST.IconPrepend> : null}
 
-      <ST.OutlinedInput
+      <ST.Input
           value={value}
           onChange={onChange}
           isError={isError}
           {...props}
-          $prepend={Boolean(Icon?.prepend)}
-          $append={Boolean(Icon?.append)}
+          $prepend={Boolean(Icon?.prepend)} // TODO:
+          $append={Boolean(Icon?.append)} // TODO:
         />
 
-      {isError ? <ST.InvalidFeedback>Текст ошибки</ST.InvalidFeedback> : null}
+      {isError ? <ST.InvalidFeedback>
+        { errorMessage }
+      </ST.InvalidFeedback> : null}
 
-      {Icon?.append ? <ST.IconAppend>{Icon.append}</ST.IconAppend> : null}
+      {Icon?.append ? (
+        <ST.IconAppend>
+          {Icon.append}
+        </ST.IconAppend>
+      ) : null}
     </ST.TextField>
   );
 };
 
 export default TextField;
-
-// underlined
