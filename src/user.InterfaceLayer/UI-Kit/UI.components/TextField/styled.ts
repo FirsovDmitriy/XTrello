@@ -5,6 +5,7 @@ const BasicInputStyles = css`
   width: 100%;
   transition: all 0.3s ease-in-out;
   background: transparent;
+  color: inherit;
   @media (any-hover: hover) {
     &:hover {
       border-color: ${ Colors.PRIMARY };
@@ -30,12 +31,14 @@ export const Input = styled.input<{ isError?: boolean, $prepend?: boolean, $appe
   padding-left: ${ props => (
     props.$prepend ? '40px' : '12px'
   )};
-  border: 1px solid ${ props => (
+  border: 2px solid ${ props => (
     props.isError ? Colors.ERROR : Colors.BORDER
   )};
   border-radius: 4px;
+  &::placeholder {
+    color: ${ Colors.PLACEHOLDER };
+  }
   &:focus {
-    outline: none;
     box-shadow: 0px 0px 0px 4px rgba(2, 149, 254, 0.25);
     border-color: ${ Colors.PRIMARY };
   }

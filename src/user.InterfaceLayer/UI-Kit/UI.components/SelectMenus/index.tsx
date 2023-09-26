@@ -4,7 +4,7 @@ import { IProps, Option } from './type';
 
 import * as ST from './styled';
 
-const Select: FC<IProps> = ({
+const SelectMenus: FC<IProps> = ({
   onChange,
   value,
   multiple,
@@ -53,7 +53,7 @@ const Select: FC<IProps> = ({
   }, [searchQuery, options])
 
   return (
-    <ST.Select ref={ref}>
+    <ST.SelectMenus ref={ref}>
       <ST.Base onClick={() => setIsShow(!isShow)} $isShow={isShow}>
         <ST.Content>{formatValueToString() || placeholder}</ST.Content>
         <ST.Arrow $isShow={isShow}>
@@ -93,8 +93,8 @@ const Select: FC<IProps> = ({
           <ST.NotFound>Ничего не найдено</ST.NotFound>
         )}
       </ST.Container>
-    </ST.Select>
+    </ST.SelectMenus>
   );
 };
 
-export default Select;
+export default SelectMenus;

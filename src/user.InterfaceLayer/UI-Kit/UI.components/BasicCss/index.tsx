@@ -25,10 +25,10 @@ const Styles = createGlobalStyle`
   }
 
   button {
-    font-family: inherit;
-    font-weight: inherit;
+    font: inherit;
     cursor: pointer;
     padding: 0;
+    background: inherit;
   }
 
   ul {
@@ -54,10 +54,13 @@ const Styles = createGlobalStyle`
     color: inherit;
   }
 
-  input {
-    font-family: inherit;
-    font-size: inherit;
-    font-weight: inherit;
+  input,
+  textarea {
+    box-sizing: border-box;
+    font: inherit;
+    &:focus {
+      outline: none;
+    }
   }
 
   *::before, *::after {

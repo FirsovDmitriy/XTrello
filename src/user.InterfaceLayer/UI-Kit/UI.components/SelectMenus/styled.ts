@@ -2,7 +2,7 @@ import { styled } from "styled-components"
 import Colors from "../../constants/colors"
 import zIndex from "../../constants/zIndex"
 
-export const Select = styled.div`
+export const SelectMenus = styled.div`
   position: relative;
 `
 
@@ -12,7 +12,7 @@ export const Base = styled.div<{ $isShow: boolean }>`
   grid-template-columns: 1fr min-content;
   align-items: center;
   padding: 0 8px;
-  border: 1px solid ${ props => (
+  border: 2px solid ${ props => (
     props.$isShow ? Colors.PRIMARY : Colors.BORDER
   )};
   border-radius: 4px;
@@ -96,7 +96,7 @@ export const SearchForm = styled.form`
   display: flex;
   align-items: center;
   padding: 8px 12px;
-  border-bottom: 1px solid ${ Colors.BORDER };
+  border-bottom: 2px solid ${ Colors.BORDER };
 `
 
 export const SearchField = styled.input`
@@ -107,5 +107,8 @@ export const SearchField = styled.input`
   border: none;
   &:focus {
     outline: none;
+  }
+  &::placeholder {
+    color: ${ Colors.PLACEHOLDER };
   }
 `

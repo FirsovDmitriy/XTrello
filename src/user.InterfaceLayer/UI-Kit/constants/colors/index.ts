@@ -6,7 +6,7 @@ enum Colors {
   BG_DISABLED = '#DCDCDE',
 
 
-  BORDER = '#616161',
+  BORDER = 'rgba(188,195,208,.5)',
   ERROR = '#EE4222',
 
   WHITE = '#FFF',
@@ -14,7 +14,8 @@ enum Colors {
 
   SHADOW = 'rgba(2, 149, 254, 0.25)', // TODO:
 
-  LINK_HOVER = '#786EFE'
+  LINK_HOVER = '#786EFE',
+  PLACEHOLDER = '#8C9BAB'
 
 }
 

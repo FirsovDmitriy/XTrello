@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
 import Colors from "../../constants/colors";
 
-export const RadioButton = styled.label`
+export const RadioGroups = styled.label`
   display: flex;
 `
 

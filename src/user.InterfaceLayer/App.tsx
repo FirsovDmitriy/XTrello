@@ -7,8 +7,8 @@ import Button from "./UI-Kit/UI.components/Button"
 import ArrowDownIcon from "./UI-Kit/Icons/ArrowDownIcon"
 import SearchIcon from "./UI-Kit/Icons/SearchIcon"
 import { InputType } from "./UI-Kit/UI.components/TextField/enum"
-import Select from "./UI-Kit/UI.components/Select"
-import { options } from "./UI-Kit/UI.components/Select/mock"
+import Select from "./UI-Kit/UI.components/SelectMenus"
+import { options } from "./UI-Kit/UI.components/SelectMenus/mock"
 import Switch from "./UI-Kit/UI.components/Switch"
 import Checkbox from "./UI-Kit/UI.components/Checkbox"
 import BasicLink from "./UI-Kit/UI.components/AppLink"
@@ -17,11 +17,12 @@ import PopoverItem from "./UI-Kit/UI.components/Dropdowns/PopoverItem"
 import Tooltip from "./UI-Kit/UI.components/Tooltip"
 import Modal from "./UI-Kit/UI.components/Modal"
 import ModalActions from "./UI-Kit/UI.components/Modal/ModalActions"
-import RadioButton from "./UI-Kit/UI.components/RadioButton"
+import RadioButton from "./UI-Kit/UI.components/RadioGroups"
 import Typography from "./UI-Kit/UI.components/Typography"
 import { Variant } from "./UI-Kit/UI.components/Typography/enum"
 import TextField from "./UI-Kit/UI.components/TextField"
 import Tag from "./UI-Kit/UI.components/Tag"
+import Textarea from "./UI-Kit/UI.components/Textarea"
 // import Preloader from "./UIkit/UI.components/Preloader"
 
 const App = () => {
@@ -53,7 +54,9 @@ const App = () => {
       </ul>
       
       <Container>
-        <textarea></textarea>
+        <Textarea
+          placeholder="Add your comment"
+        ></Textarea>
         <Tag bgColor="rgba(49, 151, 149, 0.6)">Завершена</Tag>
         <Text>
           Hello React + TypeScript

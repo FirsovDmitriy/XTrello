@@ -44,7 +44,7 @@ export const Button = styled.button`
 `
 
 export const OutlineButton = styled.button`
-  border: 1px solid ${ Colors.BORDER };
+  border: 2px solid ${ Colors.BORDER };
   
   ${ styles };
 
@@ -66,7 +66,7 @@ export const SquareButton = styled.button`
   height: 42px;
   justify-content: center;
   align-items: center;
-  border: 1px solid ${ Colors.BORDER };
+  border: 2px solid ${ Colors.BORDER };
   border-radius: 4px;
 
   ${ media };
