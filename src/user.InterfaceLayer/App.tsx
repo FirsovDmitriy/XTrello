@@ -23,6 +23,7 @@ import { Variant } from "./UI-Kit/UI.components/Typography/enum"
 import TextField from "./UI-Kit/UI.components/TextField"
 import Tag from "./UI-Kit/UI.components/Tag"
 import Textarea from "./UI-Kit/UI.components/Textarea"
+import DatePicker from "./UI-Kit/UI.components/DatePicker"
 // import Preloader from "./UIkit/UI.components/Preloader"
 
 const App = () => {
@@ -54,6 +55,9 @@ const App = () => {
       </ul>
       
       <Container>
+
+        <DatePicker />
+
         <Textarea
           placeholder="Add your comment"
         ></Textarea>
