@@ -12,6 +12,7 @@ export const DatePicker = styled.div`
 
 export const DatePickerHeader = styled.div`
   display: flex;
+  justify-content: space-between;
   align-items: center;
   margin-bottom: 1rem;
 `
@@ -22,7 +23,19 @@ export const ArrowButton = styled.button`
   border: none;
 `
 
+export const MonthSelection = styled.button`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px;
+  border: 1px solid ${ Colors.BORDER };
+  border-radius: 4px;
+`
+
+export const YearSelection = styled(MonthSelection)``
+
 const BasicStylesCell = css`
+  font-size: 14px;
   height: 48px;
   display: flex;
   justify-content: center;
@@ -33,9 +46,11 @@ export const WeekDayLabel = styled.span`
   ${ BasicStylesCell };
 `
 
-export const DayButton = styled.button`
+export const DayButton = styled.button<{ $isToday: boolean }>`
   ${ BasicStylesCell };
   border-radius: 50%;
+  background: ${ ({ $isToday }) => $isToday ? Colors.PRIMARY : 'transparent' };
+  color: ${ ({ $isToday }) => $isToday ? Colors.WHITE : 'inherit' };
   border: none;
   @media (any-hover: hover) {
    &:hover {

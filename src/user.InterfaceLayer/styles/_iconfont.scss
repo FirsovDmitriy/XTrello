@@ -3,7 +3,6 @@
     family: 'icomoon';
     weight: normal;
     style: normal;
-    display: block;
   };
   src: url('../assets/iconfont/icomoon.woff') format('woff'),
     url('../assets/iconfont/icomoon.svg') format('svg');
@@ -41,7 +40,7 @@
 .icon-points:before {
   content: "\e90c";
 }
-.icon-arowDown:before {
+.icon-arrowDown:before {
   content: "\e90d";
 }
 .icon-arrowRight:before {
