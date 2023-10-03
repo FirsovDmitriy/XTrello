@@ -3,7 +3,6 @@
     family: 'icomoon';
     weight: normal;
     style: normal;
-    display: block;
   };
   src: url('../assets/iconfont/icomoon.woff') format('woff'),
     url('../assets/iconfont/icomoon.svg') format('svg');
@@ -20,57 +19,57 @@
   };
   text-transform: none;
   line-height: 1;
-  color: darkmagenta;
+  color: inherit;
 }
 
-.icon-calendar:before {
+.Calendar-icon:before {
   content: "\e901";
 }
-.icon-clear:before {
+.Clear-icon:before {
   content: "\e908";
 }
-.icon-close:before {
+.Close-icon:before {
   content: "\e909";
 }
-.icon-delete:before {
+.Delete-icon:before {
   content: "\e90a";
 }
-.icon-done:before {
+.Done-icon:before {
   content: "\e90b";
 }
-.icon-points:before {
+.MoreVert-icon:before {
   content: "\e90c";
 }
-.icon-arowDown:before {
+.ArowDropDown-icon:before {
   content: "\e90d";
 }
-.icon-arrowRight:before {
+.ArrowForward-icon:before {
   content: "\e90e";
 }
-.icon-arrowUp:before {
+.ArrowDropUp-icon:before {
   content: "\e90f";
 }
-.icon-arrowLeft:before {
+.ArrowBack-icon:before {
   content: "\e910";
 }
-.icon-hide:before {
+.Hide-icon:before {
   content: "\e911";
 }
-.icon-show:before {
+.Show-icon:before {
   content: "\e912";
 }
-.icon-filter:before {
+.Filter-icon:before {
   content: "\e913";
 }
-.icon-send:before {
+.Send-icon:before {
   content: "\e916";
 }
-.icon-arrowLongDown:before {
+.ArrowDown-icon:before {
   content: "\e917";
 }
-.icon-arrowLongUp:before {
+.ArrowUp-icon:before {
   content: "\e918";
 }
-.icon-search:before {
+.Search-icon:before {
   content: "\e900";
 }

@@ -66,6 +66,10 @@ const Styles = createGlobalStyle`
   *::before, *::after {
     box-sizing: inherit;
   }
+
+  /* i {
+    color: ${ prev => prev.theme.isDark };
+  } */
 `
 
 const BasicCss = () => <Styles />

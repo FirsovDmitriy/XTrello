@@ -57,7 +57,7 @@ const SelectMenus: FC<IProps> = ({
       <ST.Base onClick={() => setIsShow(!isShow)} $isShow={isShow}>
         <ST.Content>{formatValueToString() || placeholder}</ST.Content>
         <ST.Arrow $isShow={isShow}>
-          <i className='icon icon-arowDown'></i>
+          <i className='icon ArowDropDown-icon'></i>
         </ST.Arrow>
         <ST.NativeInput value={formatValueToString()} />
       </ST.Base>
@@ -72,7 +72,7 @@ const SelectMenus: FC<IProps> = ({
             placeholder='Поиск...'
             type='search'
           />
-          <i className='icon icon-search'></i>
+          <i className='icon Search-icon'></i>
         </ST.SearchForm>
 
         {filteredData.length ? (
@@ -85,7 +85,7 @@ const SelectMenus: FC<IProps> = ({
                 key={option.value}
               >
                 {option.label}
-                {isOptionSelected(option.value) && <i className='icon icon-done'></i>}
+                {isOptionSelected(option.value) && <i className='icon Done-icon'></i>}
               </ST.Item>
             ))}
           </ST.List>
