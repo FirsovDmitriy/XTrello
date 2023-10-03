@@ -70,7 +70,7 @@ const App = () => {
         >
           Action
         </Button>
-        <Button append={ <ArrowDownIcon /> }>button</Button>
+        <Button append={ <i className="icon ArowDropDown-icon"></i> }>button</Button>
         <Button variant='square'>4</Button>
         <Button
           variant='primary'
@@ -80,7 +80,7 @@ const App = () => {
         </Button>
 
         <TextField placeholder="Name" Icon={{
-          prepend: <SearchIcon />
+          prepend: <i className="icon Search-icon"></i>
         }} />
 
         <TextField placeholder="Phone" type={InputType.NUMBER} />
