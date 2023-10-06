@@ -27,7 +27,7 @@ import DatePicker from "./UI-Kit/UI.components/DatePicker"
 // import Preloader from "./UIkit/UI.components/Preloader"
 
 const App = () => {
-  const [isDark] = useState(false)
+  const [isDark] = useState(true)
   const [selected, setSelected] = useState<string[]>([])
   console.log('Selected', selected)
   const [open, setOpen] = useState(false)

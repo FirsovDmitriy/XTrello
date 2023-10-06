@@ -29,6 +29,7 @@ const Styles = createGlobalStyle`
     cursor: pointer;
     padding: 0;
     background: inherit;
+    color: inherit;
   }
 
   ul {

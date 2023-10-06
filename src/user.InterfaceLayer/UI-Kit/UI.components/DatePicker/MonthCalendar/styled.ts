@@ -13,14 +13,15 @@ export const MonthCalendar = styled.div`
   height: 290px;
 `
 
-export const MonthButton = styled.button`
+export const MonthButton = styled.button<{ isActive: boolean }>`
   justify-self: start;
-  /* display: flex;
-  align-items: center; */
   height: 36px;
   padding: 0 16px;
   border-radius: 18px;
   border: none;
+  background: ${ ({ isActive }) => (
+    isActive ? Colors.PRIMARY : 'transparent'
+   ) };
   transition: background 0.3s ease-in-out;
   &::first-letter {
     text-transform: uppercase;

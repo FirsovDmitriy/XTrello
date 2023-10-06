@@ -33,7 +33,6 @@ const Textarea: FC<PropsType> = ({ placeholder, onChange, value }) => {
       onChange={handleChange}
       value={value}
     >
-      
     </SC.Textarea>
   )
 }

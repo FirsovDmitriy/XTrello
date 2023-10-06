@@ -31,6 +31,11 @@ export const MonthSelection = styled.button`
   border: 1px solid ${ Colors.BORDER };
   border-radius: 4px;
 `
+export const MonthSelectionText = styled.span`
+  &::first-letter {
+    text-transform: uppercase;
+  }
+`
 
 export const YearSelection = styled(MonthSelection)``
 

@@ -37,31 +37,40 @@ const DatePicker: FC = () => {
     setRootDate((prev) => prev.clone().add(1, 'month'));
   }
 
+  function setMonth(month: dayjs.Dayjs) {
+    setRootDate(prev => prev.set('month', (month.format('M') - 1)))
+    console.log(month.format('M'))
+    setIsMonth(false)
+  }
+
   return (
     <SC.DatePicker>
       <SC.DatePickerHeader>
         <SC.ArrowButton onClick={prevMonth}>
-          <i className='icon icon-arrowLeft'></i>
+          <i className='icon ArrowBack-icon'></i>
         </SC.ArrowButton>
 
         <SC.MonthSelection onClick={() => setIsMonth(!isMonth)}>
-          {rootDate.format('MMMM')}
-          <i className='icon icon-arrowDown'></i>
+          <SC.MonthSelectionText>
+            { rootDate.format('MMMM') }
+          </SC.MonthSelectionText>
+          <i className='icon ArowDropDown-icon'></i>
         </SC.MonthSelection>
 
         <SC.YearSelection onClick={() => setIsYears(!isYears)}>
           {rootDate.format('YYYY')}
-          <i className='icon icon-arrowDown'></i>
+          <i className='icon ArowDropDown-icon'></i>
         </SC.YearSelection>
 
         <SC.ArrowButton onClick={nextMonth}>
-          <i className='icon icon-arrowRight'></i>
+          <i className='icon ArrowForward-icon'></i>
         </SC.ArrowButton>
       </SC.DatePickerHeader>
 
+      {/* TODO: */}
       {(function (): JSX.Element {
-        if (isMonth) return <MonthCalendar />;
-        if (isYears) return <YearCalendar />;
+        if (isMonth) return <MonthCalendar setMonth={setMonth} />
+        if (isYears) return <YearCalendar />
         return (
           <div>
             <SC.Line>
@@ -88,7 +97,7 @@ const DatePicker: FC = () => {
         );
       })()}
     </SC.DatePicker>
-  );
-};
+  )
+}
 
-export default DatePicker;
+export default DatePicker
