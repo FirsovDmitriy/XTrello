@@ -1,5 +1,5 @@
 
-export interface IProps {
+export type TypeProps = {
   children: string
   to: string
 }

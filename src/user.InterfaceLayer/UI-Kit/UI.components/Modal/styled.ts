@@ -1,6 +1,5 @@
-import { styled, css } from "styled-components";
-import Colors from "../../constants/colors";
-import zIndex from "../../constants/zIndex";
+import { styled, css } from "styled-components"
+import Colors from "../../constants/colors"
 
 const BasicStyle = css`
   position: fixed;
@@ -31,7 +30,7 @@ export const Content = styled.section<{$isShow: boolean, size?: 'small'}>`
   transform: translateX(${ props => (
     props.$isShow ? 0 : '-100px'
   ) });
-  z-index: ${ zIndex.MODAL };
+  z-index: 99;
   position: relative;
   opacity: ${ props => (
     props.$isShow ? 1 : 0
@@ -47,7 +46,7 @@ export const Overlay = styled.div<{$isShow: boolean}>`
   ) };
   pointer-events: ${ props => props.$isShow ? 'all' : 'none' };
   transition: opacity 0.3s ease-in-out;
-  z-index: ${ zIndex.OVERLAY };
+  z-index: 55;
 `
 
 export const Heading = styled.div`

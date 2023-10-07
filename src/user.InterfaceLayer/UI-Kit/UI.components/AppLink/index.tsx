@@ -1,9 +1,9 @@
 import { FC } from 'react'
-import { IProps } from './type'
+import { TypeProps } from './type'
 
 import * as ST from './styled'
 
-const AppLink: FC<IProps> = ({ children, to }) => (
+const AppLink: FC<TypeProps> = ({ children, to }) => (
   <ST.AppLink to={to}>
     { children }
   </ST.AppLink>

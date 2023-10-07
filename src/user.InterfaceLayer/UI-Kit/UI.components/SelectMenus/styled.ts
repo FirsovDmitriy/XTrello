@@ -1,6 +1,5 @@
 import { styled } from "styled-components"
 import Colors from "../../constants/colors"
-import zIndex from "../../constants/zIndex"
 
 export const SelectMenus = styled.div`
   position: relative;
@@ -47,7 +46,7 @@ export const Container = styled.div<{ $isShow: boolean }>`
   position: absolute;
   top: 100%;
   left: 0;
-  z-index: ${ zIndex.SELECT };
+  z-index: 55;
   width: 100%;
   margin-top: 8px;
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);

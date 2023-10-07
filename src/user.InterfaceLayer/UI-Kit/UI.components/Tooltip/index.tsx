@@ -27,7 +27,7 @@ const Tooltip: FC<IProps> = ({ children, label }) => {
       <ST.Content >
         <ST.Wrapper >
           <ST.Img src={SolidArrow} />
-          <ST.Text ref={ref} style={{ position: 'relative' }}>
+          <ST.Text ref={ref} style={{ position: 'relative', left: '-20px' }}>
           { label }
           </ST.Text>
         </ST.Wrapper>
