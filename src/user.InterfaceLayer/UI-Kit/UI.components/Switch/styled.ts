@@ -1,11 +1,10 @@
 import { styled } from "styled-components"
-import Colors from "../../constants/colors"
 
 export const SwitchCore = styled.span`
   position: relative;
   width: 48px;
   border-radius: 10px;
-  background: ${ Colors.SECONDARY_BG };
+  background: ${ props => props.theme.background.secondary };
   height: 24px;
   display: inline-block;
   cursor: pointer;
@@ -15,7 +14,7 @@ export const SwitchCore = styled.span`
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    background: ${ Colors.WHITE };
+    background: #FFF;
     position: absolute;
     top: calc(50% - 10px);
     left: 2px;
@@ -33,10 +32,7 @@ export const Switch = styled.label`
 `
 
 export const SwitchInput = styled.input`
-  position: absolute;
   appearance: none;
-  width: 0;
-  height: 0;
   opacity: 0;
 
   &:disabled {
@@ -51,7 +47,7 @@ export const SwitchInput = styled.input`
 
   &:checked {
     ~ ${ SwitchCore } {
-        background: ${ Colors.PRIMARY };
+        background: ${ props => props.theme.background.primary };
         &::after {
           left: calc(100% - 22px);
         }

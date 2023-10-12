@@ -1,6 +1,8 @@
+import { ReactNode } from "react"
+
 export interface IProps {
-  children: JSX.Element | JSX.Element[]
-  buttonTrigger: JSX.Element
+  children?: ReactNode | ReactNode[]
   onClose: () => void
-  isShow: boolean
+  open: boolean
+  anchorEl: HTMLButtonElement
 }

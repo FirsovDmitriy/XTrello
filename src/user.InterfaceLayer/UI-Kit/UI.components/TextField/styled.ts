@@ -38,6 +38,14 @@ export const Input = styled.input<{ isError?: boolean, $prepend?: boolean, $appe
   &:focus {
     outline-color: ${ props => props.theme.border.primary };
   }
+
+  &:disabled {
+    background: ${ props => props.theme.background.disabled };
+    border: none;
+    &::placeholder {
+      color: ${ props=>props.theme.text.disabled };
+    }
+  }
 `
 
 export const IconPrepend = styled.span`
