@@ -13,6 +13,8 @@ const Dropdowns: FC<IProps> = ({ children, onClose, open, anchorEl, ...props }) 
     const element = ref.current
     const coordY = anchorEl.getBoundingClientRect().bottom
     const coordX = anchorEl.getBoundingClientRect().x
+    console.log('Y', coordY)
+    console.log('X', coordX)
 
     if(element) {
       element.style.top = `${ coordY }px`

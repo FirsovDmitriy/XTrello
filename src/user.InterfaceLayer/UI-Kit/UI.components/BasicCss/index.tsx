@@ -64,11 +64,7 @@ const Styles = createGlobalStyle`
   textarea {
     box-sizing: border-box;
     font: inherit;
-    &:focus {
-      outline-style: solid;
-      outline-width: 2px;
-      outline-offset: 2px;
-    }
+    outline: none;
   }
 
   *::before, *::after {

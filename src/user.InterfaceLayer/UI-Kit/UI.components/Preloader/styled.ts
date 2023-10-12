@@ -33,5 +33,5 @@ export const Overlay = styled.div`
   display: grid;
   width: 100%;
   height: 100%;
-  background: ${ props => props.theme.background.primary };
+  background: ${ props => props.theme.background.hovered };
 `

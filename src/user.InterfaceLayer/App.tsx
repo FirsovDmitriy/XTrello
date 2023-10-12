@@ -9,7 +9,8 @@ import TextField from "./UI-Kit/UI.components/TextField"
 import Dropdowns from "./UI-Kit/UI.components/Dropdowns"
 import DropdownElm from "./UI-Kit/UI.components/Dropdowns/DropdownElm"
 import Switch from "./UI-Kit/UI.components/Switch"
-import Preloader from "./UI-Kit/UI.components/Preloader"
+import SelectMenus from "./UI-Kit/UI.components/SelectMenus"
+import { options } from "./UI-Kit/UI.components/SelectMenus/mock"
 
 const App = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
@@ -38,7 +39,12 @@ const App = () => {
       <Button disabled>Disabled</Button>
       <TextField placeholder="Search..." />
 
-      <Preloader />
+
+      <SelectMenus
+        options={options}
+        placeholder="Search..."
+        multiple
+      />
 
 
       <Button
@@ -66,6 +72,13 @@ const App = () => {
           Arina
         </DropdownElm>
       </Dropdowns>
+
+      <TextField
+        placeholder="Search..."
+        Icon={{
+          append: <i className='icon Search-icon'></i>
+        }}
+      />
 
       <Switch />
 

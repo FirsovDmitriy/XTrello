@@ -1,49 +1,39 @@
 import { styled, css } from "styled-components"
+import { Field } from "../../Atoms"
 
 const BasicInputStyles = css`
   width: 100%;
-  transition: background 0.3s ease-in-out;
   background: transparent;
-  color: inherit;
-  @media (any-hover: hover) {
-    &:hover {
-      
-    } 
+  color: ${ props => props.theme.textColor };
+  font-size: 1rem;
+  &::placeholder {
+    color: inherit;
   }
 `
 
-export const TextField = styled.div`
-  position: relative;
-  display: flex;
+export const TextField = styled(Field)`
+  &:focus-within {
+    outline-color: ${ props => props.theme.border.primary };
+  }
 
   margin-bottom: 50px;
 `
 
-export const Input = styled.input<{ isError?: boolean, $prepend?: boolean, $append?: boolean }>`
+export const Input = styled.input<{ isError?: boolean }>`
 
   ${ BasicInputStyles };
-  
-  height: 3rem;
-  padding-right: ${ props => (
-    props.$append ? '40px' : '12px'
-  )};
-  padding-left: ${ props => (
-    props.$prepend ? '40px' : '12px'
-  )};
-  border: 1px solid ${ props => props.theme.border.primary };
-  border-radius: 4px;
-  &::placeholder {
-    
-  }
-  &:focus {
-    outline-color: ${ props => props.theme.border.primary };
-  }
+  padding: 0 12px;
+  border: none;
+
+  &::placeholder {}
+
+
 
   &:disabled {
     background: ${ props => props.theme.background.disabled };
     border: none;
     &::placeholder {
-      color: ${ props=>props.theme.text.disabled };
+      color: ${ props => props.theme.text.disabled };
     }
   }
 `
@@ -55,9 +45,7 @@ export const IconPrepend = styled.span`
 `
 
 export const IconAppend = styled.span`
-  position: absolute;
-  top: calc(50% - 12px);
-  right: 8px;
+  margin: 0 8px 0 0;
 `
 
 export const InvalidFeedback = styled.span`

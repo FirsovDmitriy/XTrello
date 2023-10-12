@@ -1,5 +1,5 @@
-import { useState, useRef, FC, useEffect } from 'react';
-import useOutside from '../../hooks/useOutside';
+import { useState, useRef, FC, useEffect, ChangeEvent } from 'react';
+import useClickOutside from '../../hooks/useClickOutside';
 import { IProps, Option } from './type';
 
 import * as ST from './styled';
@@ -13,7 +13,7 @@ const SelectMenus: FC<IProps> = ({
 }) => {
   const [isShow, setIsShow] = useState<boolean>(false);
   const ref = useRef<HTMLDivElement>(null);
-  useOutside(ref, handleClose);
+  useClickOutside(ref, handleClose);
   const [searchQuery, setSearchQuery] = useState<string>('')
   const [filteredData, setFilteredData] = useState<Option[]>([])
 
@@ -66,11 +66,12 @@ const SelectMenus: FC<IProps> = ({
         <ST.SearchForm role='search'>
           <ST.SearchField
             value={searchQuery}
-            onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+            onChange={(event: ChangeEvent<HTMLInputElement>) => {
               setSearchQuery(event.target.value);
             }}
             placeholder='Поиск...'
             type='search'
+            inputMode='search'
           />
           <i className='icon Search-icon'></i>
         </ST.SearchForm>
@@ -84,7 +85,7 @@ const SelectMenus: FC<IProps> = ({
                 $disabled={option?.disabled}
                 key={option.value}
               >
-                {option.label}
+                { option.label }
                 {isOptionSelected(option.value) && <i className='icon Done-icon'></i>}
               </ST.Item>
             ))}
