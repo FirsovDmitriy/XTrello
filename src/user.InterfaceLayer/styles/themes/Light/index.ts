@@ -1,21 +1,38 @@
+import { Colors } from "../../colors";
+import { rgba } from "../../utilities/rgba";
 import { ITheme } from "../type";
 
 
 export const lightTheme: ITheme = {
   //
-  backColor: 'hsl(NaN, 0%, 96%)',
-  textColor: 'hsl(215 28% 17%)',
+  backColor: '#ECE6F0',
+  textColor: '#1F2937',
 
   background: {
-    primary: 'hsl(259 94% 51% / 1)',
-    hovered: 'hsl(215 28% 17% / 0.2)',
-    disabled: 'hsl(213 18% 20% / .2)'
+    primary: Colors.PRIMARY,
+    secondary: Colors.SECONDARY,
+
+    hovered: rgba(Colors.SECONDARY, 0.2),
+    disabled: rgba(
+      Colors.BLACK, 0.2
+    )
   },
+
   text: {
-    disabled: 'hsl(220 13% 69%/ .2)'
+    disabled: rgba(
+      Colors.TERTIARY, 0.6
+    )
   },
 
   border: {
-    primary: 'hsl(262 80% 50% / 1)'
-  }
+    primary: rgba(
+      Colors.PRIMARY, 0.9
+    )
+  },
+
+  shadow: {
+    primary: Colors.BLACK
+  },
+
+  errorColor: Colors.ERROR
 }

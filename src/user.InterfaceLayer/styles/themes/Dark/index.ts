@@ -1,20 +1,35 @@
+import { Colors } from "../../colors";
+import { rgba } from "../../utilities/rgba";
 import { ITheme } from "../type";
 
 export const darkTheme: ITheme = {
-  //
-  backColor: 'hsl(212 18% 14%)',
-  textColor: 'hsl(220 13% 69%)',
+  backColor: '#2A323C',
+  textColor: '#A6ADBB',
 
   background: {
-    primary: 'hsl(262 80% 50%)',
-    hovered: 'hsl(220 13% 69% / .2)',
-    disabled: 'hsl(213 18% 20% / .2)'
+    primary: Colors.PRIMARY,
+    secondary: Colors.SECONDARY,
+    hovered: rgba(Colors.SECONDARY, 0.2),
+    disabled: rgba(
+      Colors.TERTIARY_2, 0.6
+    )
   },
+
   text: {
-    disabled: 'hsl(220 13% 69%/ .2)'
+    disabled: rgba(
+      Colors.TERTIARY, 0.6
+    )
   },
 
   border: {
-    primary: 'hsl(262 80% 50% / 1)'
-  }
+    primary: rgba(
+      Colors.PRIMARY, 0.9
+    )
+  },
+
+  shadow: {
+    primary: Colors.BLACK
+  },
+
+  errorColor: Colors.ERROR
 }

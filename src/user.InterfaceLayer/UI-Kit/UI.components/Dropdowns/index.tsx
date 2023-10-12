@@ -1,69 +1,64 @@
-import { FC, useRef, useEffect } from 'react';
-import { IProps } from './type';
-import useOutside from '../../hooks/useOutside';
-import { Context } from './Context';
+import { FC, useEffect, useRef } from 'react'
+import { IProps } from './type'
+import { Context } from './Context'
 
-import * as ST from './styled';
+import * as SC from './styled'
 
-const Dropdowns: FC<IProps> = ({ children, buttonTrigger, onClose, isShow }) => {
+const Dropdowns: FC<IProps> = ({ children, onClose, open, anchorEl, ...props }) => {
   const ref = useRef<HTMLDivElement>(null)
-  const ref_2 = useRef<HTMLDivElement>(null) // TODO:
-  useOutside(ref, onClose)
 
-  const root = ref?.current // TODO:
-  const offsetBottom = root?.getBoundingClientRect().bottom // TODO:
-  const height = ref_2?.current?.getBoundingClientRect().height
-  const diff = document.documentElement.clientHeight - offsetBottom
-    console.log('Diff', diff)
+  function setPositioningStyles() {
+    if (!(anchorEl instanceof Element)) return
 
-  const setPositioningStyles = () => {
-    console.log('Scroll')
-    
-    if(typeof(offsetBottom) !== 'number') {
-      return
-    }
+    const element = ref.current
+    const coordY = anchorEl.getBoundingClientRect().bottom
+    const coordX = anchorEl.getBoundingClientRect().x
 
-    // const diff = document.documentElement.clientHeight - offsetBottom
-    // console.log('Diff', diff)
-    
-
-    if(typeof(height) === 'number' && height > diff) {
-      console.log('True!!!!')
-      
-      ref_2.current && (ref_2.current.style.bottom = '100%')
-    } else {
-      ref_2.current && (ref_2.current.style.top = '100%')
-      console.log('False!!!!!')
+    if(element) {
+      element.style.top = `${ coordY }px`
+      element.style.left = `${ coordX }px`
     }
   }
 
-  // ref_2.current && (ref_2.current.style.top = '100%')
+  useEffect(() => {
+    if(open) {
+      setPositioningStyles()
+    }
+  })
 
   useEffect(() => {
-    document.addEventListener('scroll', setPositioningStyles)
-    // setPositioningStyles()
+    const onClickOutside = (event: MouseEvent) => {
+      const btn = anchorEl
+
+      if(btn && !btn.contains(event.target as Node)) {
+        if(ref.current && !ref.current.contains(event.target as Node)) {
+          onClose()
+        }
+      }
+    }
+    
+    document.addEventListener('click', onClickOutside, {capture: true})
 
     return () => {
-      document.removeEventListener('scroll', setPositioningStyles)
+      document.removeEventListener('click', onClickOutside)
     }
-  }, [])
+
+  }, [open])
 
   return (
-    <ST.Dropdowns ref={ref}>
-      <ST.Trigger>
-        { buttonTrigger }
-      </ST.Trigger>
-      <ST.Content
-        $isShow={isShow}
-        ref={ref_2}
-        // style={setPositioningStyles()}
-      >
+    <SC.Dropdowns
+      role="menu"
+      ref={ref}
+      $isShow={open}
+      { ...props }
+    >
+      <SC.DropdownContent>
         <Context.Provider value={{ onClose }}>
           { children }
         </Context.Provider>
-      </ST.Content>
-    </ST.Dropdowns>
-  );
-};
+      </SC.DropdownContent>
+    </SC.Dropdowns>
+  )
+}
 
-export default Dropdowns;
+export default Dropdowns

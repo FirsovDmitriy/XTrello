@@ -7,17 +7,17 @@ export interface IProps {
   children?: ReactNode | string
 }
 
-const PopoverItem: FC<IProps> = ({ children }) => {
+const DropdownElm: FC<IProps> = ({ children }) => {
   const { onClose } = useContext(Context)
 
   return (
-    <ST.PopoverItem
+    <ST.DropdownElm
       onClick={ () => onClose?.() }
       role='menuitem'
     >
       { children }
-    </ST.PopoverItem>
+    </ST.DropdownElm>
   )
 }
 
-export default PopoverItem
+export default DropdownElm

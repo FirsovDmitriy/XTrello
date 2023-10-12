@@ -1,6 +1,6 @@
 import { styled } from "styled-components"
 
-export const PopoverItem = styled.span`
+export const DropdownElm = styled.span`
   padding: 8px 16px;
   display: grid;
 `

@@ -23,7 +23,7 @@ const Styles = createGlobalStyle`
     display: grid;
     grid-template-rows: 1fr max-content;
 
-    padding: 0 20px;
+    padding: 40px;
   }
 
   button {
