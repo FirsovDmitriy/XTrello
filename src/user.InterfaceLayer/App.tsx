@@ -9,6 +9,7 @@ import TextField from "./UI-Kit/UI.components/TextField"
 import Dropdowns from "./UI-Kit/UI.components/Dropdowns"
 import DropdownElm from "./UI-Kit/UI.components/Dropdowns/DropdownElm"
 import Switch from "./UI-Kit/UI.components/Switch"
+import Preloader from "./UI-Kit/UI.components/Preloader"
 
 const App = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
@@ -37,6 +38,7 @@ const App = () => {
       <Button disabled>Disabled</Button>
       <TextField placeholder="Search..." />
 
+      <Preloader />
 
 
       <Button
