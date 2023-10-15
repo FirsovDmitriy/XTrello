@@ -1,13 +1,10 @@
-import { ReactNode } from "react";
+import { ReactNode } from "react"
 
 export interface IProps {
   children: ReactNode
-  title: string,
   onClose?: () => void
-  isShow: boolean,
-  size?: 'small', // TODO:
+  open: boolean
+  size?: 'sm' | 'lg'
 }
 
-export enum sizes {
-  SMALL = '500px'
-}
+export interface ISlot { children: ReactNode }

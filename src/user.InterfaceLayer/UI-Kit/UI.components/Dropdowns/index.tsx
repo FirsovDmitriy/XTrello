@@ -1,69 +1,76 @@
-import { FC, useRef, useEffect } from 'react';
+/* eslint-disable react-refresh/only-export-components */
+import { FC, useEffect, useRef } from 'react';
 import { IProps } from './type';
-import useOutside from '../../hooks/useOutside';
 import { Context } from './Context';
+import DropdownElm from './DropdownElm';
+import { useScrollbarSize } from '../../hooks/useScrollbarSize'
 
-import * as ST from './styled';
+import * as SC from './styled';
 
-const Dropdowns: FC<IProps> = ({ children, buttonTrigger, onClose, isShow }) => {
-  const ref = useRef<HTMLDivElement>(null)
-  const ref_2 = useRef<HTMLDivElement>(null) // TODO:
-  useOutside(ref, onClose)
+const Dropdowns: FC<IProps> = ({
+  children,
+  onClose,
+  open,
+  anchorEl,
+  ...props
+}) => {
+  const ref = useRef<HTMLDivElement>(null);
 
-  const root = ref?.current // TODO:
-  const offsetBottom = root?.getBoundingClientRect().bottom // TODO:
-  const height = ref_2?.current?.getBoundingClientRect().height
-  const diff = document.documentElement.clientHeight - offsetBottom
-    console.log('Diff', diff)
-
-  const setPositioningStyles = () => {
-    console.log('Scroll')
-    
-    if(typeof(offsetBottom) !== 'number') {
-      return
+  function setPositioningStyles() {
+    if (!(anchorEl instanceof Element)) {
+      return;
     }
+    const element = ref.current;
+    const coordY = anchorEl.getBoundingClientRect().bottom;
+    const coordX = anchorEl.getBoundingClientRect().x;
 
-    // const diff = document.documentElement.clientHeight - offsetBottom
-    // console.log('Diff', diff)
-    
-
-    if(typeof(height) === 'number' && height > diff) {
-      console.log('True!!!!')
-      
-      ref_2.current && (ref_2.current.style.bottom = '100%')
-    } else {
-      ref_2.current && (ref_2.current.style.top = '100%')
-      console.log('False!!!!!')
+    if (element) {
+      element.style.top = `${ coordY }px`;
+      element.style.left = `${ coordX }px`;
     }
   }
 
-  // ref_2.current && (ref_2.current.style.top = '100%')
+  useEffect(() => {
+    if (open) {
+      setPositioningStyles();
+    }
+  });
 
   useEffect(() => {
-    document.addEventListener('scroll', setPositioningStyles)
-    // setPositioningStyles()
-
-    return () => {
-      document.removeEventListener('scroll', setPositioningStyles)
+    if(open) {
+      document.body.style.overflow = 'hidden'
+      // eslint-disable-next-line react-hooks/rules-of-hooks
+      document.body.style.paddingRight = `${ useScrollbarSize() }px`
+    } else {
+      document.body.style.overflow = null
+      document.body.style.paddingRight = null
     }
-  }, [])
+  }, [open])
 
   return (
-    <ST.Dropdowns ref={ref}>
-      <ST.Trigger>
-        { buttonTrigger }
-      </ST.Trigger>
-      <ST.Content
-        $isShow={isShow}
-        ref={ref_2}
-        // style={setPositioningStyles()}
+    <>
+      <SC.Dropdowns
+        role='menu'
+        ref={ref}
+        $open={open}
+        {...props}
       >
-        <Context.Provider value={{ onClose }}>
-          { children }
-        </Context.Provider>
-      </ST.Content>
-    </ST.Dropdowns>
+        <SC.DropdownsContent>
+          <Context.Provider
+            value={{ onClose }}
+          >
+            {children}
+          </Context.Provider>
+        </SC.DropdownsContent>
+      </SC.Dropdowns>
+      <SC.DropdownsBackdrop
+        $open={open}
+        onClick={onClose}
+      />
+    </>
   );
 };
 
-export default Dropdowns;
+export default Object.assign(Dropdowns, {
+  Elm: DropdownElm
+})

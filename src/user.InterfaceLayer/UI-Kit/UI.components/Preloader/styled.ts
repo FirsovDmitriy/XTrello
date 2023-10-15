@@ -1,6 +1,4 @@
 import { styled, keyframes } from "styled-components"
-import zIndex from "../../constants/zIndex"
-import Colors from "../../constants/colors"
 
 const widthLine = 4
 
@@ -31,9 +29,9 @@ export const Overlay = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  z-index: ${ zIndex.OVERLAY };
+  z-index: ${ 999 };
   display: grid;
   width: 100%;
   height: 100%;
-  background: ${ Colors.BLACKOUT };
+  background: ${ props => props.theme.background.hovered };
 `

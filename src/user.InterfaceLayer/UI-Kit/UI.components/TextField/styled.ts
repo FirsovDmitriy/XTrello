@@ -1,64 +1,47 @@
-import { styled, css } from "styled-components"
-import Colors from "../../constants/colors"
+import { styled } from "styled-components"
+import { Field } from "../../Atoms"
 
-const BasicInputStyles = css`
-  width: 100%;
-  transition: all 0.3s ease-in-out;
-  background: transparent;
-  color: inherit;
-  @media (any-hover: hover) {
-    &:hover {
-      border-color: ${ Colors.PRIMARY };
-    } 
+export const TextField = styled(Field)<{ $disabled?: boolean }>`
+  border-width: ${ props => props.$disabled ? (
+    0
+  ) : 1 };
+
+  &:focus-within {
+    outline-color: ${ props => props.theme.border.primary };
   }
-`
 
-export const TextField = styled.div`
-  position: relative;
-  display: flex;
-
+  /* TODO: test */
   margin-bottom: 50px;
 `
 
-export const Input = styled.input<{ isError?: boolean, $prepend?: boolean, $append?: boolean }>`
-
-  ${ BasicInputStyles };
-  
-  padding: 10px 12px;
-  padding-right: ${ props => (
-    props.$append ? '40px' : '12px'
-  )};
-  padding-left: ${ props => (
-    props.$prepend ? '40px' : '12px'
-  )};
-  border: 2px solid ${ props => (
-    props.isError ? Colors.ERROR : Colors.BORDER
-  )};
-  border-radius: 4px;
-  &::placeholder {
-    color: ${ Colors.PLACEHOLDER };
-  }
-  &:focus {
-    box-shadow: 0px 0px 0px 4px rgba(2, 149, 254, 0.25);
-    border-color: ${ Colors.PRIMARY };
+export const Input = styled.input<{ isError?: boolean }>`
+  flex: auto;
+  height: 100%;
+  padding: 0 12px;
+  color: ${ props => props.theme.textColor };
+  border: none;
+  background: transparent;
+  &:disabled {
+    background: ${ props => props.theme.background.disabled };
+    &::placeholder {
+      color: ${ props => props.theme.text.disabled };
+    }
   }
 `
- 
+
 export const IconPrepend = styled.span`
-  position: absolute;
-  top: calc(50% - 12px);
-  left: 8px;
+  display: flex;
+  margin: 0 0 0 8px;
 `
 
 export const IconAppend = styled.span`
-  position: absolute;
-  top: calc(50% - 12px);
-  right: 8px;
+  display: flex;
+  margin: 0 8px 0 0;
 `
 
-export const InvalidFeedback = styled.span`
+export const InvalidText = styled.span`
   position: absolute;
   top: 100%;
   left: 0;
-  color: ${ Colors.ERROR };
+  color: ${ props => props.theme.errorText };
 `

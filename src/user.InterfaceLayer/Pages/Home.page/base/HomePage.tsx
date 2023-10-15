@@ -1,8 +1,8 @@
-import React from 'react'
+import { FC } from 'react'
 
-const HomePage = () => {
+const HomePage: FC = () => {
   return (
-    <div>HomePage</div>
+    <h1>HomePage</h1>
   )
 }
 

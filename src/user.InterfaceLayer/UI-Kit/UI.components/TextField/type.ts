@@ -9,7 +9,7 @@ export interface IProps {
   isError?: boolean
   Icon?: Icon
   disabled?: boolean
-  errorMessage: string,
+  errorText?: string,
 }
 
 export interface Icon {

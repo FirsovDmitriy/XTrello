@@ -1,5 +1,4 @@
 import { styled } from "styled-components"
-import Style from "../../constants/style"
 import Colors from "../../constants/colors"
 
 export const Content = styled.div`
@@ -7,12 +6,7 @@ export const Content = styled.div`
   top: 100%;
   left: 50%;
   transform: translateX(-50%);
-  /* max-width: 400px;
-  width: max-content; */
   margin-top: 20px;
-  /* box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
-  border: ${ Style.radius };
-  background: ${ Colors.WHITE }; */
   visibility: hidden;
   transition: all 0.3s ease-in-out;
 `
@@ -44,6 +38,6 @@ export const Text = styled.p`
   max-width: 400px;
   width: max-content;
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
-  border: ${ Style.radius };
+  border: 4px;
   background: ${ props => props.theme.backColor };
 `

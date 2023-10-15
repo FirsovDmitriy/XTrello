@@ -3,10 +3,10 @@ import { createGlobalStyle } from "styled-components"
 const Styles = createGlobalStyle`
   html {
     box-sizing: border-box;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
     width: 100%;
     height: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     font-family: 'Open Sans';
     font-weight: 400;
     font-size: 1rem;
@@ -22,11 +22,16 @@ const Styles = createGlobalStyle`
   #root {
     display: grid;
     grid-template-rows: 1fr max-content;
+
+    padding: 40px;
   }
 
   button {
+    display: flex;
     font: inherit;
     cursor: pointer;
+    justify-content: center;
+    align-items: center;
     padding: 0;
     background: inherit;
     color: inherit;
@@ -41,12 +46,14 @@ const Styles = createGlobalStyle`
   h1,
   h2,
   h3,
+  h4,
   p {
     margin: 0;
   }
 
   h1,
-  h2 {
+  h2,
+  h3 {
     font-family: inherit;
   }
 
@@ -59,18 +66,12 @@ const Styles = createGlobalStyle`
   textarea {
     box-sizing: border-box;
     font: inherit;
-    &:focus {
-      outline: none;
-    }
+    outline: none;
   }
 
   *::before, *::after {
     box-sizing: inherit;
   }
-
-  /* i {
-    color: ${ prev => prev.theme.isDark };
-  } */
 `
 
 const BasicCss = () => <Styles />

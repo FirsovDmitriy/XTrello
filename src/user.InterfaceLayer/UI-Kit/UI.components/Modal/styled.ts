@@ -1,64 +1,53 @@
-import { styled, css } from "styled-components";
-import Colors from "../../constants/colors";
-import zIndex from "../../constants/zIndex";
+import { styled } from "styled-components"
 
-const BasicStyle = css`
+export const Modal = styled.div<{$open: boolean}>`
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  pointer-events: ${ props => props.$open ? 'all' : 'none' };
+  z-index: 99;
 `
 
-export const Modal = styled.div<{$isShow: boolean}>`
-  ${ BasicStyle }
-  display: grid;
-  pointer-events: ${ props => props.$isShow ? 'all' : 'none' };
-  z-index: 55;
-`
-
-export const Content = styled.section<{$isShow: boolean, size?: 'small'}>`
-  place-self: center;
-  display: grid;
-  grid-template-rows: 65px 1fr;
-  width: ${ props => props.size === 'small' ? '500px' : '640px' };
-  box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.10);
+export const ModalContent = styled.section<{ $open: boolean }>`
+  box-shadow: 0px 0px 30px 0px ${ props => props.theme.shadow.primary };
   background: ${ props => props.theme.backColor };
-  visibility: ${ props => (
-    props.$isShow ? 'visible' : 'hidden'
-  ) };
-  transition: all 0.3s ease-in-out;
-  transform: translateX(${ props => (
-    props.$isShow ? 0 : '-100px'
-  ) });
-  z-index: ${ zIndex.MODAL };
-  position: relative;
-  opacity: ${ props => (
-    props.$isShow ? 1 : 0
-  ) };
-`
-
-export const Overlay = styled.div<{$isShow: boolean}>`
-  display: grid;
-  ${ BasicStyle }
-  background: rgba(255, 255, 255, 0.6);
-  opacity: ${ props => (
-    props.$isShow ? 1 : 0
-  ) };
-  pointer-events: ${ props => props.$isShow ? 'all' : 'none' };
+  visibility: ${ props => props.$open ? 'visible' : 'hidden' };
   transition: opacity 0.3s ease-in-out;
-  z-index: ${ zIndex.OVERLAY };
+  z-index: 99;
+  opacity: ${ props => props.$open ? 1 : 0 };
+
+  width: 640px;
+
+  place-self: center;
 `
 
-export const Heading = styled.div`
+export const ModalBackdrop = styled.div<{$open: boolean}>`
+  background: ${ props => props.theme.background.hovered };
+  opacity: ${ props => props.$open ? 1 : 0 };
+  pointer-events: ${ props => props.$open ? 'all' : 'none' };
+  transition: opacity 0.3s ease-in-out;
+
+  display: grid;
+  height: 100%;
+`
+
+export const Heading = styled.header`
+  font-size: 24px;
+  font-weight: 600;
   padding: 16px;
-  border-bottom: 1px solid ${ Colors.BORDER };
+  border-bottom: 1px solid ${ props => props.theme.border.primary };
 `
 
-export const ModalActions = styled.div`
+export const Body = styled.div`
+  padding: 24px;
+`
+
+export const Footer = styled.footer`
+  border-top: 1px solid ${ props => props.theme.border.primary };
   padding: 24px;
   display: flex;
   justify-content: flex-end;
   gap: 8px;
-  border-top: 1px solid ${ Colors.BORDER };
 `

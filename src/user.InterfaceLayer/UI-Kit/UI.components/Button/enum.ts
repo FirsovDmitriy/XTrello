@@ -1,6 +1,6 @@
 enum Variant {
   primary = 'primary',
-  outlined = 'outlined',
+  GHOST = 'ghost',
   square = 'square'
 }
 

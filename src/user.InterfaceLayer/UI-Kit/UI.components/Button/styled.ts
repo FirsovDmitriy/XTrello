@@ -1,22 +1,20 @@
 import { styled, css } from "styled-components"
-import Colors from "../../constants/colors"
-import Style from "../../constants/style"
 
 const styles = css`
-  display: flex;
-  align-items: center;
-  font-size: 14px;
+  font-weight: 600;
   padding: 0 16px;
   height: 42px;
-  border-radius: ${ Style.radius };
-  text-transform: uppercase;
+  border-radius: 4px;
   transition: all 0.3s ease-out;
+
+  width: 100px;
+  /* margin: 20px; */
 `
 
 const media = css`
   @media (any-hover: hover) {
     &:hover {
-      border-color: ${ Colors.PRIMARY };
+      background: ${ props => props.theme.background.hovered };
     }
   }
 `
@@ -25,7 +23,7 @@ export const Button = styled.button`
 
   ${ styles };
   
-  background: ${ Colors.PRIMARY };
+  background: ${ props => props.theme.background.primary };
   border: none;
 
   color: #FFF;
@@ -38,14 +36,13 @@ export const Button = styled.button`
 
   &:disabled {
     pointer-events: none;
-    background: ${ Colors.BG_DISABLED };
-    color: ${ Colors.FONT_DISABLED };
+    background-color: ${ props => props.theme.background.disabled };
+    color: ${ props => props.theme.text.disabled };
   }
 `
 
-export const OutlineButton = styled.button`
-  border: 2px solid ${ Colors.BORDER };
-  
+export const GhostButton = styled.button`
+  border: none;
   ${ styles };
 
   color: ${ props => props.theme.textColor };
@@ -54,10 +51,8 @@ export const OutlineButton = styled.button`
 
   &:disabled {
     pointer-events: none;
-    color: ${ Colors.FONT_DISABLED };
   }
 
-  
 `
 
 export const SquareButton = styled.button`
@@ -66,14 +61,13 @@ export const SquareButton = styled.button`
   height: 42px;
   justify-content: center;
   align-items: center;
-  border: 2px solid ${ Colors.BORDER };
+  border: 2px solid black;
   border-radius: 4px;
 
   ${ media };
 
   &:disabled {
     pointer-events: none;
-    color: ${ Colors.FONT_DISABLED };
   }
 `
 

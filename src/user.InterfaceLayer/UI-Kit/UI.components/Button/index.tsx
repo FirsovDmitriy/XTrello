@@ -1,8 +1,8 @@
 import { FC } from 'react'
 import { IProps } from './type'
+import Variant from './enum'
 
 import * as ST from './styled'
-import Variant from './enum'
 
 const Button: FC<IProps> = ({ children, variant = 'primary', prepend, append, ...props }) => {
   switch(variant) {
@@ -16,10 +16,14 @@ const Button: FC<IProps> = ({ children, variant = 'primary', prepend, append, ..
             <ST.Append> { append } </ST.Append>
           ) : null}
         </ST.Button>
-    case Variant.outlined:
-      return <ST.OutlineButton { ...props }> { children } </ST.OutlineButton>
+    case Variant.GHOST:
+      return <ST.GhostButton { ...props }>
+        { children }
+      </ST.GhostButton>
     case Variant.square:
-      return <ST.SquareButton { ...props }> { children } </ST.SquareButton>
+      return <ST.SquareButton { ...props }>
+        { children }
+      </ST.SquareButton>
 
   }
 }

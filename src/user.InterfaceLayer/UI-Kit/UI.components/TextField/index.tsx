@@ -7,30 +7,40 @@ const TextField: FC<IProps> = ({
   onChange,
   value,
   Icon,
+  disabled,
   isError,
-  errorMessage,
+  errorText,
   ...props
 }) => {
   return (
-    <ST.TextField>
-      {Icon?.prepend ? <ST.IconPrepend>{Icon.prepend}</ST.IconPrepend> : null}
+    <ST.TextField
+      $disabled={disabled}
+    >
+      {Icon?.prepend ? (
+        <ST.IconPrepend>
+          { Icon.prepend }
+        </ST.IconPrepend>
+      ) : null}
 
       <ST.Input
           value={value}
           onChange={onChange}
           isError={isError}
+          disabled={disabled}
           {...props}
-          $prepend={Boolean(Icon?.prepend)} // TODO:
-          $append={Boolean(Icon?.append)} // TODO:
         />
 
-      {isError ? <ST.InvalidFeedback>
-        { errorMessage }
-      </ST.InvalidFeedback> : null}
+      {isError ? (
+        <ST.InvalidText>
+          { errorText }
+        </ST.InvalidText>
+      ) : (
+        null
+      )}
 
       {Icon?.append ? (
         <ST.IconAppend>
-          {Icon.append}
+          { Icon.append }
         </ST.IconAppend>
       ) : null}
     </ST.TextField>

@@ -1,12 +1,11 @@
 import { styled } from "styled-components"
 import { NavLink } from "react-router-dom"
-import Colors from "../../constants/colors"
 
 export const AppLink = styled(NavLink)`
-  transition: all 0.3s ease-in-out;
+  color: ${ props => props.theme.text.white };
   @media (any-hover: hover) {
    &:hover {
-    color: ${ Colors.LINK_HOVER };
+    color: ${ props => props.theme.text.hovered };
     text-decoration: underline;
    } 
   }

@@ -1,30 +1,23 @@
 import { styled } from "styled-components"
-import Colors from "../../constants/colors"
-import zIndex from "../../constants/zIndex"
+import { Field } from "../../Atoms"
 
 export const SelectMenus = styled.div`
   position: relative;
 `
 
-export const Base = styled.div<{ $isShow: boolean }>`
+export const Base = styled(Field)<{ $isShow: boolean }>`
   position: relative;
-  display: grid;
   grid-template-columns: 1fr min-content;
-  align-items: center;
-  padding: 0 8px;
-  border: 2px solid ${ props => (
-    props.$isShow ? Colors.PRIMARY : Colors.BORDER
-  )};
-  border-radius: 4px;
   cursor: pointer;
-  box-shadow: ${ props => (
-    props.$isShow ? '0px 0px 0px 4px rgba(2, 149, 254, 0.25)' : 'none'
-  )};
+  outline-color: ${ props => props.$isShow ? (
+    props.theme.border.primary
+  ) : 'transparent' };
 `
 
 export const Content = styled.span`
   padding: 10px 12px;
-  /* color: ${ props => props.theme.textColor }; */
+  font: inherit;
+  width: 100%;
 `
 
 export const Arrow = styled.span<{ $isShow: boolean }>`
@@ -32,6 +25,7 @@ export const Arrow = styled.span<{ $isShow: boolean }>`
     'rotate(180deg)' 
   ) : 'rotate(0)' };
   transition: transform 0.3s ease-in-out;
+  margin: 0 8px 0 0;
 `
 
 export const NativeInput = styled.input`
@@ -47,7 +41,7 @@ export const Container = styled.div<{ $isShow: boolean }>`
   position: absolute;
   top: 100%;
   left: 0;
-  z-index: ${ zIndex.SELECT };
+  z-index: 55;
   width: 100%;
   margin-top: 8px;
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
@@ -75,12 +69,12 @@ export const Item = styled.li<{ $disabled?: boolean }>`
   cursor: pointer;
   transition: background 0.3s ease-in-out;
   color: ${ props => (
-    props.$disabled ? Colors.FONT_DISABLED : props.theme.textColor
+    props.$disabled ? props.theme.text.disabled : props.theme.textColor
   ) };
   pointer-events: ${({ $disabled }) => $disabled ? 'none' : 'all'};
   @media (any-hover: hover) {
     &:hover {
-      background: ${ Colors.SECONDARY_BG };
+      background: ${ props => props.theme.background.secondary };
     }
   }
 `
@@ -95,8 +89,9 @@ export const NotFound = styled.span`
 export const SearchForm = styled.form`
   display: flex;
   align-items: center;
-  padding: 8px 12px;
-  border-bottom: 2px solid ${ Colors.BORDER };
+  height: 3rem;
+  padding: 0 12px;
+  border-bottom: 1px solid ${ props => props.theme.border.primary };
 `
 
 export const SearchField = styled.input`
@@ -104,11 +99,13 @@ export const SearchField = styled.input`
   font-size: inherit;
   width: 100%;
   background: transparent;
+  color: inherit;
   border: none;
+  &::placeholder {
+    font-size: 1rem;
+    color: ${ props => props.theme.textColor };
+  }
   &:focus {
     outline: none;
-  }
-  &::placeholder {
-    color: ${ Colors.PLACEHOLDER };
   }
 `
