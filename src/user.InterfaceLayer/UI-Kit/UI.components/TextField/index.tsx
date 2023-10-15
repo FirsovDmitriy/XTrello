@@ -7,12 +7,15 @@ const TextField: FC<IProps> = ({
   onChange,
   value,
   Icon,
+  disabled,
   isError,
   errorText,
   ...props
 }) => {
   return (
-    <ST.TextField>
+    <ST.TextField
+      $disabled={disabled}
+    >
       {Icon?.prepend ? (
         <ST.IconPrepend>
           { Icon.prepend }
@@ -23,13 +26,14 @@ const TextField: FC<IProps> = ({
           value={value}
           onChange={onChange}
           isError={isError}
+          disabled={disabled}
           {...props}
         />
 
       {isError ? (
-        <ST.InvalidFeedback>
+        <ST.InvalidText>
           { errorText }
-        </ST.InvalidFeedback>
+        </ST.InvalidText>
       ) : (
         null
       )}

@@ -8,7 +8,6 @@ export const SelectMenus = styled.div`
 export const Base = styled(Field)<{ $isShow: boolean }>`
   position: relative;
   grid-template-columns: 1fr min-content;
-  align-items: center;
   cursor: pointer;
   outline-color: ${ props => props.$isShow ? (
     props.theme.border.primary
@@ -18,6 +17,7 @@ export const Base = styled(Field)<{ $isShow: boolean }>`
 export const Content = styled.span`
   padding: 10px 12px;
   font: inherit;
+  width: 100%;
 `
 
 export const Arrow = styled.span<{ $isShow: boolean }>`
@@ -25,6 +25,7 @@ export const Arrow = styled.span<{ $isShow: boolean }>`
     'rotate(180deg)' 
   ) : 'rotate(0)' };
   transition: transform 0.3s ease-in-out;
+  margin: 0 8px 0 0;
 `
 
 export const NativeInput = styled.input`

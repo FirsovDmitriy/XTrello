@@ -8,7 +8,7 @@ const styles = css`
   transition: all 0.3s ease-out;
 
   width: 100px;
-  margin: 20px;
+  /* margin: 20px; */
 `
 
 const media = css`

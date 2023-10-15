@@ -1,37 +1,28 @@
-import { styled, css } from "styled-components"
+import { styled } from "styled-components"
 import { Field } from "../../Atoms"
 
-const BasicInputStyles = css`
-  width: 100%;
-  background: transparent;
-  color: ${ props => props.theme.textColor };
-  font-size: 1rem;
-  &::placeholder {
-    color: inherit;
-  }
-`
+export const TextField = styled(Field)<{ $disabled?: boolean }>`
+  border-width: ${ props => props.$disabled ? (
+    0
+  ) : 1 };
 
-export const TextField = styled(Field)`
   &:focus-within {
     outline-color: ${ props => props.theme.border.primary };
   }
 
+  /* TODO: test */
   margin-bottom: 50px;
 `
 
 export const Input = styled.input<{ isError?: boolean }>`
-
-  ${ BasicInputStyles };
+  flex: auto;
+  height: 100%;
   padding: 0 12px;
+  color: ${ props => props.theme.textColor };
   border: none;
-
-  &::placeholder {}
-
-
-
+  background: transparent;
   &:disabled {
     background: ${ props => props.theme.background.disabled };
-    border: none;
     &::placeholder {
       color: ${ props => props.theme.text.disabled };
     }
@@ -39,18 +30,18 @@ export const Input = styled.input<{ isError?: boolean }>`
 `
 
 export const IconPrepend = styled.span`
-  position: absolute;
-  top: calc(50% - 12px);
-  left: 8px;
+  display: flex;
+  margin: 0 0 0 8px;
 `
 
 export const IconAppend = styled.span`
+  display: flex;
   margin: 0 8px 0 0;
 `
 
-export const InvalidFeedback = styled.span`
+export const InvalidText = styled.span`
   position: absolute;
   top: 100%;
   left: 0;
-  color: rebeccapurple;
+  color: ${ props => props.theme.errorText };
 `

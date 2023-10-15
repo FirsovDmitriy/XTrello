@@ -10,7 +10,9 @@ export interface ITheme {
   },
 
   text: {
-    disabled: string
+    hovered: string,
+    disabled: string,
+    white: string
   },
 
   border: {

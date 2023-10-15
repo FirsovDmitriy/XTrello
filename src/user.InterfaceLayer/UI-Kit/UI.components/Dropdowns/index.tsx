@@ -1,66 +1,76 @@
-import { FC, useEffect, useRef } from 'react'
-import { IProps } from './type'
-import { Context } from './Context'
+/* eslint-disable react-refresh/only-export-components */
+import { FC, useEffect, useRef } from 'react';
+import { IProps } from './type';
+import { Context } from './Context';
+import DropdownElm from './DropdownElm';
+import { useScrollbarSize } from '../../hooks/useScrollbarSize'
 
-import * as SC from './styled'
+import * as SC from './styled';
 
-const Dropdowns: FC<IProps> = ({ children, onClose, open, anchorEl, ...props }) => {
-  const ref = useRef<HTMLDivElement>(null)
+const Dropdowns: FC<IProps> = ({
+  children,
+  onClose,
+  open,
+  anchorEl,
+  ...props
+}) => {
+  const ref = useRef<HTMLDivElement>(null);
 
   function setPositioningStyles() {
-    if (!(anchorEl instanceof Element)) return
+    if (!(anchorEl instanceof Element)) {
+      return;
+    }
+    const element = ref.current;
+    const coordY = anchorEl.getBoundingClientRect().bottom;
+    const coordX = anchorEl.getBoundingClientRect().x;
 
-    const element = ref.current
-    const coordY = anchorEl.getBoundingClientRect().bottom
-    const coordX = anchorEl.getBoundingClientRect().x
-    console.log('Y', coordY)
-    console.log('X', coordX)
-
-    if(element) {
-      element.style.top = `${ coordY }px`
-      element.style.left = `${ coordX }px`
+    if (element) {
+      element.style.top = `${ coordY }px`;
+      element.style.left = `${ coordX }px`;
     }
   }
 
   useEffect(() => {
-    if(open) {
-      setPositioningStyles()
+    if (open) {
+      setPositioningStyles();
     }
-  })
+  });
 
   useEffect(() => {
-    const onClickOutside = (event: MouseEvent) => {
-      const btn = anchorEl
-
-      if(btn && !btn.contains(event.target as Node)) {
-        if(ref.current && !ref.current.contains(event.target as Node)) {
-          onClose()
-        }
-      }
+    if(open) {
+      document.body.style.overflow = 'hidden'
+      // eslint-disable-next-line react-hooks/rules-of-hooks
+      document.body.style.paddingRight = `${ useScrollbarSize() }px`
+    } else {
+      document.body.style.overflow = null
+      document.body.style.paddingRight = null
     }
-    
-    document.addEventListener('click', onClickOutside, {capture: true})
-
-    return () => {
-      document.removeEventListener('click', onClickOutside)
-    }
-
   }, [open])
 
   return (
-    <SC.Dropdowns
-      role="menu"
-      ref={ref}
-      $isShow={open}
-      { ...props }
-    >
-      <SC.DropdownContent>
-        <Context.Provider value={{ onClose }}>
-          { children }
-        </Context.Provider>
-      </SC.DropdownContent>
-    </SC.Dropdowns>
-  )
-}
+    <>
+      <SC.Dropdowns
+        role='menu'
+        ref={ref}
+        $open={open}
+        {...props}
+      >
+        <SC.DropdownsContent>
+          <Context.Provider
+            value={{ onClose }}
+          >
+            {children}
+          </Context.Provider>
+        </SC.DropdownsContent>
+      </SC.Dropdowns>
+      <SC.DropdownsBackdrop
+        $open={open}
+        onClick={onClose}
+      />
+    </>
+  );
+};
 
-export default Dropdowns
+export default Object.assign(Dropdowns, {
+  Elm: DropdownElm
+})

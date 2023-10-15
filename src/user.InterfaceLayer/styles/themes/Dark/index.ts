@@ -16,6 +16,8 @@ export const darkTheme: ITheme = {
   },
 
   text: {
+    white: Colors.WHITE,
+    hovered: rgba(Colors.PRIMARY_2, 1),
     disabled: rgba(
       Colors.TERTIARY, 0.6
     )
@@ -28,7 +30,7 @@ export const darkTheme: ITheme = {
   },
 
   shadow: {
-    primary: Colors.BLACK
+    primary: rgba(Colors.BLACK, 0.2)
   },
 
   errorColor: Colors.ERROR
