@@ -10,3 +10,7 @@ export const Field = styled.div`
   outline: 2px solid transparent;
   outline-offset: 2px;
 `
+
+export const BasicButton = styled.button`
+  border: none;
+`

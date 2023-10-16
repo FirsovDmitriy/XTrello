@@ -1,5 +1,5 @@
 import dayjs from 'dayjs'
 
-export type TypeProps = {
+export interface IProps {
   setMonth: (parametr: dayjs.Dayjs) => void
 }

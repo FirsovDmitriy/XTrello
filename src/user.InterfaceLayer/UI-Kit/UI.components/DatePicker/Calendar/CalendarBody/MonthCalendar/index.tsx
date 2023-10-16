@@ -1,25 +1,26 @@
 import { FC } from 'react'
 import dayjs from 'dayjs'
+import { IProps } from './type'
 
 import * as SC from './styled'
-import { TypeProps } from './type'
 
-const MonthCalendar: FC<TypeProps> = ({ setMonth }) => {
+const MonthCalendar: FC<IProps> = ({ setMonth }) => {
 
   const months = [...Array(12)].map((_, index) => {
     return dayjs().month(index)
   })
   console.log('Months', months)
   
-
   return (
     <SC.MonthCalendar>
       {months.map(item => (
         <SC.MonthButton
-          $isActive={ item.isSame() }
+          $isActive={ item.isSame(new Date(), 'month') }
           onClick={() => setMonth(item)}
         >
-          { item.format('MMMM') }
+          <SC.MonthText>
+            { item.format('MMM').slice(0, 3) }
+          </SC.MonthText>
         </SC.MonthButton>
       ))}
     </SC.MonthCalendar>

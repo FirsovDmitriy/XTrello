@@ -1,5 +1,4 @@
 import { styled } from "styled-components"
-import Colors from "../../../constants/colors"
 
 export const YearCalendar = styled.div`
   display: grid;
@@ -19,7 +18,7 @@ export const Button = styled.button`
   width: 62px;
   @media (any-hover: hover) {
    &:hover {
-    background: ${ Colors.SECONDARY_BG };
+    background: ${ props => props.theme.background.primary };
    } 
   }
 `

@@ -12,6 +12,7 @@ import SelectMenus from "./UI-Kit/UI.components/SelectMenus"
 import { options } from "./UI-Kit/UI.components/SelectMenus/mock"
 import Modal from "./UI-Kit/UI.components/Modal"
 import AppLink from "./UI-Kit/UI.components/AppLink"
+import DatePicker from "./UI-Kit/UI.components/DatePicker"
 
 const App = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
@@ -28,7 +29,7 @@ const App = () => {
 
   const [openModal, setModal] = useState(false)
 
-  const [isDark] = useState(true)
+  const [isDark] = useState(false)
 
   const theme = isDark ? darkTheme : lightTheme
 
@@ -43,6 +44,8 @@ const App = () => {
       <TextField placeholder="Search..." />
 
       <AppLink to="#">Components</AppLink>
+
+      <DatePicker />
 
 
       <SelectMenus
