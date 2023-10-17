@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { IProps } from './type';
 
-import * as ST from './styled';
+import * as SC from './styled';
 
 const TextField: FC<IProps> = ({
   onChange,
@@ -13,16 +13,16 @@ const TextField: FC<IProps> = ({
   ...props
 }) => {
   return (
-    <ST.TextField
+    <SC.TextField
       $disabled={disabled}
     >
       {Icon?.prepend ? (
-        <ST.IconPrepend>
+        <SC.IconPrepend>
           { Icon.prepend }
-        </ST.IconPrepend>
+        </SC.IconPrepend>
       ) : null}
 
-      <ST.Input
+      <SC.Input
           value={value}
           onChange={onChange}
           isError={isError}
@@ -31,19 +31,19 @@ const TextField: FC<IProps> = ({
         />
 
       {isError ? (
-        <ST.InvalidText>
+        <SC.InvalidText>
           { errorText }
-        </ST.InvalidText>
+        </SC.InvalidText>
       ) : (
         null
       )}
 
       {Icon?.append ? (
-        <ST.IconAppend>
+        <SC.IconAppend>
           { Icon.append }
-        </ST.IconAppend>
+        </SC.IconAppend>
       ) : null}
-    </ST.TextField>
+    </SC.TextField>
   );
 };
 

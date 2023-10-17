@@ -98,9 +98,31 @@ export const DatePickerFooter = styled.div`
   justify-content: center;
 `
 
+export const ClearButton = styled.button`
+  border: none;
+`
+
+export const Indicator = styled.span`
+  display: flex;
+`
+
+export const IconCleaner = styled.span`
+  display: none;
+`
 
 export const DatePickerWrapper = styled.div`
   position: relative;
   z-index: 4;
   background: ${ props => props.theme.backColor };
+  @media (any-hover: hover) {
+   &:hover {
+    ${ Indicator } {
+      display: none;
+    };
+
+    ${ IconCleaner } {
+      display: flex;
+    };
+   } 
+  }
 `

@@ -1,24 +1,27 @@
 import { styled } from "styled-components"
 
 export const YearCalendar = styled.div`
+  --number-cell: 4;
+  --cell-size: 1fr;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-auto-rows: 36px;
-  grid-auto-flow: row;
+  grid-template-columns: repeat(var(--number-cell), var(--cell-size));
+  grid-template-rows: repeat(var(--number-cell), var(--cell-size));
   justify-items: center;
   align-items: center;
-  height: 280px;
+  height: 100%;
 `
 
-export const Button = styled.button`
-  border-radius: 18px;
+export const Button = styled.button<{ $thisYear: boolean }>`
   transition: background 0.3s ease-in-out;
   border: none;
-  height: 36px;
-  width: 62px;
+  background: ${ props => props.$thisYear ? props.theme.background.secondary : 'transparent' };
+  height: 50px;
+  width: 100%;
+  border-radius: 4px;
+  font-size: 15px;
   @media (any-hover: hover) {
    &:hover {
-    background: ${ props => props.theme.background.primary };
+    background: ${ props => props.theme.background.hovered };
    } 
   }
 `

@@ -5,7 +5,7 @@ export interface IProps {
   value?: string
   placeholder?: string
   type?: InputType
-  onChange?: (event: ChangeEvent) => void
+  onChange?: (event: ChangeEvent<HTMLInputElement>) => void
   isError?: boolean
   Icon?: Icon
   disabled?: boolean
