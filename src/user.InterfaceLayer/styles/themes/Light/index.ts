@@ -19,6 +19,8 @@ export const lightTheme: ITheme = {
   },
 
   text: {
+    hovered: '',
+    white: Colors.WHITE,
     disabled: rgba(
       Colors.TERTIARY, 0.6
     )

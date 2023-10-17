@@ -11,7 +11,7 @@ export const TextField = styled(Field)<{ $disabled?: boolean }>`
   }
 
   /* TODO: test */
-  margin-bottom: 50px;
+  /* margin-bottom: 50px; */
 `
 
 export const Input = styled.input<{ isError?: boolean }>`

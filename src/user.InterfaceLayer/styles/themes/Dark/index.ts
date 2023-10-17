@@ -30,7 +30,7 @@ export const darkTheme: ITheme = {
   },
 
   shadow: {
-    primary: rgba(Colors.BLACK, 0.2)
+    primary: Colors.BLACK
   },
 
   errorColor: Colors.ERROR

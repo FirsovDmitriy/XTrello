@@ -16,7 +16,6 @@ export const Textarea = styled.textarea`
   overflow-wrap: break-word;
   &::placeholder {
     color: ${ Colors.PLACEHOLDER };
-
   }
   &:focus {
     box-shadow: 0px 0px 0px 4px rgba(2, 149, 254, 0.25);

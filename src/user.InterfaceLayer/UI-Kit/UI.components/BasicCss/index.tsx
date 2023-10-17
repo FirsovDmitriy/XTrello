@@ -34,6 +34,7 @@ const Styles = createGlobalStyle`
     align-items: center;
     padding: 0;
     background: inherit;
+    color: inherit;
   }
 
   ul {
