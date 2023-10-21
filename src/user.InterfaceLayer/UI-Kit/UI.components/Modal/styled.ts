@@ -11,7 +11,7 @@ export const Modal = styled.div<{$open: boolean}>`
 `
 
 export const ModalContent = styled.section<{ $open: boolean }>`
-  box-shadow: 0px 0px 30px 0px ${ props => props.theme.shadow.primary };
+  box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.10);
   background: ${ props => props.theme.backColor };
   visibility: ${ props => props.$open ? 'visible' : 'hidden' };
   transition: opacity 0.3s ease-in-out;
@@ -19,15 +19,16 @@ export const ModalContent = styled.section<{ $open: boolean }>`
   opacity: ${ props => props.$open ? 1 : 0 };
 
   width: 640px;
+  border-radius: ${ props => props.theme.borderRadius };
 
   place-self: center;
 `
 
 export const ModalBackdrop = styled.div<{$open: boolean}>`
-  background: ${ props => props.theme.background.hovered };
+  background: ${ props => props.theme.blackout };
   opacity: ${ props => props.$open ? 1 : 0 };
   pointer-events: ${ props => props.$open ? 'all' : 'none' };
-  transition: opacity 0.3s ease-in-out;
+  transition: opacity 0.3s ${ props => props.theme.timingFunc };
 
   display: grid;
   height: 100%;

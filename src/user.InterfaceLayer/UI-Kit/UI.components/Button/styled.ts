@@ -61,7 +61,7 @@ export const SquareButton = styled.button`
   height: 42px;
   justify-content: center;
   align-items: center;
-  border: 2px solid black;
+  border: 1px solid ${ props => props.theme.background.secondary };
   border-radius: 4px;
 
   ${ media };

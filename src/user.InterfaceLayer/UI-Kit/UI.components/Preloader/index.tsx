@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, useEffect } from 'react'
 import { useTheme } from 'styled-components'
 
 import * as ST from './styled'
@@ -6,6 +6,14 @@ import * as ST from './styled'
 const Preloader: FC = () => {
 
   const theme = useTheme()
+
+  useEffect(() => {
+    document.documentElement.style.overflow = 'hidden'
+
+    return () => {
+      document.documentElement.style.overflow = 'visible'
+    }
+  })
 
   return (
     <ST.Overlay>
@@ -15,7 +23,6 @@ const Preloader: FC = () => {
         viewBox='0 0 60 60'
         xmlns='http://www.w3.org/2000/svg'
       >
-        <ST.Circle r={'20'} cx={'30'} cy={'30'} stroke={ 'none' } />
         <ST.AnimationCircle
           r={'20'}
           cx={'30'}

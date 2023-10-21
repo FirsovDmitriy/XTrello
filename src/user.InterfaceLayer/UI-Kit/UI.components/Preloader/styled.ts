@@ -1,6 +1,6 @@
 import { styled, keyframes } from "styled-components"
 
-const widthLine = 4
+const WIDTH_LINE = 4
 
 const rotate = keyframes`
   100% {
@@ -11,27 +11,29 @@ const rotate = keyframes`
 export const Preloader = styled.svg`
   place-self: center;
   fill: none;
+  position: relative;
+  z-index: 999;
 `
 
 export const Circle = styled.circle`
-  stroke-width: ${ widthLine }px;
+  stroke-width: ${ WIDTH_LINE }px;
 `
 
 export const AnimationCircle = styled.circle`
-  stroke-dasharray: 288;
-  stroke-dashoffset: 288;
+  stroke-dasharray: 216;
+  stroke-dashoffset: 216;
   stroke-linecap: round;
-  animation: ${ rotate } 2.5s infinite cubic-bezier(.56,.23,.9,.51);
-  stroke-width: ${ widthLine }px;
+  animation: ${ rotate } 1.5s infinite cubic-bezier(.56,.23,.9,.51);
+  stroke-width: ${ WIDTH_LINE }px;
 `
 
 export const Overlay = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  z-index: ${ 999 };
+  z-index: 99;
   display: grid;
   width: 100%;
   height: 100%;
-  background: ${ props => props.theme.background.hovered };
+  background: ${ props => props.theme.blackout };
 `

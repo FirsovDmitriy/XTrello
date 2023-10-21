@@ -12,8 +12,7 @@ export const DatePicker = styled.div<{ $open: boolean }>`
   background: ${ props => props.theme.backColor };
 
   visibility: ${ props => props.$open ? 'visible' : 'hidden' };
-  transform: translateY(${ props => props.$open ? 0 : '-100px' });
-  transition: transform 1.6s ease-out;
+  transition: opacity ${ props => props.theme.durationTransition } ${ props => props.theme.timingFunc };
   opacity: ${ props => props.$open ? 1 : 0 };
 `
 
@@ -62,13 +61,15 @@ export const WeekDayLabel = styled.span`
 
 export const DayButton = styled.button<{ $isToday: boolean, $thisMonth: boolean }>`
   ${ BasicStylesCell };
-  border-radius: 50%;
+  border-radius: ${ props => props.theme.borderRadius };
   background: ${ props => props.$isToday ? props.theme.background.primary : 'transparent' };
+
   color: ${ props => {
     if(props.$isToday) return props.theme.text.white
     if(props.$thisMonth) return props.theme.background.secondary
     return 'inherit'
   }};
+
   border: none;
   @media (any-hover: hover) {
    &:hover {

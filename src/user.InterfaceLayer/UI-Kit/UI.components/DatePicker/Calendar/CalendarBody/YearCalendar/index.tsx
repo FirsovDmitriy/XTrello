@@ -23,6 +23,7 @@ const YearCalendar: FC = () => {
         <SC.Button
           key={year.format('YYYY')}
           $thisYear={year.isSame(rootDate, 'year') ? true : false}
+          onClick={() => console.log('Click')}
         >
           { year.format('YYYY') }
         </SC.Button>

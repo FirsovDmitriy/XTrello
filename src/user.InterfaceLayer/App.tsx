@@ -13,6 +13,12 @@ import { options } from "./UI-Kit/UI.components/SelectMenus/mock"
 import Modal from "./UI-Kit/UI.components/Modal"
 import AppLink from "./UI-Kit/UI.components/AppLink"
 import DatePicker from "./UI-Kit/UI.components/DatePicker"
+import Preloader from "./UI-Kit/UI.components/Preloader"
+import Textarea from "./UI-Kit/UI.components/Textarea"
+import Tooltip from "./UI-Kit/UI.components/Tooltip"
+import RadioGroups from "./UI-Kit/UI.components/RadioGroups"
+import Checkbox from "./UI-Kit/UI.components/Checkbox"
+import Pagination from "./UI-Kit/UI.components/Pagination"
 
 const App = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
@@ -46,6 +52,8 @@ const App = () => {
       <AppLink to="#">Components</AppLink>
 
       <DatePicker />
+
+      {/* <Preloader /> */}
 
 
       <SelectMenus
@@ -89,6 +97,23 @@ const App = () => {
         </Dropdowns.Elm>
       </Dropdowns>
 
+      <RadioGroups />
+      <RadioGroups />
+      <RadioGroups />
+
+      <Checkbox />
+      {/* <input type="checkbox" name="" id="" /> */}
+
+      <a href="#">
+        Link
+      </a>
+
+      <Button variant={Variant.SQUARE}>
+        <i className='icon MoreVert-icon'></i>
+      </Button>
+
+      <Pagination />
+
       <TextField
         placeholder="Search..."
         Icon={{
@@ -119,6 +144,18 @@ const App = () => {
       <Switch />
 
       <TextField placeholder="Disabled"  disabled/>
+
+      <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+        <div style={{ width: '50px' }}>
+        <Tooltip label="Emma explains that in some cases developers need to reset or normalize their UI, and therefore need a global style, after demonstrating how to set up a global style.">
+        <p>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cupiditate animi quisquam molestias rerum. Voluptatibus error, cupiditate quia neque eaque doloribus culpa unde fuga laudantium facere quis, magnam, quos repellat adipisci.
+        </p>
+      </Tooltip>
+        </div>
+      </div>
+
+      <Textarea placeholder="Time Pickers" />
       
     </ThemeProvider>
   )

@@ -19,7 +19,7 @@ export const lightTheme: ITheme = {
   },
 
   text: {
-    hovered: '',
+    hovered: Colors.PRIMARY_2,
     white: Colors.WHITE,
     disabled: rgba(
       Colors.TERTIARY, 0.6
@@ -35,6 +35,12 @@ export const lightTheme: ITheme = {
   shadow: {
     primary: Colors.BLACK
   },
+  blackout: rgba(
+    Colors.BLACK, 0.5
+  ),
+  errorColor: Colors.ERROR,
 
-  errorColor: Colors.ERROR
+  timingFunc: 'cubic-bezier(0, 0, 0.2,1)',
+  durationTransition: '0.3s',
+  borderRadius: '4px'
 }

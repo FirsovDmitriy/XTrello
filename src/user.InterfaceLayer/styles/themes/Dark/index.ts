@@ -33,5 +33,13 @@ export const darkTheme: ITheme = {
     primary: Colors.BLACK
   },
 
-  errorColor: Colors.ERROR
+  blackout: rgba(
+    Colors.BLACK, 0.5
+  ),
+
+  errorColor: Colors.ERROR,
+
+  timingFunc: 'cubic-bezier(0, 0, 0.2,1)',
+  durationTransition: '0.3s',
+  borderRadius: '4px'
 }

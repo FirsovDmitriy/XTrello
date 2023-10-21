@@ -10,9 +10,9 @@ export interface ITheme {
   },
 
   text: {
+    white: string,
     hovered: string,
     disabled: string,
-    white: string
   },
 
   border: {
@@ -23,5 +23,11 @@ export interface ITheme {
     primary: string
   },
 
-  errorColor: string
+  blackout: string,
+  errorColor: string,
+
+  timingFunc: string,
+  durationTransition: string,
+
+  borderRadius: string,
 }

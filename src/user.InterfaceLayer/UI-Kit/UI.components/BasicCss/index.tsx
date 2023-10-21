@@ -67,6 +67,7 @@ const Styles = createGlobalStyle`
     box-sizing: border-box;
     font: inherit;
     outline: none;
+    margin: 0;
   }
 
   *::before, *::after {

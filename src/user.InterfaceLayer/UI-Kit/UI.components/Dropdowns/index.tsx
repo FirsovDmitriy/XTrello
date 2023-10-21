@@ -3,7 +3,6 @@ import { FC, useEffect, useRef } from 'react';
 import { IProps } from './type';
 import { Context } from './Context';
 import DropdownElm from './DropdownElm';
-import { useScrollbarSize } from '../../hooks/useScrollbarSize'
 
 import * as SC from './styled';
 
@@ -14,21 +13,33 @@ const Dropdowns: FC<IProps> = ({
   anchorEl,
   ...props
 }) => {
+  const scrollbarSize = window.innerWidth - document.documentElement.clientWidth
   const ref = useRef<HTMLDivElement>(null);
+  
 
   function setPositioningStyles() {
     if (!(anchorEl instanceof Element)) {
       return;
     }
     const element = ref.current;
-    const coordY = anchorEl.getBoundingClientRect().bottom;
+    const heightDocument = document.documentElement.clientHeight
+    const h = ref.current?.getBoundingClientRect().bottom
+
+    const diff = heightDocument - anchorEl.getBoundingClientRect().bottom
+    let isDropdownBelowScreen = diff < ref.current.getBoundingClientRect().height
+
+    const coordY = anchorEl.getBoundingClientRect().bottom
     const coordX = anchorEl.getBoundingClientRect().x;
 
     if (element) {
-      element.style.top = `${ coordY }px`;
+      element.style.top = `${ isDropdownBelowScreen ? (coordY - ref.current.getBoundingClientRect().height) : coordY }px`;
       element.style.left = `${ coordX }px`;
     }
   }
+
+  useEffect(() => {
+    document.addEventListener('scroll', setPositioningStyles)
+  }, [])
 
   useEffect(() => {
     if (open) {
@@ -39,11 +50,10 @@ const Dropdowns: FC<IProps> = ({
   useEffect(() => {
     if(open) {
       document.body.style.overflow = 'hidden'
-      // eslint-disable-next-line react-hooks/rules-of-hooks
-      document.body.style.paddingRight = `${ useScrollbarSize() }px`
+      document.body.style.paddingRight = `${ scrollbarSize }px`
     } else {
-      document.body.style.overflow = null
-      document.body.style.paddingRight = null
+      document.body.style.overflow = 'visible'
+      document.body.style.paddingRight = '0px'
     }
   }, [open])
 

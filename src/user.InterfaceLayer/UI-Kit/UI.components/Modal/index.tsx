@@ -4,7 +4,6 @@ import { IProps, ISlot } from './type'
 import Portal from '../../../Components/GeneralComponents/ModalWindow/services/Portal'
 
 import * as SC from './styled'
-import { useScrollbarSize } from '../../hooks/useScrollbarSize'
 
 const ModalHeading = (props: ISlot) => (
   <SC.Heading>
@@ -26,14 +25,15 @@ const ModalFooter = (props: ISlot) => (
 
 const Modal: FC<IProps> = ({ onClose, children, open }) => {
 
+  const scrollbarSize = window.innerWidth - document.documentElement.clientWidth
+
   useEffect(() => {
     if(open) {
       document.body.style.overflow = 'hidden'
-      // eslint-disable-next-line react-hooks/rules-of-hooks
-      document.body.style.paddingRight = `${ useScrollbarSize() }px`
+      document.body.style.paddingRight = `${ scrollbarSize }px`
     } else {
-      document.body.style.overflow = null
-      document.body.style.paddingRight = null
+      document.body.style.overflow = 'visible'
+      document.body.style.paddingRight = '0px'
     }
   }, [open])
 

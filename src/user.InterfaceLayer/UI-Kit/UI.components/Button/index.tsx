@@ -6,7 +6,7 @@ import * as ST from './styled'
 
 const Button: FC<IProps> = ({ children, variant = 'primary', prepend, append, ...props }) => {
   switch(variant) {
-    case Variant.primary:
+    case Variant.PRIMARY:
       return <ST.Button { ...props }>
           {prepend ? (
             <ST.Prepend>{ prepend }</ST.Prepend>
@@ -20,7 +20,7 @@ const Button: FC<IProps> = ({ children, variant = 'primary', prepend, append, ..
       return <ST.GhostButton { ...props }>
         { children }
       </ST.GhostButton>
-    case Variant.square:
+    case Variant.SQUARE:
       return <ST.SquareButton { ...props }>
         { children }
       </ST.SquareButton>

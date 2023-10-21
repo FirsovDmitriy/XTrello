@@ -24,7 +24,7 @@ export const Arrow = styled.span<{ $isShow: boolean }>`
   transform: ${ props => props.$isShow ? (
     'rotate(180deg)' 
   ) : 'rotate(0)' };
-  transition: transform 0.3s ease-in-out;
+  transition: transform 0.3s ${ props => props.theme.timingFunc };
   margin: 0 8px 0 0;
 `
 
@@ -74,7 +74,7 @@ export const Item = styled.li<{ $disabled?: boolean }>`
   pointer-events: ${({ $disabled }) => $disabled ? 'none' : 'all'};
   @media (any-hover: hover) {
     &:hover {
-      background: ${ props => props.theme.background.secondary };
+      background: ${ props => props.theme.background.hovered };
     }
   }
 `

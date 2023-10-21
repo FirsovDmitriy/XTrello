@@ -1,36 +1,38 @@
 import { styled } from "styled-components"
-import Colors from "../../constants/colors"
 
 export const Checkbox = styled.label`
   position: relative;
-  display: inline-flex;
-  cursor: pointer;
+  width: min-content;
+  display: flex;
 `
 
 export const CheckboxCore = styled.span`
   width: 24px;
   height: 24px;
-  border: 2px solid ${ Colors.BORDER };
+  border: 2px solid ${ props => props.theme.border.primary };
   border-radius: 4px;
   display: flex;
-  transition: all 0.3 ease-in-out;
+  transition: all 0.3s ${ props => props.theme.timingFunc };
+  cursor: pointer;
 `
 
 export const Input = styled.input`
-  /* position: absolute; */
   appearance: none;
-  /* width: 0;
-  height: 0;
-  opacity: 0; */
   &:checked {
     ~ ${ CheckboxCore } {
-      background: url('src/user.InterfaceLayer/assets/img/done.svg') center / cover ${ Colors.PRIMARY };
-      border-color: ${ Colors.PRIMARY };
+
+      background:
+        url('src/user.InterfaceLayer/assets/img/check.svg')
+        center / cover
+        ${ props => props.theme.background.primary };
+
+      border-color: ${ props => props.theme.border.primary };
     }
   }
   &:disabled {
     ~ ${ CheckboxCore } {
-      background: grey;
+      background: ${ props => props.theme.background.disabled };
+      border-color: ${ props => props.theme.background.disabled };
       cursor: default;
     }
   }

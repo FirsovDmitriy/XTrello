@@ -1,19 +1,18 @@
 import { styled } from "styled-components"
-import { Colors } from "../../../styles/colors"
 
 export const Dropdowns = styled.div<{$open: boolean}>`
   position: fixed;
   z-index: 9;
-  box-shadow: 0px 0px 30px 0px ${ props => props.theme.shadow.primary };
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
   visibility: ${ props => props.$open ? 'visible' : 'hidden' };
   opacity: ${ props => props.$open ? 1 : 0 };
-  transition: opacity 0.3s cubic-bezier(0, 0, 0.2,1);
+  transition: opacity 0.3s ${ props => props.theme.timingFunc };
   padding-top: 2px;
 `
 
 export const DropdownsContent = styled.div`
-  background: ${ props => props.theme.background.primary };
-  color: ${ Colors.WHITE };
+  background: ${ props => props.theme.background.secondary };
+  color: ${ props => props.theme.text.white };
   min-width: 131px;
   width: max-content;
 `
