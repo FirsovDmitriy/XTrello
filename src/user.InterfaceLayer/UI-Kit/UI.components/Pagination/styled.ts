@@ -3,7 +3,7 @@ import { styled } from "styled-components";
 export const Pagination = styled.div`
   display: grid;
   grid-template-columns: max-content 1fr max-content;
-  align-content: center;
+  align-items: center;
   gap: 32px;
   padding: 20px;
 `
@@ -17,6 +17,7 @@ export const PaginationForm = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
+  height: 100%;
 `
 
 export const FormLabel = styled.p`

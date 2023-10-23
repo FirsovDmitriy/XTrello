@@ -14,8 +14,8 @@ const SelectMenus: FC<IProps> = ({
   const [isShow, setIsShow] = useState<boolean>(false);
   const ref = useRef<HTMLDivElement>(null);
   useClickOutside(ref, handleClose);
-  const [searchQuery, setSearchQuery] = useState<string>('')
-  const [filteredData, setFilteredData] = useState<Option[]>([])
+  const [searchQuery, setSearchQuery] = useState<string>('');
+  const [filteredData, setFilteredData] = useState<Option[]>([]);
 
   function handleClose() {
     setIsShow(false);
@@ -47,10 +47,10 @@ const SelectMenus: FC<IProps> = ({
 
   useEffect(() => {
     const filteredOut = options.filter(({ label }) => {
-      return label.includes(searchQuery)
-    })
-    setFilteredData(filteredOut)
-  }, [searchQuery, options])
+      return label.includes(searchQuery);
+    });
+    setFilteredData(filteredOut);
+  }, [searchQuery, options]);
 
   return (
     <ST.SelectMenus ref={ref}>
@@ -63,18 +63,20 @@ const SelectMenus: FC<IProps> = ({
       </ST.Base>
 
       <ST.Container $isShow={isShow}>
-        <ST.SearchForm role='search'>
-          <ST.SearchField
-            value={searchQuery}
-            onChange={(event: ChangeEvent<HTMLInputElement>) => {
-              setSearchQuery(event.target.value);
-            }}
-            placeholder='Поиск...'
-            type='search'
-            inputMode='search'
-          />
-          <i className='icon Search-icon'></i>
-        </ST.SearchForm>
+        {options.length > 16 ? (
+          <ST.SearchForm role='search'>
+            <ST.SearchField
+              value={searchQuery}
+              onChange={(event: ChangeEvent<HTMLInputElement>) => {
+                setSearchQuery(event.target.value);
+              }}
+              placeholder='Поиск...'
+              type='search'
+              inputMode='search'
+            />
+            <i className='icon Search-icon'></i>
+          </ST.SearchForm>
+        ) : null}
 
         {filteredData.length ? (
           <ST.List>
@@ -85,8 +87,10 @@ const SelectMenus: FC<IProps> = ({
                 $disabled={option?.disabled}
                 key={option.value}
               >
-                { option.label }
-                {isOptionSelected(option.value) && <i className='icon Done-icon'></i>}
+                {option.label}
+                {isOptionSelected(option.value) && (
+                  <i className='icon Done-icon'></i>
+                )}
               </ST.Item>
             ))}
           </ST.List>

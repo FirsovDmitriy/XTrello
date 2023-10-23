@@ -3,6 +3,7 @@ import { Field } from "../../Atoms"
 
 export const SelectMenus = styled.div`
   position: relative;
+  /* width: 216px; */
 `
 
 export const Base = styled(Field)<{ $isShow: boolean }>`
@@ -18,6 +19,7 @@ export const Content = styled.span`
   padding: 10px 12px;
   font: inherit;
   width: 100%;
+  white-space: nowrap;
 `
 
 export const Arrow = styled.span<{ $isShow: boolean }>`

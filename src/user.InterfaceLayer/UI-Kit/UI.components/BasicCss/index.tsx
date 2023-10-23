@@ -13,17 +13,17 @@ const Styles = createGlobalStyle`
   }
 
   body {
-    min-height: 100vh;
+    width: 100%;
+    height: 100%;
     margin: 0;
     background: ${ props => props.theme.backColor };
     color: ${ props => props.theme.textColor };
   }
 
   #root {
+    min-height: 100vh;
     display: grid;
-    grid-template-rows: 1fr max-content;
-
-    padding: 40px;
+    grid-template-rows: min-content 1fr;
   }
 
   button {

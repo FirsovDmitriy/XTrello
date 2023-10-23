@@ -23,7 +23,9 @@ const Pagination: FC = () => {
         <SC.FormInput />
       </SC.PaginationForm>
 
-      <SC.PaginationDisplayedRow>21-27 из 27</SC.PaginationDisplayedRow>
+      <SC.PaginationDisplayedRow>
+        21-27 из 27
+      </SC.PaginationDisplayedRow>
 
     </SC.Pagination>
   )

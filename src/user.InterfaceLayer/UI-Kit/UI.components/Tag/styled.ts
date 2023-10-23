@@ -1,5 +1,4 @@
 import { styled } from "styled-components"
-import Colors from "../../constants/colors"
 
 export const Tag = styled.span<{ $bgColor?: string }>`
   display: inline-flex;
@@ -7,9 +6,7 @@ export const Tag = styled.span<{ $bgColor?: string }>`
   align-items: center;
   font-size: 14px;
   padding: 2.6px 8px 4px 8px;
-  background: ${ props => (
-    props.$bgColor || Colors.PRIMARY
-  )};
+  background: ${ props => props.$bgColor || props.theme.backColor };
   color: #F4F4F4; // TODO: Put a variable
   border-radius: 4px;
   outline: transparent solid 2px;

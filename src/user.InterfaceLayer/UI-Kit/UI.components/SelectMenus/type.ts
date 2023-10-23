@@ -1,7 +1,7 @@
 export type Option = {
   label: string,
   value: string,
-  disabled: boolean
+  disabled?: boolean
 }
 
 export interface IProps {

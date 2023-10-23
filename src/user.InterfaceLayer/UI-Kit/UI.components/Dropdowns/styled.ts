@@ -2,6 +2,7 @@ import { styled } from "styled-components"
 
 export const Dropdowns = styled.div<{$open: boolean}>`
   position: fixed;
+  right: 0;
   z-index: 9;
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
   visibility: ${ props => props.$open ? 'visible' : 'hidden' };
@@ -11,8 +12,8 @@ export const Dropdowns = styled.div<{$open: boolean}>`
 `
 
 export const DropdownsContent = styled.div`
-  background: ${ props => props.theme.background.secondary };
-  color: ${ props => props.theme.text.white };
+  background: ${ props => props.theme.backColor };
+  color: ${ props => props.theme.textColor };
   min-width: 131px;
   width: max-content;
 `

@@ -5,6 +5,7 @@ export const Field = styled.div`
   border: 1px solid ${ props => props.theme.border.primary };
   border-radius: 4px;
   height: 3rem;
+  /* height: 42px; */
   display: flex;
   align-items: center;
   outline: 2px solid transparent;

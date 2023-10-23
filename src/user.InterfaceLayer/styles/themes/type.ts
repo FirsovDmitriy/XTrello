@@ -10,8 +10,8 @@ export interface ITheme {
   },
 
   text: {
-    white: string,
     hovered: string,
+    white: string,
     disabled: string,
   },
 

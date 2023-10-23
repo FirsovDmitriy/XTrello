@@ -4,11 +4,11 @@ const styles = css`
   font-weight: 600;
   padding: 0 16px;
   height: 42px;
+  /* height: 3rem; */
   border-radius: 4px;
   transition: all 0.3s ease-out;
 
-  width: 100px;
-  /* margin: 20px; */
+  /* width: 100px; */
 `
 
 const media = css`
@@ -41,9 +41,10 @@ export const Button = styled.button`
   }
 `
 
-export const GhostButton = styled.button`
+export const GhostButton = styled.button<{$gap?: string}>`
   border: none;
   ${ styles };
+  gap: ${ props => props.$gap };
 
   color: ${ props => props.theme.textColor };
 
