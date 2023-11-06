@@ -13,13 +13,10 @@ export interface ITheme {
     hovered: string,
     white: string,
     disabled: string,
+    button: string
   },
 
   border: {
-    primary: string
-  },
-
-  shadow: {
     primary: string
   },
 

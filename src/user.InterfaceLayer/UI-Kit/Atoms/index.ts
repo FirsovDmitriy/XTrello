@@ -4,14 +4,10 @@ export const Field = styled.div`
   width: 100%;
   border: 1px solid ${ props => props.theme.border.primary };
   border-radius: 4px;
-  height: 3rem;
-  /* height: 42px; */
+  /* height: 3rem; */
+  height: 42px;
   display: flex;
   align-items: center;
   outline: 2px solid transparent;
   outline-offset: 2px;
-`
-
-export const BasicButton = styled.button`
-  border: none;
 `

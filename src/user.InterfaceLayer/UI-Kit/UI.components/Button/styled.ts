@@ -4,11 +4,8 @@ const styles = css`
   font-weight: 600;
   padding: 0 16px;
   height: 42px;
-  /* height: 3rem; */
-  border-radius: 4px;
-  transition: all 0.3s ease-out;
-
-  /* width: 100px; */
+  border-radius: ${ props => props.theme.borderRadius };
+  transition: all ${ props => props.theme.durationTransition } ${ props => props.theme.timingFunc };
 `
 
 const media = css`
@@ -26,7 +23,7 @@ export const Button = styled.button`
   background: ${ props => props.theme.background.primary };
   border: none;
 
-  color: #FFF;
+  color: ${ props => props.theme.text.button };
 
   @media (any-hover: hover) {
     &:hover {
@@ -53,18 +50,30 @@ export const GhostButton = styled.button<{$gap?: string}>`
   &:disabled {
     pointer-events: none;
   }
+`
 
+export const LinkButton = styled.button`
+  font-weight: 600;
+  transition: all ${ props => props.theme.durationTransition } ${ props => props.theme.timingFunc };
+  border: none;
+  background-color: transparent;
+
+  @media (any-hover: hover) {
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 `
 
 export const SquareButton = styled.button`
-  display: flex;
-  width: 42px;
-  height: 42px;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid ${ props => props.theme.background.secondary };
+  --square-button-size: 42px;
+  width: var(--square-button-size);
+  height: var(--square-button-size);
+  border: 1px solid ${ props => props.theme.background.primary };
   border-radius: 4px;
 
+  transition: background ${ props => props.theme.durationTransition } ${ props => props.theme.timingFunc };
+  
   ${ media };
 
   &:disabled {

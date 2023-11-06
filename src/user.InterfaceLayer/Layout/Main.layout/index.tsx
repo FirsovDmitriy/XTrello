@@ -10,7 +10,7 @@ import { PageContent } from './styled'
 
 const MainLayout: FC = () => {
 
-  const [isDark] = useState<boolean>(true)
+  const [isDark] = useState<boolean>(false)
   const theme = isDark ? darkTheme : lightTheme
 
   return <ThemeProvider theme={ theme }>

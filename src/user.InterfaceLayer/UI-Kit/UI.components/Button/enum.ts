@@ -1,7 +1,8 @@
 enum Variant {
   PRIMARY = 'primary',
   GHOST = 'ghost',
-  SQUARE = 'square'
+  SQUARE = 'square',
+  LINK = 'link'
 }
 
 export default Variant

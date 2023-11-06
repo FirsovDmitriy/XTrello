@@ -4,7 +4,7 @@ import { Container } from '../../../UI-Kit/UI.components/Container/styled'
 export const HomeRow = styled(Container)`
   display: grid;
   align-items: center;
-  grid-template-columns: 1fr 264px min-content;
+  grid-template-columns: min-content 1fr min-content;
   gap: 24px;
   margin: 0;
 `
@@ -34,9 +34,6 @@ export const FormRow = styled.div`
 
 export const FormLabel = styled.label`
   margin: 0 0 8px 0;
-  > span {
-    color: ${ props => props.theme.errorColor };
-  }
 `
 
 export const FormRequired = styled.span`

@@ -6,20 +6,20 @@ import * as SC from './styled';
 const Button: FC<TypeProps> = ({
   children,
   variant = 'primary',
-  prepend,
-  append,
+  prependIcon,
+  appendIcon,
   ...props
 }) => {
   switch (variant) {
     case 'primary':
       return (
         <SC.Button {...props}>
-          {prepend ? (
-            <SC.PrependIcon>{ prepend }</SC.PrependIcon>
+          {prependIcon ? (
+            <SC.PrependIcon>{ prependIcon }</SC.PrependIcon>
           ) : null}
           { children}
-          {append ? (
-            <SC.AppendIcon> { append } </SC.AppendIcon>
+          {appendIcon ? (
+            <SC.AppendIcon> { appendIcon } </SC.AppendIcon>
           ) : null}
         </SC.Button>
       );
@@ -34,6 +34,12 @@ const Button: FC<TypeProps> = ({
         <SC.SquareButton {...props}>
           { children }
         </SC.SquareButton>
+      )
+    case 'link':
+      return (
+        <SC.LinkButton {...props}>
+          { children }
+        </SC.LinkButton>
       )
   }
 };

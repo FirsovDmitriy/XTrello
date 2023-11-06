@@ -38,7 +38,7 @@ export const Heading = styled.header`
   font-size: 24px;
   font-weight: 600;
   padding: 16px;
-  border-bottom: 1px solid ${ props => props.theme.border.primary };
+  border-bottom: 1px solid ${ props => props.theme.border.secondary };
 `
 
 export const Body = styled.div`
@@ -46,7 +46,7 @@ export const Body = styled.div`
 `
 
 export const Footer = styled.footer`
-  border-top: 1px solid ${ props => props.theme.border.primary };
+  border-top: 1px solid ${ props => props.theme.border.secondary };
   padding: 24px;
   display: flex;
   justify-content: flex-end;

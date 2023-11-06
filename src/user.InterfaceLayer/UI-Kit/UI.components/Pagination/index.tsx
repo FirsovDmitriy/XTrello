@@ -3,6 +3,7 @@ import Button from '../Button'
 import Variant from '../Button/enum'
 
 import * as SC from './styled'
+import TextField from '../TextField'
 
 const Pagination: FC = () => {
   return (
@@ -20,7 +21,10 @@ const Pagination: FC = () => {
 
       <SC.PaginationForm>
         <SC.FormLabel>Перейти к странице</SC.FormLabel>
-        <SC.FormInput />
+        {/* <SC.FormInput /> */}
+        <span style={{ width: '80px' }}>
+          <TextField />
+        </span>
       </SC.PaginationForm>
 
       <SC.PaginationDisplayedRow>

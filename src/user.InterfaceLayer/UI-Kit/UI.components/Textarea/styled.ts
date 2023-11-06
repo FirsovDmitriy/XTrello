@@ -21,6 +21,4 @@ export const Textarea = styled.textarea`
     outline-style: solid;
     outline-color: ${ props => props.theme.border.primary };
   }
-
-  margin-top: 100px;
 `

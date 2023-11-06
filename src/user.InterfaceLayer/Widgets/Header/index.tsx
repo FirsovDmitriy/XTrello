@@ -4,10 +4,14 @@ import Button from '../../UI-Kit/UI.components/Button'
 import Variant from '../../UI-Kit/UI.components/Button/enum'
 import Avatar from '../../UI-Kit/UI.components/Avatar'
 import Dropdowns from '../../UI-Kit/UI.components/Dropdowns'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 import * as SC from './styled'
 
 const Header: FC = () => {
+
+  // const location = useLocation()
+  const navigate = useNavigate()
 
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
   const [open, setOpen] = useState(false)
@@ -17,22 +21,33 @@ const Header: FC = () => {
     setOpen(true)
   }
 
-  const handleClose = () => setOpen(false)
+  // const handleClose = () => setOpen(false)
 
   return (
     <SC.Header>
       <SC.HeaderContainer>
         <SC.HeaderNav>
-          <AppLink to='#'>
+          <AppLink to='/'>
             Проекты
           </AppLink>
-          <AppLink to='#'>
+          <AppLink to='/tasks'>
             Задачи
           </AppLink>
           <AppLink to='#'>
             Пользователи
           </AppLink>
         </SC.HeaderNav>
+
+        <Button
+          onClick={ () => navigate('/tasks/create') }
+          variant={Variant.LINK}
+          style={{ gap: '8px' }}
+        >
+          Создать
+          <span>
+            <i className='icon ArowDropDown-icon'></i>
+          </span>
+        </Button>
         
         <Button
           variant={Variant.GHOST}
@@ -40,7 +55,7 @@ const Header: FC = () => {
           style={{ gap: '8px' }}
         >
           <Avatar />
-          <i className='icon ArowDropDown-icon'></i>
+          {/* <i className='icon ArowDropDown-icon'></i> */}
         </Button>
 
         {/* <Dropdowns

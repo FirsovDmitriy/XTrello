@@ -1,10 +1,10 @@
-import { ReactNode } from "react";
+import { MouseEventHandler, ReactNode } from "react";
 
 export type TypeProps = {
   children: ReactNode
   variant?: 'primary' | 'ghost' | 'square' | 'link'
   disabled?: boolean
-  prepend?: ReactNode | null
-  append?: ReactNode | null
-  onClick?: () => void
+  prependIcon?: ReactNode | null
+  appendIcon?: ReactNode | null
+  onClick: MouseEventHandler<HTMLButtonElement>
 }

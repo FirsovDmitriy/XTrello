@@ -3,6 +3,7 @@ import { Field } from "../../Atoms"
 
 export const SelectMenus = styled.div`
   position: relative;
+  width: 100%;
   /* width: 216px; */
 `
 

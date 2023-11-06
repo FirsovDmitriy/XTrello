@@ -1,29 +1,17 @@
 import { styled, css } from "styled-components"
+import { BasicButton } from "../Atoms/Button.atom"
 
-const styles = css`
-  font-weight: 600;
-  padding: 0 16px;
-  height: 42px;
-  border-radius: ${ props => props.theme.borderRadius };
-  transition: all ${ props => props.theme.durationTransition } ${ props => props.theme.timingFunc };
+const SIZE = '2.625rem'
+
+const BasicStyles = css`
+  padding: 0 1rem;
+  height: ${ SIZE };
 `
 
-const media = css`
-  @media (any-hover: hover) {
-    &:hover {
-      background: ${ props => props.theme.background.hovered };
-    }
-  }
-`
-
-export const Button = styled.button`
-
-  ${ styles };
-  
-  background: ${ props => props.theme.button.background };
-  border: none;
-
-  color: ${ props => props.theme.button.text };
+export const Button = styled(BasicButton)`
+  ${ BasicStyles }
+  background: ${ props => props.theme.pallete.background.default };
+  color: ${ props => props.theme.pallete.text.button };
 
   @media (any-hover: hover) {
     &:hover {
@@ -33,47 +21,56 @@ export const Button = styled.button`
 
   &:disabled {
     pointer-events: none;
-    background-color: ${ props => props.theme.background.disabled };
-    color: ${ props => props.theme.text.disabled };
   }
 `
 
-export const GhostButton = styled.button`
-  border: none;
-  ${ styles };
+export const GhostButton = styled(BasicButton)`
+  ${ BasicStyles }
+  color: ${ props => props.theme.pallete.text.primary };
 
-  color: ${ props => props.theme.textColor };
-
-  ${ media }
+  @media (any-hover: hover) {
+    &:hover {
+      background: ${ props => props.theme.pallete.background.hovered };
+    }
+  }
 
   &:disabled {
     pointer-events: none;
   }
-
 `
 
-export const SquareButton = styled.button`
-  --square-button-size: 42px;
-  width: var(--square-button-size);
-  height: var(--square-button-size);
-  border: 1px solid ${ props => props.theme.border.primary };
-  border-radius: 4px;
+export const SquareButton = styled(BasicButton)`
+  width: ${ SIZE };
+  height: ${ SIZE };
+  border: 1px solid ${ props => props.theme.pallete.border.primary };
 
-  transition: background ${ props => props.theme.durationTransition } ${ props => props.theme.timingFunc };
-  
-  ${ media };
+  @media (any-hover: hover) {
+    &:hover {
+      background: ${ props => props.theme.pallete.background.default };
+      color: ${ props => props.theme.pallete.text.button };
+    }
+  }
 
   &:disabled {
     pointer-events: none;
+  }
+`
+
+export const LinkButton = styled(BasicButton)`
+  background-color: transparent;
+  @media (any-hover: hover) {
+    &:hover {
+      text-decoration: underline;
+    }
   }
 `
 
 export const PrependIcon = styled.span`
-  margin: 0 8px 0 0;
+  margin: 0 0.5rem 0 0;
   display: flex;
 `
 
 export const AppendIcon = styled.span`
-  margin: 0 0 0 8px;
+  margin: 0 0 0 0.5rem;
   display: flex;
 `

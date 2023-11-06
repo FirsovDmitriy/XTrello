@@ -20,17 +20,14 @@ export const darkTheme: ITheme = {
     hovered: rgba(Colors.PRIMARY_2, 1),
     disabled: rgba(
       Colors.TERTIARY, 0.6
-    )
+    ),
+    button: '#1D2125'
   },
 
   border: {
     primary: rgba(
       Colors.PRIMARY, 0.9
     )
-  },
-
-  shadow: {
-    primary: Colors.BLACK
   },
 
   blackout: rgba(

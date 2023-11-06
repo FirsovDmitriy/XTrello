@@ -1,26 +1,32 @@
 export interface ITheme {
   pallete: {
-    mode: 'dark' | 'light',
     paper: {
       default: string,
       blackout: string
     },
-    text: string,
 
-    button: {
+    text: {
+      primary: string,
+      button: string,
+      disabled: string
+    },
+
+    background: {
       hovered: string,
-      disabledBackground: string,
-      background: string,
-      text: string,
+      disabled: string,
+      default: string,
     },
     border: {
       primary: string,
-      secondary: string
+      secondary: string,
+      disabled: string,
     },
     error: string
   },
 
   transitions: {
-    //
-  }
+    timingFunc: string,
+    duration: string
+  },
+  borderRadius: string
 }

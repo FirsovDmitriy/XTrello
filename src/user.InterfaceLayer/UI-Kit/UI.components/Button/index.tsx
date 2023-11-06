@@ -25,6 +25,13 @@ const Button: FC<IProps> = ({ children, variant = 'primary', prepend, append, ..
         { children }
       </ST.SquareButton>
 
+    case Variant.LINK:
+      return (
+        <ST.LinkButton { ...props }>
+          { children }
+        </ST.LinkButton>
+      )
+
   }
 }
 
