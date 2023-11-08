@@ -3,8 +3,8 @@ import { rgba } from "../../utilities/rgba";
 import { ITheme } from "../type";
 
 export const darkTheme: ITheme = {
-  backColor: '#2A323C',
-  textColor: '#A6ADBB',
+  backColor: '#111', /// #2A323C
+  textColor: '#f4f4f4', // #A6ADBB
 
   background: {
     primary: Colors.PRIMARY,

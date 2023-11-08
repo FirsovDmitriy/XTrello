@@ -5,8 +5,8 @@ import { ITheme } from "../type";
 
 export const lightTheme: ITheme = {
   //
-  backColor: '#ECE6F0',
-  textColor: '#1F2937',
+  backColor: '#f4f4f4', // #ECE6F0 
+  textColor: '#111', // #1F2937
 
   background: {
     primary: Colors.PRIMARY,

@@ -1,55 +1,64 @@
-import { styled } from "styled-components"
-import { BasicInput } from "../Atoms/BasicInput.atom"
-import { BasicField } from "../Atoms/BasicField.atom"
+import { css, styled } from 'styled-components';
+import { BasicInput } from '../Atoms/BasicInput.atom';
+import { TypeProps } from './type';
 
-export const TextField = styled(BasicField)<{ $disabled?: boolean, variant: boolean }>`
-  width: 100%;
-  border: 1px solid ${ props => props.theme.pallete.border.primary };
-  border-radius: ${ props => props.theme.borderRadius };
-  height: 2.625rem;
+export const TextField = styled.div<TypeProps>`
   display: flex;
   align-items: center;
-  outline: 2px solid transparent;
-  outline-offset: 2px;
+  height: 2.625rem;
+  padding: ${ props => props.$sx?.padding };
 
-  border-color: ${ props => {
-    return props.$disabled ? (
-      props.theme.pallete.background.disabled
-    ) : (
-      props.theme.pallete.border.primary
-    )}
-  };
+  ${props => {
+    switch (props.$variant) {
+      case 'outlined':
+        return css`
+          border: 1px solid ${(props) => props.theme.pallete.border.primary};
+          border-radius: ${(props) => props.theme.borderRadius};
+          outline: 2px solid transparent;
+          outline-offset: 2px;
+        `;
+      case 'underlined':
+        return css`
+          border-bottom: 1px solid;
+        `;
+    }
+  }}
 
-  &:focus-within {
-    outline-color: ${ props => props.theme.pallete.border.primary };
+  border-color: ${props => {
+    return props.disabled
+      ? props.theme.pallete.background.disabled
+      : props.theme.pallete.border.primary;
+  }};
+
+  &:focus-within,
+  &:focus {
+    outline-color: ${(props) => props.theme.pallete.border.primary};
   }
-`
+`;
 
 export const Input = styled(BasicInput)<{ isError?: boolean }>`
   flex: auto;
   padding: 0 0.75rem;
-  
+
   &:disabled {
-    background: ${ props => props.theme.pallete.background.disabled };
+    background: ${(props) => props.theme.pallete.background.disabled};
     &::placeholder {
-      color: ${ props => props.theme.pallete.text.disabled };
+      color: ${(props) => props.theme.pallete.text.disabled};
     }
   }
-`
+`;
 
-export const IconPrepend = styled.span`
+export const PrependIcon = styled.span`
   display: flex;
-  margin: 0 0 0 0.5rem;
-`
+`;
 
-export const IconAppend = styled.span`
+export const AppendIcon = styled.span`
   display: flex;
-  margin: 0 0.5rem 0 0;
-`
+`;
 
 export const InvalidText = styled.span`
   position: absolute;
   top: 100%;
   left: 0;
-  color: ${ props => props.theme.pallete.error };
-`
+  color: ${(props) => props.theme.pallete.error};
+`;

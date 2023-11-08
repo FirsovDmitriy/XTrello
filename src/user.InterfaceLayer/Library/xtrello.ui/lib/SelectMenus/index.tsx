@@ -14,7 +14,7 @@ const SelectMenus: FC<TypeProps> = (props) => {
     placeholder,
     options,
     ...restProps
-  } = props;
+    } = props;
 
   const [isShow, setIsShow] = useState<boolean>(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -59,48 +59,40 @@ const SelectMenus: FC<TypeProps> = (props) => {
 
   return (
     <SC.SelectMenus ref={ref}>
-
       <TextField
+        $variant='outlined'
         placeholder={placeholder}
-        // onChange={onChange}
+        onChange={onChange}
         value={formatValueToString()}
         onFocus={() => setIsShow(!isShow)}
         {...restProps}
       />
 
       <SC.Container $isShow={isShow}>
-        {filteredData.length ? (
-          <SC.List>
-            {filteredData.map((option) => (
+        
+        <SearchForm
+          value={searchQuery}
+          onChange={(event: ChangeEvent<HTMLInputElement>) => {
+            setSearchQuery(event.target.value);
+          }}
+        />
+
+        {filteredData.length 
+        ? <SC.List>
+            {filteredData.map(({ value, disabled, label }) => (
               <SC.Item
                 role='option'
-                onClick={() => handleChange(option.value)}
-                $disabled={option?.disabled}
-                key={option.value}
+                onClick={() => handleChange(value)}
+                $disabled={disabled}
+                key={value}
               >
-                {option.label}
-                {isOptionSelected(option.value) && (
-                  <i className='icon Done-icon'></i>
-                )}
+                { label }
+                {isOptionSelected(value) &&
+                  <i className='icon Done-icon'></i> }
               </SC.Item>
             ))}
           </SC.List>
-        ) : (
-          <SC.NotFound>Ничего не найдено</SC.NotFound>
-        )}
-
-        {options.length > 4 ? (
-
-          <SearchForm
-            value={searchQuery}
-            onChange={(event: ChangeEvent<HTMLInputElement>) => {
-              setSearchQuery(event.target.value);
-            }}
-            type='search'
-            inputMode='search'
-          />
-          
-        ) : null}
+        : <SC.NotFound>Ничего не найдено</SC.NotFound>}
       </SC.Container>
     </SC.SelectMenus>
   );

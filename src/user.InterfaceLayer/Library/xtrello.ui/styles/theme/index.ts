@@ -28,9 +28,10 @@ export const Theme = (mode: TypeMode): ITheme => ({
 
     border: {
       primary: Colors.BLUE_RUIN,
-      secondary: alpha(
-        Colors.DRIED_LAVENDER_FLOWERS, 0.8
-      ),
+      // secondary: alpha(
+      //   Colors.DRIED_LAVENDER_FLOWERS, 0.8
+      // ),
+      secondary: '#101418',
       disabled: alpha(
         Colors.NARWAL_GREY, 0.6
       )

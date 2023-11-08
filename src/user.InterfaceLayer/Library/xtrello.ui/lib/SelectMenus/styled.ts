@@ -73,7 +73,7 @@ export const List = styled.ul`
   flex-direction: column;
   max-height: 244px;
   overflow-y: auto;
-  padding: 8px 0;
+  padding: 0.5rem 0;
 `
 
 export const Item = styled.li<{ $disabled?: boolean }>`

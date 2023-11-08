@@ -2,24 +2,26 @@ import { styled } from "styled-components";
 
 export const RadioButton = styled.label`
   display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: ${ props => props.theme.pallete.text.primary };
 `
 
-export const Core = styled.span`
-  --size: 1.5rem;
-  display: grid;
+export const RadioButtonControl = styled.span`
   position: relative;
-  width: var(--size);
-  height: var(--size);
+  display: grid;
+  width: 1.5rem;
+  height: 1.5rem;
   border-radius: 50%;
   border: 2px solid ${ props => props.theme.pallete.border.primary };
   cursor: pointer;
+
   &::after {
-    --size: 10px;
-    place-self: center;
     content: '';
+    place-self: center;
     position: absolute;
-    width: var(--size);
-    height: var(--size);
+    width: 0.625rem;
+    height: 0.625rem;
     background: ${ props => props.theme.pallete.background.default };
     border-radius: 50%;
     transition: opacity 0.3s ${ props => props.theme.transitions.timingFunc };
@@ -27,10 +29,10 @@ export const Core = styled.span`
   }
 `
 
-export const Input = styled.input`
+export const RadioButtonInput = styled.input`
   appearance: none;
   &:checked {
-    ~ ${ Core } {
+    ~ ${ RadioButtonControl } {
       &::after {
         opacity: 1;
       }

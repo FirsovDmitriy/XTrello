@@ -1,18 +1,27 @@
-import { FC } from 'react'
+import { FC, useContext } from 'react'
 import { TypeProps } from './type'
+import { Context } from '../../Context'
 
 import * as SC from './styled'
 
-const RadioButton: FC<TypeProps> = ({ label, value, checked, name }) => {
+const RadioButton: FC<TypeProps> = (props) => {
+
+  const {
+    label,
+    ...restProps
+  } = props
+
+  const name = useContext(Context)
+
   return (
     <SC.RadioButton>
       { label }
-      <SC.Input
+      <SC.RadioButtonInput
         type='radio'
-        value={value}
-        checked={checked}
+        name={name}
+        { ...restProps }
       />
-      <SC.Core />
+      <SC.RadioButtonControl />
     </SC.RadioButton>
   )
 }

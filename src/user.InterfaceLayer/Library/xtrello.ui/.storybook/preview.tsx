@@ -1,10 +1,7 @@
 import React from "react";
 import { ThemeProvider } from "styled-components";
-import { Theme } from '../src/styles/theme'
-
+import { Theme } from '../styles/theme'
 import BasicCss from '../lib/BasicCss'
-
-// const XTheme = Theme('dark')
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -16,9 +13,8 @@ export const parameters = {
   },
 };
 
-
 export const decorators = [
-  (Story) => (
+  Story => (
     <ThemeProvider theme={Theme}>
       <BasicCss />
       <Story />

@@ -8,21 +8,26 @@ const TextField: FC<TypeProps> = (props) => {
   const {
     onChange,
     value,
-    Icon,
     disabled,
     isError,
     errorText,
+    $variant = 'outlined',
+    prependIcon,
+    appendIcon,
+    $sx,
     ...restProps
   } = props
 
   return (
     <SC.TextField
-      $disabled={disabled}
+      $sx={$sx}
+      $variant={$variant}
+      disabled={disabled}
     >
-      {Icon?.prepend ? (
-        <SC.IconPrepend>
-          { Icon.prepend }
-        </SC.IconPrepend>
+      {prependIcon ? (
+        <SC.PrependIcon>
+          { prependIcon }
+        </SC.PrependIcon>
       ) : null}
 
       <SC.Input
@@ -41,10 +46,10 @@ const TextField: FC<TypeProps> = (props) => {
         null
       )}
 
-      {Icon?.append ? (
-        <SC.IconAppend>
-          { Icon.append }
-        </SC.IconAppend>
+      {appendIcon ? (
+        <SC.AppendIcon>
+          { appendIcon }
+        </SC.AppendIcon>
       ) : null}
     </SC.TextField>
   );
