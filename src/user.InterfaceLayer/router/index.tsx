@@ -6,7 +6,7 @@ import { ProfilePage } from "../Pages/Profile.page";
 import { TasksPage } from "../Pages/Tasks.page";
 
 import { RouteObject } from "react-router-dom";
-import CreatePage from "../Pages/Create.page/ui/CreatePage";
+import CreatePage from "../Pages/Create.page/components/page";
 import ErrorRouteElement from "../Components/GeneralComponents/Error/ErrorRouteElement";
 
 const AppRouter: RouteObject[] = [

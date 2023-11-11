@@ -1,1 +1,1 @@
-export { TasksPageAsync as TasksPage } from './ui/TasksPage.async'
+export { TasksPageAsync as TasksPage } from './components/TasksPage.async'
