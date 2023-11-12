@@ -24,6 +24,6 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src"],
+  "include": ["src", "src/user.InterfaceLayer/Library/main.library/Widgets/Header.widget/components/.tsx"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

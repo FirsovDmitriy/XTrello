@@ -4,8 +4,6 @@ import './user.InterfaceLayer/styles/index.scss'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import AppRouter from './user.InterfaceLayer/router'
 
-import 'bootstrap/dist/css/bootstrap.min.css';
-
 const element = document.getElementById('root') as HTMLElement
 const router = createBrowserRouter(AppRouter)
 
