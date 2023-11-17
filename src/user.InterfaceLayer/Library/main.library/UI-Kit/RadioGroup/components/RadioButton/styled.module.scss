@@ -1,0 +1,15 @@
+.RadioControl {
+  span {
+    opacity: 0;
+  }
+}
+
+.Input {
+  &:checked {
+    + .RadioControl {
+      span {
+        opacity: 1;
+      }
+    }
+  }
+}

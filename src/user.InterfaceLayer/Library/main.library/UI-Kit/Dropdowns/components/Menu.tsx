@@ -5,9 +5,16 @@ type TypeProps = {
   children: ReactNode
   show: boolean
   anchorOrigin?: 'left' | 'right'
+  className?: string
 }
 
-const Menu: FC<TypeProps> = ({ children, show, anchorOrigin = 'right' }) => {
+const Menu: FC<TypeProps> = (props) => {
+  const {
+    children,
+    show,
+    anchorOrigin = 'right',
+    className
+  } = props
   
   const visible = show ? 'opacity-100 visible' : 'opacity-0 invisible'
   let horizontalPositioning: string = ''
@@ -23,7 +30,7 @@ const Menu: FC<TypeProps> = ({ children, show, anchorOrigin = 'right' }) => {
   return (
     <div
       className={
-        cn('absolute top-full shadow-xl transition-opacity bg-primary-backColor z-10', visible, horizontalPositioning)
+        cn('absolute top-full shadow-2xl transition-opacity bg-primary-backColor z-10', visible, horizontalPositioning, className)
       }
     >
       { children }

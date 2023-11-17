@@ -1,6 +1,7 @@
 import { ReactNode } from "react"
 
 export type TypeProps = {
-  children: ReactNode,
+  children: ReactNode
+  className?: string
   onClose: () => void
 }

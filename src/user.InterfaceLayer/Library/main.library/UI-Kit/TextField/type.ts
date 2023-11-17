@@ -12,5 +12,6 @@ export type TypeProps = {
   disabled?: boolean
   errorText?: string
   onFocus?: () => void
-  $variant?: 'underlined' | 'outlined'
+  variant?: 'underlined' | 'outlined'
+  className?: string
 }

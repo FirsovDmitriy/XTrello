@@ -1,6 +1,5 @@
 import { ChangeEvent, FC } from 'react'
 import TextField from '../../../TextField'
-import SearchIcon from '../../../../icons/SearchIcon'
 
 import * as SC from './styled'
 
@@ -23,13 +22,11 @@ const SearchForm: FC<TypeProps> = ({ value }) => {
 
       <TextField
         placeholder='Поиск...'
-        $variant='underlined'
         value={value}
         onChange={
           function (event: ChangeEvent<HTMLInputElement>): void {
             throw new Error('Function not implemented.')
         }}
-        prependIcon={ <SearchIcon /> }
         $sx={{
           padding: '0 1rem',
           bg: 'green'

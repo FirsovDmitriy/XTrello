@@ -9,6 +9,7 @@ const Button: FC<TypeProps> = (props) => {
     variant = 'primary',
     prependIcon,
     appendIcon,
+    className,
     ...restProps
   } = props
 
@@ -16,26 +17,27 @@ const Button: FC<TypeProps> = (props) => {
 
   switch(variant) {
       case 'primary':
-        styles = 'bg-primary text-[#1D2125] transition-opacity hover:opacity-60'
+        styles = 'h-[2.625rem] px-4 bg-primaryColor text-[#1D2125] transition-opacity hover:opacity-60'
         break
-      case 'outlined':
-        styles = 'text-primary-text transition-colors hover:bg-hovered'
+      case 'ghost':
+        styles = 'h-[2.625rem] px-4 text-primary-text transition-colors hover:bg-hovered'
         break
       case 'square':
-        styles = 'w-[2.625rem] border border-primary transition-colors hover:bg-primary'
+        styles = 'h-[2.625rem] w-[2.625rem] border border-primaryColor bg-primary-backColor transition-colors hover:bg-primaryColor'
+        break
+      default:
+        styles = ''
   }
 
   return (
     <button
-      className={cn('flex justify-center items-center gap-2 font-semibold h-[2.625rem] px-4 rounded', styles)}
+      className={cn('flex justify-center items-center gap-2 font-semibold rounded', styles, className)}
       { ...restProps }
     >
       {prependIcon ? (
         <span> {prependIcon} </span>
       ) : null}
-      <span className='grid'>
-        { children }
-      </span>
+      { children }
       {appendIcon ? (
         <span> {appendIcon} </span>
       ) : null}

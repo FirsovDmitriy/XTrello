@@ -6,7 +6,7 @@ const MainLayout: FC = () => {
   return (
     <>
       <Header />
-      <main className='flex flex-col'>
+      <main className='flex flex-col items-stretch'>
         <Outlet />
       </main>
     </>

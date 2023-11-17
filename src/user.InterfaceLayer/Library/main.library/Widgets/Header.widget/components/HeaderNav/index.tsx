@@ -3,15 +3,15 @@ import { NavLink } from 'react-router-dom'
 
 let links = [
   {
-    text: 'Проекты',
+    text: 'Projects',
     path: '#',
   },
   {
-    text: 'Agile доски',
+    text: 'Agile boards',
     path: '#',
   },
   {
-    text: 'Пользователи',
+    text: 'Users',
     path: '#',
   },
 ]
@@ -22,7 +22,7 @@ const HeaderNav: FC = () => {
       {links.map(({ text, path }) => (
         <NavLink
           to={path}
-          className="text-white transition-colors hover:text-[#786efe]"
+          className="font-semibold text-primaryColor transition-all hover:text-[#786efe] hover:underline"
           key={text}
         >
           { text }

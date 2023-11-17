@@ -3,7 +3,7 @@ import cn from 'classnames'
 
 type TypeProps = {
   children: ReactNode
-  className: string
+  className?: string
 }
 
 const Item: FC<TypeProps> = ({ children, className }) => {

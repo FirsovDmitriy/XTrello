@@ -14,12 +14,14 @@ const Header: FC = () => {
     <header className='bg-[#111]'>
       <Container className='flex justify-end items-center gap-6'>
         <HeaderNav />
+        {/*    Dropdown    */}
         <Dropdowns onClose={() => setShowEl(false)}>
           <Dropdowns.Toggle>
             <Button
               onClick={() => setShowEl(!showEl)}
             >
-              Menu
+              AB
+              <i className='icon ArowDropDown-icon'></i>
             </Button>
           </Dropdowns.Toggle>
           <Dropdowns.Menu
@@ -27,10 +29,10 @@ const Header: FC = () => {
           >
             <Dropdowns.Item>
               <NavLink to={RoutesPath.PROFILE}>
-                Профиль
+                Profile
               </NavLink>
             </Dropdowns.Item>
-            <Dropdowns.Item>Выход</Dropdowns.Item>
+            <Dropdowns.Item>Exit</Dropdowns.Item>
           </Dropdowns.Menu>
         </Dropdowns>
 

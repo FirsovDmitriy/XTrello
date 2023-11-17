@@ -1,8 +1,9 @@
 import { useState, useRef, FC, useEffect, ChangeEvent } from 'react';
-import useClickAwayListener from '../../src/hooks/useClickAwayListener';
+import useClickAwayListener from '../../../../hooks/useClickAwayListener';
 import { TypeProps, Option } from './type';
 import TextField from '../TextField';
 import SearchForm from './components/SearchForm';
+import cn from 'classnames';
 
 const SelectMenus: FC<TypeProps> = (props) => {
   const {
@@ -57,34 +58,39 @@ const SelectMenus: FC<TypeProps> = (props) => {
 
   return (
     <div
-      className='relative'
+      className='relative w-80'
       ref={ref}
     >
       <TextField
-        $variant='outlined'
+        variant='outlined'
         placeholder={placeholder}
         onChange={onChange}
         value={formatValueToString()}
-        onFocus={() => setIsShow(!isShow)}
-        {...restProps}
+        onClick={() => setIsShow(!isShow)}
+        readOnly
+        appendIcon={
+          <i className='icon ArowDropDown-icon'></i>
+        }
+        className='cursor-pointer'
       />
 
       <div
-        className='absolute top-full left-0 rounded'
+        className={cn('absolute top-full left-0 w-full mt-1 shadow-md rounded bg-primary-backColor',
+          isShow ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none')}
       >
         
-        <SearchForm
+        {/* <SearchForm
           value={searchQuery}
           onChange={(event: ChangeEvent<HTMLInputElement>) => {
             setSearchQuery(event.target.value);
           }}
-        />
+        /> */}
 
         {filteredData.length 
-        ? <ul>
+        ? <ul className='py-1'>
             {filteredData.map(({ value, disabled, label }) => (
               <li
-                className='p-4 cursor-pointer'
+                className='px-4 py-[0.9rem] cursor-pointer transition-colors hover:bg-hoveredColor'
                 role='option'
                 onClick={() => handleChange(value)}
                 // $disabled={disabled}

@@ -1,10 +1,13 @@
 import { FC } from 'react'
 import { TypeProps } from './type'
 import Item from './components/Item'
+import cn from 'classnames'
 
-const List: FC<TypeProps> = ({ children }) => {
+const List: FC<TypeProps> = ({ children, className }) => {
   return (
-    <ul className='flex flex-col'>
+    <ul
+      className={cn('flex flex-col', className)}
+    >
       { children }
     </ul>
   )

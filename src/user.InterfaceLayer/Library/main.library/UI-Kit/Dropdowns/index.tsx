@@ -4,14 +4,15 @@ import Menu from './components/Menu'
 import Item from './components/Item'
 import { TypeProps } from './type'
 import useClickAwayListener from '../../../../hooks/useClickAwayListener'
+import cn from 'classnames'
 
-const Dropdowns: FC<TypeProps> = ({ children, onClose }) => {
+const Dropdowns: FC<TypeProps> = ({ children, onClose, className }) => {
 
   const ref = useRef<HTMLDivElement>(null)
   useClickAwayListener(ref, onClose)
 
   return (
-    <div ref={ref} className='relative'>
+    <div ref={ref} className={cn('relative', className)}>
       { children }
     </div>
   )

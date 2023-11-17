@@ -1,0 +1,17 @@
+.SwitchTrack {
+  border: 1px solid gray;
+  span {
+    background: gray;
+  }
+}
+
+.Input {
+  &:checked {
+    + .SwitchTrack {
+      border-color: darkslateblue;
+      span {
+        background: darkslateblue;
+      }
+    }
+  }
+}

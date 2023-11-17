@@ -2,6 +2,7 @@ import { FC, useState } from 'react'
 import Button from '../../UI-Kit/Buttons'
 import Dropdowns from '../../UI-Kit/Dropdowns'
 import { NavLink } from 'react-router-dom'
+import ModalWarning from './components/Modal.warning'
 
 const Card: FC = () => {
   const [showEl, setShowEl] = useState<boolean>(false)
@@ -31,7 +32,9 @@ const Card: FC = () => {
               <Dropdowns.Item>
                 <NavLink to={'#'}>Редактировать</NavLink>
               </Dropdowns.Item>
-              <Dropdowns.Item>Удалить</Dropdowns.Item>
+              <Dropdowns.Item>
+                <ModalWarning />
+              </Dropdowns.Item>
             </Dropdowns.Menu>
           </Dropdowns>
         </div>

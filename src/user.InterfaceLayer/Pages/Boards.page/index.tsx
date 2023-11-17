@@ -1,0 +1,1 @@
+export { BoardsPageAsync as BoardsPage } from './components/BoardsPage.async'

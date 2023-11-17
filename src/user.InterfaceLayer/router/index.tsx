@@ -3,11 +3,10 @@ import RoutesPath from "./routesPath"
 import MainLayout from "../Layout/Main.layout"
 import { HomePage } from "../Pages/Home.page"
 import { ProfilePage } from "../Pages/Profile.page";
-import { TasksPage } from "../Pages/Tasks.page";
-
 import { RouteObject } from "react-router-dom";
 import CreatePage from "../Pages/Create.page/components/page";
 import ErrorRouteElement from "../Components/GeneralComponents/Error/ErrorRouteElement";
+import { EditProfilePage } from "../Pages/EditProfile.page";
 
 const AppRouter: RouteObject[] = [
   {
@@ -23,14 +22,14 @@ const AppRouter: RouteObject[] = [
           </Suspense>
         )
       },
-      {
-        path: RoutesPath.TASKS,
-        element: (
-          <Suspense>
-            <TasksPage />
-          </Suspense>
-        )
-      },
+      // {
+      //   path: RoutesPath.TASKS,
+      //   element: (
+      //     <Suspense>
+      //       <TasksPage />
+      //     </Suspense>
+      //   )
+      // },
       {
         path: RoutesPath.CREATE_TASK,
         element: (
@@ -44,6 +43,14 @@ const AppRouter: RouteObject[] = [
         element: (
           <Suspense>
             <ProfilePage />
+          </Suspense>
+        )
+      },
+      {
+        path: RoutesPath.EDIT_PROFILE,
+        element: (
+          <Suspense>
+            <EditProfilePage />
           </Suspense>
         )
       }
