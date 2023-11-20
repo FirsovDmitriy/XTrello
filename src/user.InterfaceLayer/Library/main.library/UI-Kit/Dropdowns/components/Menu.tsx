@@ -30,7 +30,7 @@ const Menu: FC<TypeProps> = (props) => {
   return (
     <div
       className={
-        cn('absolute top-full shadow-2xl transition-opacity bg-primary-backColor z-10', visible, horizontalPositioning, className)
+        cn('absolute top-full shadow-2xl transition-opacity bg-body-color z-10', visible, horizontalPositioning, className)
       }
     >
       { children }

@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import RadioButton from './components/RadioButton'
+import Radio from './components/Radio'
 import { TypeProps } from './type'
 import { Context } from './Context'
 
@@ -24,5 +24,5 @@ const RadioGroup: FC<TypeProps> = (props) => {
 }
 
 export default Object.assign(RadioGroup, {
-  Radio: RadioButton
+  Radio
 })

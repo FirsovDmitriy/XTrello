@@ -3,7 +3,8 @@ enum RoutesPath {
   PROJECTS = '/projects',
   PROFILE = '/profile',
   EDIT_PROFILE = '/profile/edit',
-  BOARDS = '/boards',
+  BOARD = '/board',
+  CARD_TASK = 'card-task',
   CREATE_TASK = '/tasks/create',
   NOT_FOUND = '*'
 }

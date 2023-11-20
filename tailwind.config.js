@@ -11,12 +11,15 @@ export default {
     extend: {
       colors: {
         primaryColor: '#579DFF',
-        'primary-textColor': '#373737',
-        'primary-backColor': '#f4f4f4',
-        error: '#B3261E',
-        'dark-border': '#101418',
+
+        'text-color': '#373737',
+        'body-color': '#f4f4f4',
+
+        errorColor: '#B3261E',
         hoveredColor: 'rgba(121, 116, 126, 0.2)',
-        'secondary-textColor': '#8E8E8E'
+        secondaryColor: '#8E8E8E',
+
+        thirdColor: 'rgba(0, 0, 0, 0.15)'
       }
     },
   },

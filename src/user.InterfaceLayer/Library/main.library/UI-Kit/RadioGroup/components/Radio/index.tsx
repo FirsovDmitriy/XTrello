@@ -4,7 +4,7 @@ import { Context } from '../../Context'
 import styled from './styled.module.scss'
 import cn from 'classnames'
 
-const RadioButton: FC<TypeProps> = (props) => {
+const Radio: FC<TypeProps> = (props) => {
 
   const {
     label,
@@ -14,9 +14,12 @@ const RadioButton: FC<TypeProps> = (props) => {
   const {name, onChange} = useContext(Context)
 
   return (
-    <label className='flex items-center gap-2'>
+    <label className='flex items-center w-full justify-between'>
+
+      { label }
+
       <input
-        className={cn('opacity-0 appearance-none', styled.Input)}
+        className={cn('appearance-none absolute top-[-9999px] left-[-9999px]', styled.Input)}
         type='radio'
         name={name}
         { ...restProps }
@@ -31,10 +34,8 @@ const RadioButton: FC<TypeProps> = (props) => {
         />
       </div>
 
-      { label }
-
     </label>
   )
 }
 
-export default RadioButton
+export default Radio

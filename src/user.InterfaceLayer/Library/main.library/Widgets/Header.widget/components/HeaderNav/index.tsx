@@ -1,5 +1,6 @@
 import { FC } from 'react'
 import { NavLink } from 'react-router-dom'
+import RoutesPath from '../../../../../../router/routesPath'
 
 let links = [
   {
@@ -8,7 +9,7 @@ let links = [
   },
   {
     text: 'Agile boards',
-    path: '#',
+    path: RoutesPath.BOARD,
   },
   {
     text: 'Users',

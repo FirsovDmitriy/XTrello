@@ -5,6 +5,7 @@ import TextField from '../../../Library/main.library/UI-Kit/TextField'
 import RadioGroup from '../../../Library/main.library/UI-Kit/RadioGroup'
 import Button from '../../../Library/main.library/UI-Kit/Buttons'
 import Switch from '../../../Library/main.library/UI-Kit/Switch'
+import Upload from '../../../Library/main.library/UI-Kit/Upload'
 
 const EditProfilePage: FC = () => {
 
@@ -45,15 +46,20 @@ const EditProfilePage: FC = () => {
               <p>valentine@gmail.com</p>
             </label>
 
-            <label className='grid grid-cols-[8rem_1fr]'>
+            <label className='grid grid-cols-[8rem_1fr] mb-6'>
               <span className=''>About Me</span>
               <TextField />
             </label>
 
+            <label className='grid grid-cols-[8rem_1fr]'>
+              <span className=''>Photo</span>
+              <Upload />
+            </label>
+
           </div>
-          <aside className='col-span-4 px-6'>
-            <div>
-              <Switch />
+          <aside className='col-span-4 px-6 border-l border-thirdColor'>
+            <div className='mb-6 pb-6 border-b border-thirdColor'>
+              <Switch label='Active' />
             </div>
             <RadioGroup
               name='test'

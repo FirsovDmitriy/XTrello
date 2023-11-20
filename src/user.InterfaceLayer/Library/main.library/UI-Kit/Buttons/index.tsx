@@ -20,7 +20,7 @@ const Button: FC<TypeProps> = (props) => {
         styles = 'h-[2.625rem] px-4 bg-primaryColor text-[#1D2125] transition-opacity hover:opacity-60'
         break
       case 'ghost':
-        styles = 'h-[2.625rem] px-4 text-primary-text transition-colors hover:bg-hovered'
+        styles = 'h-[2.625rem] px-4 text-primary-text transition-colors hover:bg-hoveredColor'
         break
       case 'square':
         styles = 'h-[2.625rem] w-[2.625rem] border border-primaryColor bg-primary-backColor transition-colors hover:bg-primaryColor'

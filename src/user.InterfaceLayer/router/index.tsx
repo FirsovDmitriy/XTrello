@@ -7,6 +7,7 @@ import { RouteObject } from "react-router-dom";
 import CreatePage from "../Pages/Create.page/components/page";
 import ErrorRouteElement from "../Components/GeneralComponents/Error/ErrorRouteElement";
 import { EditProfilePage } from "../Pages/EditProfile.page";
+import { BoardPage } from "../Pages/Board.page";
 
 const AppRouter: RouteObject[] = [
   {
@@ -22,14 +23,14 @@ const AppRouter: RouteObject[] = [
           </Suspense>
         )
       },
-      // {
-      //   path: RoutesPath.TASKS,
-      //   element: (
-      //     <Suspense>
-      //       <TasksPage />
-      //     </Suspense>
-      //   )
-      // },
+      {
+        path: RoutesPath.BOARD,
+        element: (
+          <Suspense>
+            <BoardPage />
+          </Suspense>
+        )
+      },
       {
         path: RoutesPath.CREATE_TASK,
         element: (
