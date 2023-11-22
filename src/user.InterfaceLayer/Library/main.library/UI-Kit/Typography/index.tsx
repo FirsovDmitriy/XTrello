@@ -7,7 +7,8 @@ const Typography: FC<TypeProps> = (props) => {
     variant,
     color,
     component: Component = 'p',
-    children
+    children,
+    className
   } = props
 
   let styles: string = ''
@@ -21,10 +22,13 @@ const Typography: FC<TypeProps> = (props) => {
       break
     case 'body1':
       styles = ''
+      break
+    case 'body2':
+      styles = 'text-sm'
   }
 
   return (
-    <Component className={cn('', styles)}>
+    <Component className={cn('', styles, className)}>
       { children }
     </Component>
   )

@@ -6,7 +6,7 @@ import cn from 'classnames'
 const List: FC<TypeProps> = ({ children, className }) => {
   return (
     <ul
-      className={cn('flex flex-col', className)}
+      className={cn('flex', className)}
     >
       { children }
     </ul>

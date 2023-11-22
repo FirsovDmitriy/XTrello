@@ -1,0 +1,6 @@
+@use 'sass:math';
+
+.Row {
+  --diff: calc((100% - 120rem) / 2);
+  padding-left: max(20px, var(--diff));
+}
