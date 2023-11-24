@@ -8,7 +8,7 @@ const element = document.getElementById('root') as HTMLElement
 const router = createBrowserRouter(AppRouter)
 
 ReactDOM.createRoot(element).render(
-  <React.StrictMode>
+  <React.Fragment>
     <RouterProvider router={ router } />
-  </React.StrictMode>,
+  </React.Fragment>,
 )

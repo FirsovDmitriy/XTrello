@@ -4,15 +4,15 @@ import RoutesPath from '../../../../../../router/routesPath'
 
 let links = [
   {
-    text: 'Projects',
-    path: '#',
+    text: 'Проекты',
+    path: '/',
   },
   {
-    text: 'Agile boards',
+    text: 'Agile доски',
     path: RoutesPath.BOARD,
   },
   {
-    text: 'Users',
+    text: 'Пользователи',
     path: '#',
   },
 ]

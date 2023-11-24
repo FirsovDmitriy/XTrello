@@ -1,6 +1,7 @@
 export type TypeProps = {
   title?: string
   tasks: task[]
+  id: string
 }
 
 type task = {

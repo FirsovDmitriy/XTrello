@@ -1,1 +1,1 @@
-export { BoardPageAsync as BoardPage } from './components/BoardsPage.async'
+export { BoardPageAsync as BoardPage } from './components/BoardPage.async'

@@ -6,30 +6,51 @@ import List from '../../../Library/main.library/UI-Kit/List'
 import Column from './Column'
 import styled from './styled.module.scss'
 import cn from 'classnames'
-import { DragDropContext } from 'react-beautiful-dnd'
+import { DragDropContext, DropResult } from 'react-beautiful-dnd'
 import mockData from './mock'
+import { IInitialData } from './type'
 
 const Board: FC = () => {
 
-  const [mock, setMock] = useState(mockData)
+  const [mock, setMock] = useState<IInitialData>(mockData)
 
-  const onBeforeCapture = () => {
+  var onDragStart = () => {
     /*...*/
   };
+  var onDragUpdate = () => {
+    /*...*/
+  }
 
-  const onBeforeDragStart = () => {
-    /*...*/
-  };
+  var onDragEnd = (result: DropResult): void => {
+    const { source, destination, draggableId } = result
 
-  const onDragStart = () => {
-    /*...*/
-  };
-  const onDragUpdate = () => {
-    /*...*/
-  };
-  const onDragEnd = () => {
-    // the only one that is required
-  };
+    if(!destination) return
+
+    if(
+      destination.droppableId === source.droppableId &&
+      destination.index === source.index
+    ) {
+      return
+    }
+
+    let col = mock.columns[source.droppableId]
+    var clonedTaskIDs = Array.from(col.taskIDs)
+    clonedTaskIDs.splice(source.index, 1)
+    clonedTaskIDs.splice(destination.index, 0, draggableId)
+
+    var newCol = {
+      ...col,
+      taskIDs: clonedTaskIDs
+    }
+
+    setMock({
+      ...mock,
+      columns: {
+        ...mock.columns,
+        [newCol.id]: newCol
+      }
+    })
+  }
 
   return (
     <section>
@@ -42,55 +63,30 @@ const Board: FC = () => {
 
       <div className={cn(styled.Row)}>
         <DragDropContext
-          onBeforeCapture={onBeforeCapture}
-          onBeforeDragStart={onBeforeDragStart}
           onDragStart={onDragStart}
           onDragUpdate={onDragUpdate}
           onDragEnd={onDragEnd}
         >
           <List className="flex-row gap-5 min-w-full overflow-x-auto pb-2">
 
-            {mock.columnOrder.map(id => {
-              var col = mock.columns[id]
-              var tasks = col.taskIds.map(id => mock.tasks[id])
+            {mock.columnOrder.map(colID => {
+              // debugger
+              var col = mock.columns[colID]
+              var tasks = col.taskIDs.map((id: string) => (
+                mock.tasks[id]
+              ))
 
               return (
                 <List.Item key={col.id}>
                   <Column
-                    title="В работе"
+                    title={col.title}
+                    id={colID}
                     tasks={tasks}
                   />
                 </List.Item>
               )
             })}
 
-            {/* <List.Item>
-              <Column title="Черновик" />
-            </List.Item>
-
-            <List.Item>
-              <Column title="В работе" />
-            </List.Item>
-
-            <List.Item>
-              <Column title="Завершена" />
-            </List.Item>
-
-            <List.Item>
-              <Column title="Тестирование" />
-            </List.Item>
-
-            <List.Item>
-              <Column title="Выполнена" />
-            </List.Item>
-
-            <List.Item>
-              <Column title="Закрыта" />
-            </List.Item>
-
-            <List.Item>
-              <Column title="Удалена" />
-            </List.Item> */}
           </List>
         </DragDropContext>
       </div>

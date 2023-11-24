@@ -2,30 +2,33 @@ import { FC } from 'react'
 import { Link } from 'react-router-dom'
 import RoutesPath from '../../../router/routesPath'
 import { Draggable } from 'react-beautiful-dnd'
+import { ITask } from './type'
+import cn from 'classnames'
 
 type TypeProps = {
-  id: string
   index: number
+  task: ITask
 }
 
 const Card: FC<TypeProps> = (props) => {
 
   const {
-    id,
-    index
+    index,
+    task
   } = props
 
   return (
-    <Draggable draggableId={id} index={index}>
-      {provided => (
+    <Draggable draggableId={task.id} index={index}>
+      {(provided, snapshot) => (
         <Link
+          className={cn("block w-full pb-2")}
+          ref={provided.innerRef}
           { ...provided.draggableProps }
-          { ...provided.draggableProps }
-          className="block w-full"
+          { ...provided.dragHandleProps }
           to={RoutesPath.CARD_TASK}
         >
-          <div className="w-full p-4 rounded bg-thirdColor">
-            Card test, test
+          <div className={cn("w-full p-4 rounded", snapshot.isDragging ? 'bg-primaryColor' : 'bg-thirdColor')}>
+            { task.text }
           </div>
         </Link>
       )}

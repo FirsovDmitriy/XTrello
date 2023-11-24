@@ -49,7 +49,7 @@ const HomePage: FC = () => {
             </div>
 
             <div className='h-full flex flex-col'>
-              <List className='gap-5'>
+              <List className='flex-col gap-5'>
                 {[...Array(5)].map((_, index) => (
                   <List.Item key={index}>
                     <Card />

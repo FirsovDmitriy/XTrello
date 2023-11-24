@@ -75,7 +75,7 @@ const SelectMenus: FC<TypeProps> = (props) => {
       />
 
       <div
-        className={cn('absolute top-full left-0 w-full mt-1 shadow-md rounded bg-primary-backColor',
+        className={cn('absolute top-full left-0 w-full mt-1 shadow-md rounded bg-body-color',
           isShow ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none')}
       >
         
