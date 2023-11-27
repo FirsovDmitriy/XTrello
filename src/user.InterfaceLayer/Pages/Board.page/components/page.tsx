@@ -15,10 +15,11 @@ const Board: FC = () => {
   const [mock, setMock] = useState<IInitialData>(mockData)
 
   var onDragStart = () => {
-    /*...*/
-  };
-  var onDragUpdate = () => {
-    /*...*/
+    // document.body.style.color = 'orange'
+  }
+
+  var onDragUpdate = (update) => {
+    console.log('drag update', update)
   }
 
   var onDragEnd = (result: DropResult): void => {
@@ -33,23 +34,53 @@ const Board: FC = () => {
       return
     }
 
-    let col = mock.columns[source.droppableId]
-    var clonedTaskIDs = Array.from(col.taskIDs)
-    clonedTaskIDs.splice(source.index, 1)
-    clonedTaskIDs.splice(destination.index, 0, draggableId)
+    let start = mock.columns[source.droppableId]
+    let finish = mock.columns[destination.droppableId]
 
-    var newCol = {
-      ...col,
-      taskIDs: clonedTaskIDs
+    if(start === finish) {
+
+      var clonedTaskIDs = Array.from(start.taskIDs)
+      clonedTaskIDs.splice(source.index, 1)
+      clonedTaskIDs.splice(destination.index, 0, draggableId)
+
+      var newCol = {
+        ...start,
+        taskIDs: clonedTaskIDs
+      }
+
+      setMock({
+        ...mock,
+        columns: {
+          ...mock.columns,
+          [newCol.id]: newCol
+        }
+      })
+      return
+    }
+
+    var startTaskIDs = Array.from(start.taskIDs)
+    startTaskIDs.splice(source.index, 1)
+    var newStart = {
+      ...start,
+      taskIDs: startTaskIDs
+    }
+
+    var finishTaskIDs = Array.from(finish.taskIDs)
+    finishTaskIDs.splice(destination.index, 0, draggableId)
+    var newFinish = {
+      ...finish,
+      taskIDs: finishTaskIDs
     }
 
     setMock({
       ...mock,
       columns: {
         ...mock.columns,
-        [newCol.id]: newCol
+        [newStart.id]: newStart,
+        [newFinish.id]: newFinish
       }
     })
+
   }
 
   return (
