@@ -41,7 +41,7 @@ const Modal: FC<TypeProps> = (props) => {
         >
           <section
             onClick={handleStopEvent}
-            className={cn('rounded shadow-lg bg-primary-backColor')}
+            className={cn('rounded shadow-lg bg-body-color')}
             role="dialog"
             style={styles}
           >

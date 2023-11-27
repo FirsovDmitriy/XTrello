@@ -27,21 +27,21 @@ const Add: FC = () => {
         }}
       >
         <Modal.Header>
-          Create project
+          Добавить проект
         </Modal.Header>
         <form action="#" onSubmit={handleSubmit}>
           <Modal.Body>
             <label className='flex flex-col gap-2 mb-6'>
               <p>
-                Code
-                <span className='text-error'>*</span>
+                Код
+                <span className='text-errorColor'>*</span>
               </p>
               <TextField placeholder='Enter text...'/>
             </label>
             <label className='flex flex-col gap-2'>
               <p>
-                Name
-                <span className='text-error'>*</span>
+                Название
+                <span className='text-errorColor'>*</span>
               </p>
               <TextField placeholder='Enter text...'/>
             </label>
@@ -51,9 +51,9 @@ const Add: FC = () => {
               variant='ghost'
               onClick={() => setShow(false)}
             >
-              Cancel
+              Отмена
             </Button>
-            <Button>Add project</Button>
+            <Button>Добавить проект</Button>
           </Modal.Footer>
         </form>
       </Modal>
