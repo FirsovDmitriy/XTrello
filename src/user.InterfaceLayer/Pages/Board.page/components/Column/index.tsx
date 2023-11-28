@@ -25,7 +25,7 @@ const Column: FC<TypeProps> = (props) => {
           <div
             ref={provided.innerRef}
             { ...provided.droppableProps }
-            className="flex flex-col"
+            className="flex flex-col min-h-[4rem]"
           >
             {tasks.map((item, index) => (
               <Card

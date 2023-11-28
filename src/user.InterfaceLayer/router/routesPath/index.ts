@@ -1,5 +1,7 @@
 enum RoutesPath {
   HOME = '/',
+  SIGNUP = '/signup',
+  LOGIN = '/login',
   PROJECTS = '/projects',
   PROFILE = '/profile',
   EDIT_PROFILE = '/profile/edit',

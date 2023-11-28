@@ -34,17 +34,17 @@ const Board: FC = () => {
       return
     }
 
-    let start = mock.columns[source.droppableId]
-    let finish = mock.columns[destination.droppableId]
+    let startCol = mock.columns[source.droppableId]
+    let endCol = mock.columns[destination.droppableId]
 
-    if(start === finish) {
+    if(startCol === endCol) {
 
-      var clonedTaskIDs = Array.from(start.taskIDs)
+      var clonedTaskIDs = Array.from(startCol.taskIDs)
       clonedTaskIDs.splice(source.index, 1)
       clonedTaskIDs.splice(destination.index, 0, draggableId)
 
       var newCol = {
-        ...start,
+        ...startCol,
         taskIDs: clonedTaskIDs
       }
 
@@ -58,26 +58,26 @@ const Board: FC = () => {
       return
     }
 
-    var startTaskIDs = Array.from(start.taskIDs)
-    startTaskIDs.splice(source.index, 1)
-    var newStart = {
-      ...start,
-      taskIDs: startTaskIDs
+    var clonedStartColTaskIDs = Array.from(startCol.taskIDs)
+    clonedStartColTaskIDs.splice(source.index, 1)
+    var updatedStartCol = {
+      ...startCol,
+      taskIDs: clonedStartColTaskIDs
     }
 
-    var finishTaskIDs = Array.from(finish.taskIDs)
-    finishTaskIDs.splice(destination.index, 0, draggableId)
-    var newFinish = {
-      ...finish,
-      taskIDs: finishTaskIDs
+    var clonedEndColTaskIDs = Array.from(endCol.taskIDs)
+    clonedEndColTaskIDs.splice(destination.index, 0, draggableId)
+    var updatedEndCol = {
+      ...endCol,
+      taskIDs: clonedEndColTaskIDs
     }
 
     setMock({
       ...mock,
       columns: {
         ...mock.columns,
-        [newStart.id]: newStart,
-        [newFinish.id]: newFinish
+        [updatedStartCol.id]: updatedStartCol,
+        [updatedEndCol.id]: updatedEndCol
       }
     })
 

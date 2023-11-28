@@ -3,5 +3,5 @@ export type TypeProps = {
   component?: 'h1' | 'h2' | 'p' | 'span'
   color?: string
   children?: string
-  className: string
+  className?: string
 }

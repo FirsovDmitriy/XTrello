@@ -6,6 +6,10 @@
 @tailwind components;
 @tailwind utilities;
 
+*:disabled {
+  pointer-events: none;
+}
+
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;

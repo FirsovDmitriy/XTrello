@@ -1,13 +1,16 @@
-import { Suspense } from "react"
-import RoutesPath from "./routesPath"
-import MainLayout from "../Layout/Main.layout"
-import { HomePage } from "../Pages/Home.page"
-import { ProfilePage } from "../Pages/Profile.page";
-import { RouteObject } from "react-router-dom";
-import CreatePage from "../Pages/Create.page/components/page";
-import ErrorRouteElement from "../Components/GeneralComponents/Error/ErrorRouteElement";
-import { EditProfilePage } from "../Pages/EditProfile.page";
-import { BoardPage } from "../Pages/Board.page";
+import { Suspense } from 'react'
+import RoutesPath from './routesPath'
+import MainLayout from '../Layout/Main.layout'
+import { HomePage } from '../Pages/Home.page'
+import { ProfilePage } from '../Pages/Profile.page'
+import { RouteObject } from 'react-router-dom'
+import CreatePage from '../Pages/Create.page/components/page'
+import ErrorRouteElement from '../Components/GeneralComponents/Error/ErrorRouteElement'
+import { EditProfilePage } from '../Pages/EditProfile.page'
+import { BoardPage } from '../Pages/Board.page'
+import AuthLayout from '../Layout/Auth.layout'
+import { SignupPage } from '../Pages/Signup.page'
+import { LoginPage } from '../Pages/login.page'
 
 const AppRouter: RouteObject[] = [
   {
@@ -21,7 +24,7 @@ const AppRouter: RouteObject[] = [
           <Suspense>
             <HomePage />
           </Suspense>
-        )
+        ),
       },
       {
         path: RoutesPath.BOARD,
@@ -29,7 +32,7 @@ const AppRouter: RouteObject[] = [
           <Suspense>
             <BoardPage />
           </Suspense>
-        )
+        ),
       },
       {
         path: RoutesPath.CREATE_TASK,
@@ -37,7 +40,7 @@ const AppRouter: RouteObject[] = [
           <Suspense>
             <CreatePage />
           </Suspense>
-        )
+        ),
       },
       {
         path: RoutesPath.PROFILE,
@@ -45,7 +48,7 @@ const AppRouter: RouteObject[] = [
           <Suspense>
             <ProfilePage />
           </Suspense>
-        )
+        ),
       },
       {
         path: RoutesPath.EDIT_PROFILE,
@@ -53,10 +56,32 @@ const AppRouter: RouteObject[] = [
           <Suspense>
             <EditProfilePage />
           </Suspense>
-        )
-      }
-    ]
-  }
+        ),
+      },
+    ],
+  },
+  {
+    path: RoutesPath.HOME,
+    element: <AuthLayout />,
+    children: [
+      {
+        path: RoutesPath.SIGNUP,
+        element: (
+          <Suspense>
+            <SignupPage />
+          </Suspense>
+        ),
+      },
+      {
+        path: RoutesPath.LOGIN,
+        element: (
+          <Suspense>
+            <LoginPage />
+          </Suspense>
+        ),
+      },
+    ],
+  },
 ]
 
 export default AppRouter

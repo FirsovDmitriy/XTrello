@@ -19,7 +19,9 @@ export default {
         hoveredColor: 'rgba(121, 116, 126, 0.2)',
         secondaryColor: '#8E8E8E',
 
-        thirdColor: 'rgba(0, 0, 0, 0.15)'
+        thirdColor: 'rgba(0, 0, 0, 0.15)',
+        'disabled-bg': '#1F262E',
+        'disabled-font': '#3A414A'
       }
     },
   },

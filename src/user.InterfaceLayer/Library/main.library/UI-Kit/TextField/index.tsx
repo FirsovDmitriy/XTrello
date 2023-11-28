@@ -20,14 +20,18 @@ const TextField: FC<TypeProps> = (props) => {
       <div
         className={cn("flex items-center w-full h-full rounded border-primaryColor border px-3 focus-within:outline outline-2 outline-offset-2 outline-primaryColor")}
       >
-        {prependIcon ? <span className="flex mr-2">{ prependIcon }</span> : null}
+        {prependIcon
+        ? <span className="flex mr-2">
+            { prependIcon }
+          </span>
+        : null}
 
         <input
           className="w-full h-full focus-visible:outline-0 bg-transparent"
           value={value}
           onChange={onChange}
           disabled={disabled}
-          {...restProps}
+          { ...restProps }
         />
 
         {isError ? (

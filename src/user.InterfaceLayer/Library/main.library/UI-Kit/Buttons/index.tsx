@@ -23,7 +23,7 @@ const Button: FC<TypeProps> = (props) => {
         styles = 'h-[2.625rem] px-4 text-primary-text transition-colors hover:bg-hoveredColor'
         break
       case 'square':
-        styles = 'h-[2.625rem] w-[2.625rem] border border-primaryColor bg-primary-backColor transition-colors hover:bg-primaryColor'
+        styles = 'h-[2.625rem] w-[2.625rem] border border-primaryColor bg-body-color transition-colors hover:bg-primaryColor'
         break
       default:
         styles = ''
@@ -31,7 +31,7 @@ const Button: FC<TypeProps> = (props) => {
 
   return (
     <button
-      className={cn('flex justify-center items-center gap-2 font-semibold rounded', styles, className)}
+      className={cn('flex justify-center items-center gap-2 font-semibold rounded disabled:bg-disabled-bg/[0.2] disabled:text-disabled-font/[0.2]', styles, className)}
       { ...restProps }
     >
       {prependIcon ? (

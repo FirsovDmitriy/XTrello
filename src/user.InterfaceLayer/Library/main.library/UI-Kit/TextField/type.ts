@@ -1,10 +1,8 @@
 import { ChangeEvent, ReactNode } from "react";
-import { InputType } from "./enum";
 
 export type TypeProps = {
   value?: string
   placeholder?: string
-  type?: InputType
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void
   isError?: boolean
   prependIcon?: ReactNode
@@ -14,4 +12,5 @@ export type TypeProps = {
   onFocus?: () => void
   variant?: 'underlined' | 'outlined'
   className?: string
+  type?: string | 'text'
 }
