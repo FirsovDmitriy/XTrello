@@ -3,6 +3,7 @@ import Typography from '../../../../Library/main.library/UI-Kit/Typography'
 import Card from '../Card'
 import { TypeProps } from './type'
 import { Droppable } from 'react-beautiful-dnd'
+import Button from '../../../../Library/main.library/UI-Kit/Buttons'
 
 const Column: FC<TypeProps> = (props) => {
   var {
@@ -17,7 +18,7 @@ const Column: FC<TypeProps> = (props) => {
         variant="body2" 
         className="font-semibold mb-2 uppercase"
       >
-        {title}
+        { title }
       </Typography>
 
       <Droppable droppableId={id}>
@@ -40,6 +41,13 @@ const Column: FC<TypeProps> = (props) => {
         </div>
         )}
       </Droppable>
+
+      <Button
+        // variant='ghost'
+        className='w-full'
+      >
+        Add a card
+      </Button>
 
     </div>
   )

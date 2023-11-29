@@ -1,7 +1,4 @@
 import { FC, useState } from 'react'
-import TextField from '../../../Library/main.library/UI-Kit/TextField'
-import Container from '../../../Library/main.library/UI-Kit/Container'
-import Button from '../../../Library/main.library/UI-Kit/Buttons'
 import List from '../../../Library/main.library/UI-Kit/List'
 import Column from './Column'
 import styled from './styled.module.scss'
@@ -9,6 +6,7 @@ import cn from 'classnames'
 import { DragDropContext, DropResult } from 'react-beautiful-dnd'
 import mockData from './mock'
 import { IInitialData } from './type'
+import FilterRow from './FilterRow'
 
 const Board: FC = () => {
 
@@ -18,8 +16,8 @@ const Board: FC = () => {
     // document.body.style.color = 'orange'
   }
 
-  var onDragUpdate = (update) => {
-    console.log('drag update', update)
+  var onDragUpdate = () => {
+    // console.log('drag update', update)
   }
 
   var onDragEnd = (result: DropResult): void => {
@@ -85,12 +83,7 @@ const Board: FC = () => {
 
   return (
     <section>
-      <Container>
-        <div className="py-4 grid grid-cols-[1fr_min-content] gap-6">
-          <TextField placeholder="Поиск..." />
-          <Button>Добавить</Button>
-        </div>
-      </Container>
+      <FilterRow />
 
       <div className={cn(styled.Row)}>
         <DragDropContext

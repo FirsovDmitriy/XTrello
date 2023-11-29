@@ -1,9 +1,9 @@
-import { ChangeEvent, ReactNode } from "react";
+import { ChangeEvent, FormEvent, ReactNode } from "react";
 
 export type TypeProps = {
   value?: string
   placeholder?: string
-  onChange?: (event: ChangeEvent<HTMLInputElement>) => void
+  onChange?: (paramert: FormEvent<HTMLInputElement>) => void
   isError?: boolean
   prependIcon?: ReactNode
   appendIcon?: ReactNode
@@ -13,4 +13,12 @@ export type TypeProps = {
   variant?: 'underlined' | 'outlined'
   className?: string
   type?: string | 'text'
+  required?: boolean
+  minLength?: string
+  maxLength?: string
+  min?: string
+  max?: string
+  name?: string
+  pattern?: string
+  onBlur?: (parametr: FormEvent<HTMLInputElement>) => void
 }

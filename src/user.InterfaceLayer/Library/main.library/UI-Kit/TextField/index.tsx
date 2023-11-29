@@ -16,9 +16,9 @@ const TextField: FC<TypeProps> = (props) => {
   } = props
 
   return (
-    <div className={cn('h-[2.525rem] ', className)}>
+    <div className={cn('relative h-[2.525rem] ', className)}>
       <div
-        className={cn("flex items-center w-full h-full rounded border-primaryColor border px-3 focus-within:outline outline-2 outline-offset-2 outline-primaryColor")}
+        className={cn("flex items-center w-full h-full rounded border px-3 focus-within:outline outline-2 outline-offset-2 outline-primaryColor transition-colors", isError ? 'border-errorColor' : 'border-primaryColor')}
       >
         {prependIcon
         ? <span className="flex mr-2">
@@ -30,17 +30,21 @@ const TextField: FC<TypeProps> = (props) => {
           className="w-full h-full focus-visible:outline-0 bg-transparent"
           value={value}
           onChange={onChange}
-          disabled={disabled}
+          autoComplete='off'
           { ...restProps }
         />
 
-        {isError ? (
-          <span className="absolute top-full left-0 text-error">
-            {errorText}
-          </span>
-        ) : null}
+        <span
+          className={cn("absolute top-full left-0 text-sm text-errorColor transition-opacity", isError ? 'opacity-100' : 'opacity-0')}
+        >
+          { errorText }
+        </span>
 
-        {appendIcon ? <span className="flex ml-2">{ appendIcon }</span> : null}
+        {appendIcon
+          ? <span className="flex ml-2">
+              { appendIcon }
+            </span>
+          : null}
       </div>
     </div>
   )

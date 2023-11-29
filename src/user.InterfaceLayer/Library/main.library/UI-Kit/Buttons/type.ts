@@ -8,4 +8,5 @@ export type TypeProps = {
   prependIcon?: ReactNode
   appendIcon?: ReactNode
   className?: string
+  type?: string
 }

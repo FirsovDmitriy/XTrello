@@ -58,7 +58,7 @@ const SelectMenus: FC<TypeProps> = (props) => {
 
   return (
     <div
-      className='relative w-80'
+      className='relative w-80 cursor-pointer'
       ref={ref}
     >
       <TextField
@@ -75,7 +75,7 @@ const SelectMenus: FC<TypeProps> = (props) => {
       />
 
       <div
-        className={cn('absolute top-full left-0 w-full mt-1 shadow-md rounded bg-body-color',
+        className={cn('absolute top-full left-0 z-10 w-full mt-1 shadow-md rounded bg-body-color',
           isShow ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none')}
       >
         

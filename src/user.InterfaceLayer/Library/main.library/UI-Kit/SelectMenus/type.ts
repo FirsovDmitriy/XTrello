@@ -8,7 +8,7 @@ export type TypeProps = {
 
 export type Option = {
   label: string
-  value: string
   selected?: boolean
+  value: string
   disabled?: boolean
 }
