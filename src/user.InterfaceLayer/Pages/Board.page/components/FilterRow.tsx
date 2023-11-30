@@ -37,12 +37,16 @@ const options = [
 const FilterRow: FC = () => {
   var [show, setShow] = useState<boolean>(false)
   var [status, setStatus] = useState<string[]>([])
+  var [author, setAuthor] = useState('')
   console.log('selected', status)
 
   return (
     <Container>
       <div className="py-4 grid grid-cols-[1fr_min-content] gap-6">
-        <TextField placeholder="Поиск..." />
+        <TextField
+          placeholder="Поиск..."
+          appendIcon={ <i className='icon Search-icon'></i> }
+        />
         <Dropdowns onClose={() => setShow(false)}>
           <Dropdowns.Toggle>
             <Button variant="square" onClick={() => setShow(!show)}>
@@ -59,9 +63,7 @@ const FilterRow: FC = () => {
                     options={options}
                     placeholder="Выберите значение..."
                     value={status}
-                    onChange={(event: FormEvent<HTMLInputElement>) => {
-                      setStatus([...status, event.currentTarget.value])
-                    }}
+                    onChange={setStatus}
                   />
                 </label>
               </div>
@@ -70,13 +72,10 @@ const FilterRow: FC = () => {
                 <label htmlFor="">
                   <p className="text-secondaryColor mb-2">Автор</p>
                   <SelectMenus
-                    multiple
                     options={options}
                     placeholder="Выберите значение..."
-                    value={status}
-                    onChange={(event: FormEvent<HTMLInputElement>) => {
-                      setStatus([...status, event.currentTarget.value])
-                    }}
+                    value={author}
+                    onChange={setAuthor}
                   />
                 </label>
               </div>

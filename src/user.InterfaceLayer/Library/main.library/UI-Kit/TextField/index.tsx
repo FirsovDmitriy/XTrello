@@ -16,7 +16,7 @@ const TextField: FC<TypeProps> = (props) => {
   } = props
 
   return (
-    <div className={cn('relative h-[2.525rem] ', className)}>
+    <div className={cn('relative w-full h-[2.525rem] ', className)}>
       <div
         className={cn("flex items-center w-full h-full rounded border px-3 focus-within:outline outline-2 outline-offset-2 outline-primaryColor transition-colors", isError ? 'border-errorColor' : 'border-primaryColor')}
       >

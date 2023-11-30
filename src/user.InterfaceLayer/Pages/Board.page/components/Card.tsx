@@ -18,16 +18,21 @@ const Card: FC<TypeProps> = (props) => {
   } = props
 
   return (
-    <Draggable draggableId={task.id} index={index}>
+    <Draggable
+      draggableId={task.id}
+      index={index}
+    >
       {(provided, snapshot) => (
         <Link
           className={cn("block w-full pb-2")}
           ref={provided.innerRef}
+          to={`card-task/${ task.id }`}
           { ...provided.draggableProps }
           { ...provided.dragHandleProps }
-          to={RoutesPath.CARD_TASK}
         >
-          <div className={cn("w-full p-4 rounded", snapshot.isDragging ? 'bg-primaryColor' : 'bg-thirdColor')}>
+          <div
+            className={cn("w-full p-4 rounded", snapshot.isDragging ? 'bg-primaryColor' : 'bg-thirdColor')}
+          >
             { task.text }
           </div>
         </Link>

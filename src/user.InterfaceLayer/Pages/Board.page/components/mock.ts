@@ -34,10 +34,15 @@ const mockData: IInitialData = {
       id: 'col-2',
       title: 'В работе',
       taskIDs: ['task_5']
+    },
+    'col-3': {
+      id: 'col-3',
+      title: 'Завершена',
+      taskIDs: []
     }
   },
 
-  columnOrder: ['col-1', 'col-2']
+  columnOrder: ['col-1', 'col-2', 'col-3']
 }
 
 export default mockData

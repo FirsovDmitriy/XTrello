@@ -11,12 +11,15 @@ import { BoardPage } from '../Pages/Board.page'
 import AuthLayout from '../Layout/Auth.layout'
 import { SignupPage } from '../Pages/Signup.page'
 import { LoginPage } from '../Pages/login.page'
+import TaskCardPage from '../Pages/TaskCard.page/components/page'
+import Preloader from '../Library/main.library/UI-Kit/Preloader'
 
 const AppRouter: RouteObject[] = [
   {
     path: RoutesPath.HOME,
     element: <MainLayout />,
     errorElement: <ErrorRouteElement />,
+    // loader: <Preloader />,
     children: [
       {
         index: true,
@@ -33,6 +36,14 @@ const AppRouter: RouteObject[] = [
             <BoardPage />
           </Suspense>
         ),
+      },
+      {
+        path: RoutesPath.CARD_TASK,
+        element: (
+          <Suspense>
+            <TaskCardPage />
+          </Suspense>
+        )
       },
       {
         path: RoutesPath.CREATE_TASK,

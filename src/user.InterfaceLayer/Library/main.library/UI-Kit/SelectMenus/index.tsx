@@ -90,7 +90,7 @@ const SelectMenus: FC<TypeProps> = (props) => {
         ? <ul className='py-1'>
             {filteredData.map(({ value, disabled, label }) => (
               <li
-                className='px-4 py-[0.9rem] cursor-pointer transition-colors hover:bg-hoveredColor'
+                className='flex items-center justify-between px-4 py-[0.9rem] cursor-pointer transition-colors hover:bg-hoveredColor'
                 role='option'
                 onClick={() => handleChange(value)}
                 // $disabled={disabled}

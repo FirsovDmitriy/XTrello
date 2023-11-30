@@ -1,7 +1,5 @@
-import { ChangeEvent, FC } from 'react'
+import { ChangeEvent, FC, FormEvent } from 'react'
 import TextField from '../../../TextField'
-
-import * as SC from './styled'
 
 type TypeProps = {
   value: string
@@ -9,13 +7,12 @@ type TypeProps = {
 
 const SearchForm: FC<TypeProps> = ({ value }) => {
 
-
   function handleSubmit(event: ChangeEvent<HTMLFormElement>): void {
     event.preventDefault()
   }
 
   return (
-    <SC.SearchForm
+    <form
       onSubmit={handleSubmit}
       role='search'
     >
@@ -24,18 +21,14 @@ const SearchForm: FC<TypeProps> = ({ value }) => {
         placeholder='Поиск...'
         value={value}
         onChange={
-          function (event: ChangeEvent<HTMLInputElement>): void {
+          function (event: FormEvent<HTMLInputElement>): void {
             throw new Error('Function not implemented.')
-        }}
-        $sx={{
-          padding: '0 1rem',
-          bg: 'green'
         }}
         type='search'
         inputMode='search'
       />
 
-    </SC.SearchForm>
+    </form>
   )
 }
 

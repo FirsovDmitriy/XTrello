@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, ReactNode } from "react";
+import { FormEvent, ReactNode } from "react";
 
 export type TypeProps = {
   value?: string
@@ -21,4 +21,5 @@ export type TypeProps = {
   name?: string
   pattern?: string
   onBlur?: (parametr: FormEvent<HTMLInputElement>) => void
+  inputMode?: 'search' | 'url' | 'tel' | 'decimal' | 'numeric' | 'text' | 'none'
 }

@@ -12,7 +12,7 @@ const Header: FC = () => {
 
   return (
     <header className='bg-[#111]'>
-      <Container className='flex justify-end items-center gap-6'>
+      <Container className='flex justify-between items-center gap-6'>
         <HeaderNav />
         {/*    Dropdown    */}
         <Dropdowns onClose={() => setShowEl(false)}>

@@ -5,9 +5,13 @@ Select components are used for collecting user provided information from a list 
 ## Usage
 
 ``` tsx
+var [selected, setSelected] = useState('')
+
 <SelectMenus
   options={options}
   placeholder="Select value"
+  value={selected}
+  onChange={setSelected}
 />
 ```
 ## Multiple select

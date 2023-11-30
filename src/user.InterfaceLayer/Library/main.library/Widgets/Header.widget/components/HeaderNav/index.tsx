@@ -4,6 +4,10 @@ import RoutesPath from '../../../../../../router/routesPath'
 
 let links = [
   {
+    text: 'Workspaces',
+    path: '#',
+  },
+  {
     text: 'Проекты',
     path: '/',
   },
