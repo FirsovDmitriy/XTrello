@@ -2,7 +2,7 @@ import { FC } from 'react'
 
 const Comment: FC = () => {
   return (
-    <div>Comment</div>
+    <div className='flex items-center gap-4'></div>
   )
 }
 

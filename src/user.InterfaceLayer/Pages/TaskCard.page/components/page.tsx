@@ -13,15 +13,17 @@ const TaskCardPage: FC = () => {
 
   return (
     <>
-      <Container className='flex justify-start'>
-        <Button
-          onClick={() => navigate(-1)}
-          variant='ghost'
-          prependIcon={ <i className='icon ArrowBack-icon'></i> }
-        >
-          Назад
-        </Button>
-      </Container>
+      <div>
+        <Container className='flex justify-start'>
+          <Button
+              onClick={() => navigate(-1)}
+              // variant='ghost'
+              prependIcon={ <i className='icon ArrowBack-icon'></i> }
+            >
+              Назад
+            </Button>
+        </Container>
+      </div>
 
       <section>
         <Container className='grid grid-cols-12'>

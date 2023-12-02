@@ -22,4 +22,5 @@ export type TypeProps = {
   pattern?: string
   onBlur?: (parametr: FormEvent<HTMLInputElement>) => void
   inputMode?: 'search' | 'url' | 'tel' | 'decimal' | 'numeric' | 'text' | 'none'
+  'aria-invalid'?: false | true | 'grammar' | 'spelling'
 }

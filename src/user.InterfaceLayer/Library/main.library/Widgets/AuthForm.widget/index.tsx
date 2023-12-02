@@ -1,59 +1,45 @@
-import { FC, FormEvent, SyntheticEvent, useEffect, useState } from 'react'
+import { FC, FormEvent, SyntheticEvent, useEffect, useReducer, useState } from 'react'
 import TextField from '../../UI-Kit/TextField'
 import Button from '../../UI-Kit/Buttons'
 import Typography from '../../UI-Kit/Typography'
 import { useLocation } from 'react-router-dom'
 import RoutesPath from '../../../../router/routesPath'
+import HideIcon from '../../assets/icons/HideIcon'
 import { validateEmail } from './utils'
-
-interface IUser {
-  email: string
-  password: string
-}
-
-const initialUserData: IUser = {
-  email: '',
-  password: ''
-}
+import ShowIcon from '../../assets/icons/ShowIcon'
 
 const AuthForm: FC = () => {
-  var [user, setUser] = useState<IUser>(initialUserData)
-  var [invalidEmail, setInvalidEmail] = useState<boolean>(false)
-  var [invalidPassword, setInvalidPassword] = useState<boolean>(false)
-  var [validForm, setValidForm] = useState<boolean>(false)
-  var location = useLocation()
+  var [email, setEmail] = useState<string>('')
+  var [validEmail, setValidEmail] = useState<boolean>(false)
+  var [emailBlur, setEmailBlur] = useState(false)
 
+  var [password, setPassword] = useState<string>('')
+  var [validPassword, setValidPassword] = useState(false)
+  var [passwordBlur, setPasswordBlur] = useState(false)
+  var [fieldType, setFieldType] = useState<'password' | 'text'>('password')
+
+  var [validForm, setValidForm] = useState(false)
+
+  var location = useLocation()
   var isAuthorized = location.pathname === RoutesPath.LOGIN ? true : false
 
   var handleSubmit = (event: SyntheticEvent) => {
     event.preventDefault()
-    console.log('user', user)
+    console.log('Data', email, password)
   }
 
-  var checkValidationEmail = () => {
-    if(!validateEmail(user.email)) {
-      setInvalidEmail(true)
-    } else {
-      setInvalidEmail(false)
+  var passwordCheck = () => {
+    var result = password.length > 8
+    setValidPassword(result)
+    setPasswordBlur(true)
+  }
+
+  useEffect(() => {
+    if(validEmail && validPassword) {
+      setValidForm(true)
     }
-  }
-
-  var checkValidationPassword = () => {
-    if(user.password.length <= 8) {
-      setInvalidPassword(true)
-    } else setInvalidPassword(false)
-  }
-
-  var handleBlur = (event: FormEvent<HTMLInputElement>) => {
-    switch(event.currentTarget.name) {
-      case 'email':
-        checkValidationEmail()
-        break
-      case 'password':
-        checkValidationPassword()
-        break
-    }
-  }
+    else setValidForm(false)
+  }, [validEmail, validPassword])
 
   return (
     <form
@@ -74,21 +60,20 @@ const AuthForm: FC = () => {
       <div className="flex flex-col gap-9 p-4">
         <label htmlFor="#">
           <TextField
-            onBlur={handleBlur}
+            onBlur={ () => {
+              setValidEmail(validateEmail(email))
+              setEmailBlur(true)
+            }}
             placeholder="Введите ваш адрес электронной почты"
             type='email'
-            name='email'
-            required
             errorText='Пожалуйста, укажите почту'
-            value={user.email}
+            value={email}
             onChange={(event: FormEvent<HTMLInputElement>) => {
-              setUser({
-                ...user,
-                email: event.currentTarget.value
-              })
+              setEmail(event.currentTarget.value)
             }}
-            isError={ invalidEmail }
-            onFocus={() => setInvalidEmail(false)}
+            isError={ !validEmail && emailBlur }
+            onFocus={ () => setEmailBlur(false) }
+            aria-invalid={validEmail}
           />
         </label>
 
@@ -97,21 +82,28 @@ const AuthForm: FC = () => {
             placeholder={
               isAuthorized ? 'Введите пароль' : 'Выберите пароль'
             }
-            type='password'
-            name='password'
-            required
-            minLength='8'
-            value={user.password}
+            type={ fieldType }
+            value={password}
             onChange={(event: FormEvent<HTMLInputElement>) => {
-              setUser({
-                ...user,
-                password: event.currentTarget.value
-              })
+              setPassword(event.currentTarget.value)
             }}
-            onBlur={handleBlur}
-            isError={invalidPassword}
+            onBlur={passwordCheck}
+            isError={ !validPassword && passwordBlur }
             errorText='Пароль слишком короткий'
-            onFocus={() => setInvalidPassword(false)}
+            onFocus={() => setPasswordBlur(false)}
+            appendIcon={
+              <button
+                onClick={() => {
+                  fieldType === 'password'
+                    ? setFieldType('text') : setFieldType('password')
+                }}
+                className='grid'
+              >
+                {fieldType === 'password'
+                  ? <HideIcon />
+                  : <ShowIcon />}
+              </button>
+            }
           />
         </label>
       </div>
@@ -120,7 +112,7 @@ const AuthForm: FC = () => {
         <Button
           className="w-full"
           type='submit'
-          disabled={!validForm}
+          disabled={ !validForm }
         >
           { isAuthorized ? 'Войти' : 'Создать аккаунт' }
         </Button>
