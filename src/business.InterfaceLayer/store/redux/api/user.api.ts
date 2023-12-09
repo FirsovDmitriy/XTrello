@@ -1,22 +1,18 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query/react";
 import { user } from "../../../supabase/supabase.services/user.service";
-import type { IUser } from "../../../types";
+import { BaseQueryExtraOptions, BaseQueryApi, BaseQueryError } from "@reduxjs/toolkit/dist/query/baseQueryTypes";
 
-type UserData = {
-  login: string
-  password: string
-}
-
-export var userApi = createApi({
+export var userAPI = createApi({
   reducerPath: 'userApi',
-  baseQuery: fetchBaseQuery({ url: '/' })
-  // tagTypes: ['IUser'],
+  baseQuery: fetchBaseQuery({ baseUrl: '/' }),
 
   endpoints: build => ({
     register: build.query({
-      queryFn: async (authData) => {
+      async queryFn(
+        arg
+      ) {
         try {
-          const data = await user.signup(authData)
+          const data = await user.signup(arg)
           return { data }
         } catch (error) {
           return { error }
@@ -26,3 +22,5 @@ export var userApi = createApi({
   })
 
 })
+
+export const { useRegisterQuery } = userAPI

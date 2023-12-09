@@ -1,16 +1,16 @@
 import { supabase } from '..'
 
 export var user = {
-  async signup(payload: any) {
+  async signup({ email, password }: any) {
     try {
       
       const { data, error } = await supabase.auth.signUp({
-        email: payload.email,
-        password: payload.passwod,
+        email,
+        password
       })
 
       if(error) throw error
-      console.log('Sing up', data)
+      return data
 
     } catch (error) {
       console.log(error)

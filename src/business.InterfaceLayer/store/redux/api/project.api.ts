@@ -1,10 +1,13 @@
-import { createApi } from '@reduxjs/toolkit/query/react'
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { project } from '../../../supabase/supabase.services/project.service'
 
-export var projectsApi = createApi({
+export var projectApi = createApi({
   reducerPath: 'projectsApi',
+  baseQuery: fetchBaseQuery({ baseUrl: '/' }),
+  
   endpoints: build => ({
     mutationProject: build.mutation({
+      // @ts-ignore
       queryFn: project.create(),
     })
   })

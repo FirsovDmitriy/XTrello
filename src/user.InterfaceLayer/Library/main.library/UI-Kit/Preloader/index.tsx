@@ -1,12 +1,8 @@
 import { FC, useEffect } from 'react'
-import { useTheme } from 'styled-components'
-
-import * as SC from './styled'
+import cn from 'classnames'
+import styled from './styled.module.scss'
 
 const Preloader: FC = () => {
-
-  const theme = useTheme()
-
   useEffect(() => {
     document.documentElement.style.overflow = 'hidden'
 
@@ -16,22 +12,24 @@ const Preloader: FC = () => {
   })
 
   return (
-    <SC.Overlay>
-      <SC.Preloader
+    <div className="fixed top-0 left-0 z-50 w-full h-full grid bg-black/40">
+      <svg
+        className="relative place-self-center fill-none"
+        xmlns="http://www.w3.org/2000/svg"
         width={'60'}
         height={'60'}
-        viewBox='0 0 60 60'
-        xmlns='http://www.w3.org/2000/svg'
+        viewBox="0 0 60 60"
       >
-        <SC.AnimationCircle
-          r={'20'}
-          cx={'30'}
-          cy={'30'}
-          stroke={ theme.background.primary }
+        <circle
+          className={cn(styled.Circle)}
+          stroke='#111'
+          r="20"
+          cx="30"
+          cy="30"
         />
-      </SC.Preloader>
-    </SC.Overlay>
-  );
-};
+      </svg>
+    </div>
+  )
+}
 
-export default Preloader;
+export default Preloader

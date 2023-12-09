@@ -1,0 +1,15 @@
+.Circle {
+  stroke: {
+    dasharray: 100;
+    dashoffset: 100;
+    linecap: round;
+    width: 0.25rem;
+  }
+  animation: rotate 1.5s infinite cubic-bezier(.56,.23,.9,.51);
+}
+
+@keyframes rotate {
+  100% {
+    stroke-dashoffset: 0;
+  }
+}

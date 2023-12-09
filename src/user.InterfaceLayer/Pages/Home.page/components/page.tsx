@@ -8,6 +8,7 @@ import List from '../../../Library/main.library/UI-Kit/List'
 import Add from './Add'
 import Dropdowns from '../../../Library/main.library/UI-Kit/Dropdowns'
 import SelectMenus from '../../../Library/main.library/UI-Kit/SelectMenus'
+import Preloader from '../../../Library/main.library/UI-Kit/Preloader'
 
 const HomePage: FC = () => {
   const [isData] = useState(false)
@@ -15,6 +16,9 @@ const HomePage: FC = () => {
 
   return (
     <section className='flex-auto'>
+
+      <Preloader />
+
       {isData ? (
           <Empty text='Data not found'>
             <Button>
