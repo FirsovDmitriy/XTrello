@@ -9,6 +9,7 @@ import Add from './Add'
 import Dropdowns from '../../../Library/main.library/UI-Kit/Dropdowns'
 import SelectMenus from '../../../Library/main.library/UI-Kit/SelectMenus'
 import Preloader from '../../../Library/main.library/UI-Kit/Preloader'
+import Toast from '../../../Components/GeneralComponents/ModalWindow/Toast'
 
 const HomePage: FC = () => {
   const [isData] = useState(false)
@@ -17,16 +18,17 @@ const HomePage: FC = () => {
   return (
     <section className='flex-auto'>
 
-      <Preloader />
+      {/* <Preloader /> */}
+      <Toast message='This is a success message!' />
 
-      {isData ? (
-          <Empty text='Data not found'>
+      {isData
+        ? <Empty text='Data not found'>
             <Button>
               Добавить
             </Button>
           </Empty>
-        ) : (
-          <Container className=''>
+
+        : <Container className=''>
             <div className="grid grid-cols-[1fr_min-content_min-content] gap-6 mb-6">
               <TextField
                 placeholder="Поиск..."
@@ -62,8 +64,7 @@ const HomePage: FC = () => {
               </List>
             </div>
 
-          </Container>
-        )}
+          </Container>}
     </section>
   )
 }

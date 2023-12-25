@@ -1,0 +1,24 @@
+.modal_Enter {
+  opacity: 0;
+  transform: translateY(-5%);
+}
+
+.modal_EnterActive {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.modal_Exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.modal_ExitActive {
+  opacity: 0;
+  transform: translateY(-5%);
+}
+
+.modal_EnterActive,
+.modal_ExitActive {
+  transition: opacity .5s ease-out, transform .4s ease-out;
+}

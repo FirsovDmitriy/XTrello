@@ -6,6 +6,7 @@ import TextField from '../../../Library/main.library/UI-Kit/TextField'
 const Add: FC = () => {
 
   const [show, setShow] = useState(false)
+
   const handleSubmit = (event: SyntheticEvent) => {
     event.preventDefault()
   }
@@ -15,10 +16,9 @@ const Add: FC = () => {
       <Button
         onClick={() => setShow(true)}
       >
-        Add
+        Добавить
       </Button>
 
-      {/*    Modal    */}
       <Modal
         show={show}
         onClose={() => setShow(false)}
@@ -29,19 +29,22 @@ const Add: FC = () => {
         <Modal.Header>
           Добавить проект
         </Modal.Header>
-        <form action="#" onSubmit={handleSubmit}>
+        <form
+          action="#"
+          onSubmit={handleSubmit}
+        >
           <Modal.Body>
             <label className='flex flex-col gap-2 mb-6'>
-              <p>
+              <p className='font-semibold'>
                 Код
-                <span className='text-errorColor'>*</span>
+                <span className='text-errorColor ml-1'>*</span>
               </p>
               <TextField placeholder='Enter text...'/>
             </label>
             <label className='flex flex-col gap-2'>
-              <p>
+              <p className='font-semibold'>
                 Название
-                <span className='text-errorColor'>*</span>
+                <span className='text-errorColor ml-1'>*</span>
               </p>
               <TextField placeholder='Enter text...'/>
             </label>
@@ -53,7 +56,7 @@ const Add: FC = () => {
             >
               Отмена
             </Button>
-            <Button>Добавить проект</Button>
+            <Button type='submit'>Добавить</Button>
           </Modal.Footer>
         </form>
       </Modal>

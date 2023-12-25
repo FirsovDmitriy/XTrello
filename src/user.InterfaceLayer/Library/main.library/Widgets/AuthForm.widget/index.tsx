@@ -1,21 +1,44 @@
-import { FC, FormEvent, SyntheticEvent, useEffect, useReducer, useState } from 'react'
+import { FC, FormEvent, SyntheticEvent, useEffect, useState } from 'react'
 import TextField from '../../UI-Kit/TextField'
 import Button from '../../UI-Kit/Buttons'
 import Typography from '../../UI-Kit/Typography'
 import { useLocation } from 'react-router-dom'
 import RoutesPath from '../../../../router/routesPath'
-import HideIcon from '../../assets/icons/HideIcon'
-import { validateEmail } from './utils'
-import ShowIcon from '../../assets/icons/ShowIcon'
+import useValidation from './useValidation'
+import required from './validators/withText/required'
+import minLenght from './validators/withText/minLength'
+import email from './validators/withText/email'
+import ShowPasswordButton from './components/ShowPasswordButton'
+import InvalidFeedback from './components/InvalidFeedback'
+import { TypeProps } from './type'
 
-const AuthForm: FC = () => {
-  var [email, setEmail] = useState<string>('')
-  var [validEmail, setValidEmail] = useState<boolean>(false)
-  var [emailBlur, setEmailBlur] = useState(false)
+const AuthForm: FC<TypeProps> = ({ onSubmit, register }) => {
 
-  var [password, setPassword] = useState<string>('')
-  var [validPassword, setValidPassword] = useState(false)
-  var [passwordBlur, setPasswordBlur] = useState(false)
+  const [value, setValue] = useState({
+    value: '',
+    valid: false,
+    $touched: false,
+  })
+
+  const [password, setPassword] = useState({
+    value: '',
+    valid: false,
+    $touched: false,
+  })
+
+  var { errors } = useValidation(password.value, {
+    required,
+    minLength: minLenght(5)
+  })
+
+  var { errors: errors2 } = useValidation(value.value, {
+    required, email
+  })
+
+  console.log('2', errors2)
+
+
+
   var [fieldType, setFieldType] = useState<'password' | 'text'>('password')
 
   var [validForm, setValidForm] = useState(false)
@@ -25,21 +48,16 @@ const AuthForm: FC = () => {
 
   var handleSubmit = (event: SyntheticEvent) => {
     event.preventDefault()
-    console.log('Data', email, password)
-  }
-
-  var passwordCheck = () => {
-    var result = password.length > 8
-    setValidPassword(result)
-    setPasswordBlur(true)
+    onSubmit()
   }
 
   useEffect(() => {
-    if(validEmail && validPassword) {
-      setValidForm(true)
-    }
-    else setValidForm(false)
-  }, [validEmail, validPassword])
+    const isFormValid = value.valid && password.valid
+    setValidForm(!isFormValid)
+  }, [
+    value.value,
+    password.value
+  ])
 
   return (
     <form
@@ -58,53 +76,48 @@ const AuthForm: FC = () => {
       </div>
 
       <div className="flex flex-col gap-9 p-4">
-        <label htmlFor="#">
+        <label className='relative'>
           <TextField
-            onBlur={ () => {
-              setValidEmail(validateEmail(email))
-              setEmailBlur(true)
-            }}
+            onBlur={ () => {setValue({ ...value, $touched: true })}}
             placeholder="Введите ваш адрес электронной почты"
             type='email'
-            errorText='Пожалуйста, укажите почту'
-            value={email}
+            value={value.value}
             onChange={(event: FormEvent<HTMLInputElement>) => {
-              setEmail(event.currentTarget.value)
+              setValue({
+                ...value,
+                value: event.currentTarget.value
+              })
             }}
-            isError={ !validEmail && emailBlur }
-            onFocus={ () => setEmailBlur(false) }
-            aria-invalid={validEmail}
+            isError={ Boolean(errors2.length) && value.$touched }
+            // aria-invalid={}
           />
+
+          {value.$touched && <InvalidFeedback errors={errors2} />}
         </label>
 
-        <label htmlFor="#">
+        <label className='relative'>
           <TextField
-            placeholder={
-              isAuthorized ? 'Введите пароль' : 'Выберите пароль'
-            }
+            placeholder={isAuthorized ? 'Введите пароль' : 'Выберите пароль'}
             type={ fieldType }
-            value={password}
+            value={password.value}
             onChange={(event: FormEvent<HTMLInputElement>) => {
-              setPassword(event.currentTarget.value)
+              setPassword({
+                ...password,
+                value: event.currentTarget.value
+              })
             }}
-            onBlur={passwordCheck}
-            isError={ !validPassword && passwordBlur }
-            errorText='Пароль слишком короткий'
-            onFocus={() => setPasswordBlur(false)}
+            onBlur={() => setPassword({ ...password, $touched: true })}
+            isError={ Boolean(errors.length) && password.$touched }
+            // aria-invalid={}
             appendIcon={
-              <button
-                onClick={() => {
-                  fieldType === 'password'
-                    ? setFieldType('text') : setFieldType('password')
-                }}
-                className='grid'
-              >
-                {fieldType === 'password'
-                  ? <HideIcon />
-                  : <ShowIcon />}
-              </button>
+              <ShowPasswordButton fieldType={fieldType} setFieldType={setFieldType} />
             }
           />
+
+          {
+            password.$touched && <InvalidFeedback errors={errors} />
+          }
+
         </label>
       </div>
 
@@ -112,7 +125,8 @@ const AuthForm: FC = () => {
         <Button
           className="w-full"
           type='submit'
-          disabled={ !validForm }
+          aria-label="Show password"
+          disabled={ validForm }
         >
           { isAuthorized ? 'Войти' : 'Создать аккаунт' }
         </Button>

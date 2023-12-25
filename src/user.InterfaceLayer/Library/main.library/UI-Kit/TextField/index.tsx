@@ -18,7 +18,7 @@ const TextField: FC<TypeProps> = (props) => {
   return (
     <div className={cn('relative w-full h-[2.525rem] ', className)}>
       <div
-        className={cn("flex items-center w-full h-full rounded border px-3 focus-within:outline outline-2 outline-offset-2 outline-primaryColor transition-colors", isError ? 'border-errorColor' : 'border-primaryColor')}
+        className={cn("flex items-center w-full h-full rounded border px-3 focus-within:outline outline-2 outline-offset-2 transition-colors", isError ? 'border-errorColor outline-errorColor' : 'border-primaryColor outline-primaryColor')}
       >
         {prependIcon
         ? <span className="flex mr-2">
@@ -35,7 +35,7 @@ const TextField: FC<TypeProps> = (props) => {
         />
 
         <span
-          className={cn("absolute top-full left-0 text-sm text-errorColor transition-opacity", isError ? 'opacity-100' : 'opacity-0')}
+          className={cn("absolute top-full left-0 text-sm font-semibold text-errorColor transition-opacity", isError ? 'opacity-100' : 'opacity-0')}
         >
           { errorText }
         </span>

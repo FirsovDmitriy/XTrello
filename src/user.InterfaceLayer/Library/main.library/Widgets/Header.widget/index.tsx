@@ -5,6 +5,7 @@ import Dropdowns from '../../UI-Kit/Dropdowns'
 import Button from '../../UI-Kit/Buttons'
 import { NavLink } from 'react-router-dom'
 import RoutesPath from '../../../../router/routesPath'
+import Avatar from '../../UI-Kit/Avatar'
 
 const Header: FC = () => {
 
@@ -20,7 +21,7 @@ const Header: FC = () => {
             <Button
               onClick={() => setShowEl(!showEl)}
             >
-              AB
+              <Avatar />
               <i className='icon ArowDropDown-icon'></i>
             </Button>
           </Dropdowns.Toggle>
