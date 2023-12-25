@@ -1,8 +1,16 @@
+import { UseFormRegister, SubmitHandler } from "react-hook-form"
+
 export type TypeProps = {
-  onSubmit: () => void
-  register: (name: string, validation: IValidation) => void
+  onSubmit: () => SubmitHandler<FormValues>
+  register: UseFormRegister<IFormValues>
 }
 
-interface IValidation {
-  required?: boolean
+interface IFormValues {
+  email: string
+  password: string
+}
+
+type FormValues = {
+  email: string
+  password: string
 }

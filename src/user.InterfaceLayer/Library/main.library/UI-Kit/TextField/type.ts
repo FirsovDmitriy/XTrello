@@ -8,14 +8,13 @@ export type TypeProps = {
   prependIcon?: ReactNode
   appendIcon?: ReactNode
   disabled?: boolean
-  errorText?: string
   onFocus?: () => void
   variant?: 'underlined' | 'outlined'
   className?: string
-  type?: string | 'text'
+  type?: string
   required?: boolean
-  minLength?: string
-  maxLength?: string
+  minLength?: number
+  maxLength?: number
   min?: string
   max?: string
   name?: string

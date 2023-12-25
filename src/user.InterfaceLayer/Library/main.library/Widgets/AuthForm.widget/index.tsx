@@ -11,8 +11,9 @@ import email from './validators/withText/email'
 import ShowPasswordButton from './components/ShowPasswordButton'
 import InvalidFeedback from './components/InvalidFeedback'
 import { TypeProps } from './type'
+import { EMAIL_REGULAR_EXPRESSION } from './constant'
 
-const AuthForm: FC<TypeProps> = ({ onSubmit, register }) => {
+const AuthForm: FC<TypeProps> = ({ onSubmit, register, errors }) => {
 
   const [value, setValue] = useState({
     value: '',
@@ -26,22 +27,18 @@ const AuthForm: FC<TypeProps> = ({ onSubmit, register }) => {
     $touched: false,
   })
 
-  var { errors } = useValidation(password.value, {
-    required,
-    minLength: minLenght(5)
-  })
+  // var { errors } = useValidation(password.value, {
+  //   required,
+  //   minLength: minLenght(5)
+  // })
 
   var { errors: errors2 } = useValidation(value.value, {
     required, email
   })
 
-  console.log('2', errors2)
-
 
 
   var [fieldType, setFieldType] = useState<'password' | 'text'>('password')
-
-  var [validForm, setValidForm] = useState(false)
 
   var location = useLocation()
   var isAuthorized = location.pathname === RoutesPath.LOGIN ? true : false
@@ -49,15 +46,10 @@ const AuthForm: FC<TypeProps> = ({ onSubmit, register }) => {
   var handleSubmit = (event: SyntheticEvent) => {
     event.preventDefault()
     onSubmit()
+    console.log('text', value.value)
   }
 
-  useEffect(() => {
-    const isFormValid = value.valid && password.valid
-    setValidForm(!isFormValid)
-  }, [
-    value.value,
-    password.value
-  ])
+  console.log('Erros', errors)
 
   return (
     <form
@@ -78,7 +70,13 @@ const AuthForm: FC<TypeProps> = ({ onSubmit, register }) => {
       <div className="flex flex-col gap-9 p-4">
         <label className='relative'>
           <TextField
-            onBlur={ () => {setValue({ ...value, $touched: true })}}
+            { ...register('email', {
+              required: "Email Address is required",
+              pattern: {
+                value: EMAIL_REGULAR_EXPRESSION,
+                message: 'Invalid email address'
+              }
+            }) }
             placeholder="Введите ваш адрес электронной почты"
             type='email'
             value={value.value}
@@ -88,11 +86,9 @@ const AuthForm: FC<TypeProps> = ({ onSubmit, register }) => {
                 value: event.currentTarget.value
               })
             }}
-            isError={ Boolean(errors2.length) && value.$touched }
             // aria-invalid={}
           />
-
-          {value.$touched && <InvalidFeedback errors={errors2} />}
+          {errors?.email && <InvalidFeedback text={errors?.email?.message} />}
         </label>
 
         <label className='relative'>
@@ -106,18 +102,10 @@ const AuthForm: FC<TypeProps> = ({ onSubmit, register }) => {
                 value: event.currentTarget.value
               })
             }}
-            onBlur={() => setPassword({ ...password, $touched: true })}
-            isError={ Boolean(errors.length) && password.$touched }
-            // aria-invalid={}
             appendIcon={
               <ShowPasswordButton fieldType={fieldType} setFieldType={setFieldType} />
             }
           />
-
-          {
-            password.$touched && <InvalidFeedback errors={errors} />
-          }
-
         </label>
       </div>
 
@@ -126,7 +114,6 @@ const AuthForm: FC<TypeProps> = ({ onSubmit, register }) => {
           className="w-full"
           type='submit'
           aria-label="Show password"
-          disabled={ validForm }
         >
           { isAuthorized ? 'Войти' : 'Создать аккаунт' }
         </Button>

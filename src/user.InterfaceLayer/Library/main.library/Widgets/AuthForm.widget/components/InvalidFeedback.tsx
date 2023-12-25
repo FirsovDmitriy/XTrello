@@ -1,23 +1,13 @@
 import { FC } from 'react'
 
-interface IError {
-  id: string
-  $invalid: boolean
-  $text: string
-}
-
 type TypeProps = {
-  errors: IError[]
+  text?: string
 }
 
-const InvalidFeedback: FC<TypeProps> = ({ errors }) => {
+const InvalidFeedback: FC<TypeProps> = (props) => {
   return (
     <span className='absolute top-full left-0 text-sm font-semibold text-errorColor'>
-      {errors.map(({ id, $text }) => (
-        <span key={id}>
-          { $text }
-        </span>
-      ))}
+      { props.text }
     </span>
   )
 }
